@@ -14,7 +14,7 @@ const PHASES = [
   { label: "SHOOT!", shooterX: 65, ballX: 72 },
 ];
 
-function shuffle(arr) {
+function shuffle(arr: any[]) {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
