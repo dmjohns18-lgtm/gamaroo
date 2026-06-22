@@ -1,4 +1,3 @@
-cat > app/play/factorfc/page.tsx << 'ENDOFFILE'
 "use client";
 import { useState, useEffect, useCallback } from "react";
 
