@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gamaroo: Where Kids Learn Through Play</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --nav:#3B4BC8;
+  --hero:#2A3BAF;
+  --gold:#F5A623;
+  --gold-dark:#C47D0E;
+  --gold-light:#FFF8E7;
+  --gold-border:#FDE68A;
+  --white:#FFFFFF;
+  --off:#F8FAFF;
+  --blue-light:#EFF6FF;
+  --blue-border:#BFDBFE;
+  --blue-soft:#BAC8FF;
+  --green:#10B981;
+  --green-light:#ECFDF5;
+  --green-border:#A7F3D0;
+  --purple:#7C3AED;
+  --purple-light:#F5F3FF;
+  --purple-border:#DDD6FE;
+  --gray-100:#F1F5F9;
+  --gray-200:#E2E8F0;
+  --gray-400:#94A3B8;
+  --gray-600:#475569;
+  --gray-800:#1E293B;
+  --black:#0F172A;
+}
+body{font-family:'Nunito',sans-serif;background:var(--off);color:var(--black);overflow-x:hidden;line-height:1.6;}
+
+/* ── NAV ── */
+nav{background:var(--nav);height:68px;padding:0 52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-mark{width:38px;height:38px;background:var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 3px 0 var(--gold-dark);flex-shrink:0;}
+.logo-text{font-weight:900;font-size:22px;color:white;}
+.logo-text span{color:var(--gold);}
+.nav-center{display:flex;gap:4px;align-items:center;}
+.nav-link{color:rgba(255,255,255,0.75);text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:8px;transition:all 0.2s;position:relative;white-space:nowrap;}
+.nav-link:hover{color:white;background:rgba(255,255,255,0.1);}
+.nav-link.dd{display:flex;align-items:center;gap:4px;}
+.nav-link.dd::after{content:'▾';font-size:10px;opacity:0.6;}
+.dropdown{position:absolute;top:calc(100% + 10px);left:0;background:white;border-radius:16px;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,0.15);min-width:300px;display:none;z-index:300;border:1px solid var(--gray-200);}
+.nav-link:hover .dropdown{display:block;}
+.dd-head{font-size:10px;font-weight:800;color:var(--gray-400);letter-spacing:1.5px;text-transform:uppercase;padding:8px 12px 4px;}
+.dd-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;transition:background 0.15s;text-decoration:none;}
+.dd-item:hover{background:var(--gold-light);}
+.dd-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.dd-name{font-weight:800;font-size:14px;color:var(--black);}
+.dd-desc{font-size:12px;color:var(--gray-400);margin-top:1px;}
+.dd-tag{margin-left:auto;font-size:10px;font-weight:800;padding:3px 8px;border-radius:50px;flex-shrink:0;}
+.tag-live{background:var(--green-light);color:var(--green);}
+.tag-soon{background:var(--gray-100);color:var(--gray-400);}
+.dd-divider{height:1px;background:var(--gray-200);margin:4px 0;}
+.nav-right{display:flex;gap:10px;align-items:center;}
+.btn-ghost-nav{padding:8px 18px;border:1.5px solid rgba(255,255,255,0.25);border-radius:50px;background:transparent;color:white;font-size:13px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;text-decoration:none;transition:all 0.2s;}
+.btn-ghost-nav:hover{border-color:rgba(255,255,255,0.6);}
+.btn-cta-nav{padding:9px 20px;border:none;border-radius:50px;background:var(--gold);color:var(--black);font-size:13px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;text-decoration:none;box-shadow:0 3px 0 var(--gold-dark);transition:all 0.15s;display:inline-block;}
+.btn-cta-nav:hover{transform:translateY(-1px);box-shadow:0 4px 0 var(--gold-dark);}
+.btn-cta-nav:active{transform:translateY(1px);box-shadow:0 1px 0 var(--gold-dark);}
+
+/* ── GOLD DIVIDER ── */
+.gold-divider{height:3px;background:linear-gradient(90deg,var(--gold-dark),var(--gold),#FCD34D,var(--gold),var(--gold-dark));}
+
+/* ── HERO ── */
+.hero{background:var(--hero);padding:72px 52px 64px;}
+.hero-eyebrow{display:flex;justify-content:center;margin-bottom:20px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,0.15);color:#FCD34D;border-radius:50px;padding:7px 18px;font-size:13px;font-weight:800;border:1px solid rgba(245,166,35,0.25);}
+.hero h1{font-size:68px;font-weight:900;color:white;line-height:1.0;text-align:center;margin-bottom:18px;letter-spacing:-1px;}
+.hero h1 .gold{color:var(--gold);}
+.hero h1 .soft{color:var(--blue-soft);}
+.hero-sub{font-size:18px;color:rgba(255,255,255,0.6);line-height:1.7;max-width:520px;margin:0 auto 36px;text-align:center;font-weight:600;}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:52px;}
+.btn-hero-gold{padding:17px 40px;font-size:18px;border-radius:12px;border:none;background:var(--gold);color:var(--black);font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;box-shadow:0 6px 0 var(--gold-dark);transition:all 0.15s;text-decoration:none;display:inline-block;}
+.btn-hero-gold:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--gold-dark);}
+.btn-hero-gold:active{transform:translateY(3px);box-shadow:0 2px 0 var(--gold-dark);}
+.btn-hero-ghost{padding:17px 40px;font-size:18px;border-radius:12px;border:2px solid rgba(255,255,255,0.25);background:transparent;color:rgba(255,255,255,0.85);font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-hero-ghost:hover{border-color:rgba(255,255,255,0.6);color:white;}
+
+/* ── TRUST ROW ── */
+.trust-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1);}
+.trust-item{display:flex;align-items:center;gap:10px;padding:0 32px;}
+.trust-item+.trust-item{border-left:1px solid rgba(255,255,255,0.12);}
+.trust-icon{font-size:22px;}
+.trust-label{font-size:15px;font-weight:900;color:white;}
+.trust-sub{font-size:12px;color:rgba(255,255,255,0.5);font-weight:600;}
+
+/* ── MARQUEE ── */
+.marquee-wrap{background:var(--nav);padding:13px 0;overflow:hidden;}
+.marquee-track{display:flex;gap:36px;animation:marquee 24s linear infinite;width:max-content;}
+.marquee-item{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.7);font-size:13px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;white-space:nowrap;}
+.marquee-item span{font-size:16px;}
+.mdot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);flex-shrink:0;}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SECTIONS ── */
+.section{padding:80px 52px;max-width:1160px;margin:0 auto;}
+.sec-eyebrow{display:inline-flex;align-items:center;gap:6px;border-radius:50px;padding:6px 14px;font-size:12px;font-weight:800;margin-bottom:14px;letter-spacing:0.5px;text-transform:uppercase;}
+.sec-eyebrow.gold{background:var(--gold-light);color:var(--gold-dark);}
+.sec-eyebrow.blue{background:var(--blue-light);color:var(--nav);}
+.sec-eyebrow.green{background:var(--green-light);color:#065F46;}
+.sec-eyebrow.purple{background:var(--purple-light);color:var(--purple);}
+.sec-title{font-size:44px;font-weight:900;line-height:1.1;margin-bottom:14px;letter-spacing:-0.5px;}
+.sec-sub{font-size:17px;color:var(--gray-600);max-width:540px;line-height:1.7;margin-bottom:52px;font-weight:600;}
+
+/* ── ARENA ── */
+.arena-wrap{background:var(--hero);border-radius:28px;overflow:hidden;margin-bottom:20px;border:1px solid rgba(255,255,255,0.06);}
+.arena-top{padding:28px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.07);}
+.arena-left{display:flex;align-items:center;gap:16px;}
+.arena-icon{width:52px;height:52px;background:rgba(255,255,255,0.08);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;}
+.arena-name{font-size:24px;font-weight:900;color:white;}
+.arena-desc{font-size:14px;color:rgba(255,255,255,0.5);margin-top:3px;font-weight:600;}
+.arena-badge{background:var(--gold);color:var(--black);border-radius:50px;padding:7px 18px;font-size:12px;font-weight:900;box-shadow:0 3px 0 var(--gold-dark);}
+.arena-games{display:grid;grid-template-columns:repeat(4,1fr);}
+.arena-game{padding:24px 20px;border-right:1px solid rgba(255,255,255,0.06);transition:background 0.2s;cursor:pointer;}
+.arena-game:last-child{border-right:none;}
+.arena-game:hover{background:rgba(255,255,255,0.04);}
+.ag-emoji{font-size:32px;margin-bottom:12px;display:block;}
+.ag-name{font-size:17px;font-weight:900;color:white;margin-bottom:6px;}
+.ag-desc{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.5;margin-bottom:12px;font-weight:600;}
+.ag-tag{display:inline-block;padding:4px 10px;border-radius:50px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;}
+.agt-live{background:rgba(16,185,129,0.2);color:#34D399;}
+.agt-soon{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.3);}
+
+/* ── WORLDS ── */
+.worlds-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.world-card{background:white;border-radius:20px;padding:28px;border:2px solid var(--gray-200);transition:all 0.25s;cursor:pointer;position:relative;overflow:hidden;}
+.world-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.world-card.words::before{background:linear-gradient(90deg,var(--nav),var(--blue-soft));}
+.world-card.science::before{background:linear-gradient(90deg,var(--green),#34D399);}
+.world-card.history::before{background:linear-gradient(90deg,var(--purple),#A78BFA);}
+.world-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.08);border-color:transparent;}
+.wc-emoji{font-size:40px;margin-bottom:14px;display:block;}
+.wc-name{font-size:22px;font-weight:900;margin-bottom:8px;}
+.wc-desc{font-size:14px;color:var(--gray-600);line-height:1.5;margin-bottom:14px;font-weight:600;}
+.wc-standard{font-size:12px;color:var(--gray-400);font-weight:700;margin-bottom:14px;}
+.wc-tag{display:inline-block;padding:5px 12px;border-radius:50px;font-size:11px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;background:var(--gray-100);color:var(--gray-400);}
+
+/* ── STANDARDS ── */
+.standards-bg{background:var(--gold-light);border-top:2px solid var(--gold-border);border-bottom:2px solid var(--gold-border);}
+.standards-inner{max-width:1160px;margin:0 auto;padding:80px 52px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.std-list{display:flex;flex-direction:column;gap:10px;}
+.std-row{background:white;border-radius:14px;padding:14px 18px;border:1.5px solid var(--gold-border);display:flex;align-items:center;gap:14px;}
+.std-code{background:var(--gold-light);color:var(--gold-dark);font-size:11px;font-weight:800;padding:4px 10px;border-radius:6px;font-family:monospace;white-space:nowrap;flex-shrink:0;border:1px solid var(--gold-border);}
+.std-name{font-size:14px;color:var(--gray-800);font-weight:700;flex:1;}
+.std-grade{font-size:11px;color:var(--gray-400);font-weight:700;white-space:nowrap;}
+.state-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
+.state-pill{background:white;border:1.5px solid var(--gold-border);border-radius:50px;padding:5px 14px;font-size:12px;font-weight:800;color:var(--gold-dark);}
+
+/* ── TEACHER ── */
+.teacher-bg{background:var(--hero);}
+.teacher-inner{max-width:1160px;margin:0 auto;padding:80px 52px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.t-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(245,166,35,0.15);color:#FCD34D;border-radius:50px;padding:6px 14px;font-size:12px;font-weight:800;margin-bottom:16px;letter-spacing:0.5px;text-transform:uppercase;border:1px solid rgba(245,166,35,0.2);}
+.t-title{font-size:44px;font-weight:900;color:white;line-height:1.05;margin-bottom:16px;letter-spacing:-0.5px;}
+.t-title span{color:var(--gold);}
+.t-desc{font-size:16px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:32px;font-weight:600;}
+.t-feats{display:flex;flex-direction:column;gap:12px;}
+.t-feat{display:flex;align-items:flex-start;gap:14px;color:rgba(255,255,255,0.85);font-size:15px;font-weight:700;}
+.t-check{width:26px;height:26px;border-radius:7px;background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.3);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px;}
+.dash-mock{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.08);border-radius:20px;overflow:hidden;}
+.dash-nav-bar{background:rgba(255,255,255,0.04);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);}
+.dash-title{color:white;font-size:15px;font-weight:900;}
+.dash-live{background:rgba(16,185,129,0.2);color:#34D399;border-radius:50px;padding:4px 12px;font-size:11px;font-weight:800;}
+.dash-body{padding:20px;}
+.dash-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.dc{background:rgba(255,255,255,0.05);border-radius:12px;padding:12px 14px;}
+.dc-label{font-size:10px;color:rgba(255,255,255,0.4);font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.dc-val{font-size:26px;font-weight:900;color:white;line-height:1;}
+.dc-val.gold{color:var(--gold);}
+.dc-val.green{color:#34D399;}
+.prog-list{display:flex;flex-direction:column;gap:8px;}
+.prog-item{background:rgba(255,255,255,0.04);border-radius:10px;padding:10px 14px;}
+.prog-top{display:flex;justify-content:space-between;margin-bottom:5px;}
+.prog-name{font-size:12px;color:rgba(255,255,255,0.65);font-weight:700;}
+.prog-pct{font-size:12px;font-weight:900;}
+.prog-bar{height:5px;background:rgba(255,255,255,0.08);border-radius:50px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:50px;}
+
+/* ── TESTIMONIALS ── */
+.testi-bg{background:white;border-top:2px solid var(--gray-200);}
+.testi-inner{max-width:1160px;margin:0 auto;padding:80px 52px;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px;}
+.testi-card{background:var(--off);border-radius:20px;padding:28px;border:2px solid var(--gray-200);position:relative;}
+.testi-card::before{content:'"';position:absolute;top:16px;right:20px;font-size:72px;color:var(--gold-border);line-height:1;font-weight:900;}
+.stars{color:var(--gold);font-size:17px;margin-bottom:14px;letter-spacing:2px;}
+.testi-text{font-size:15px;color:var(--gray-800);line-height:1.65;margin-bottom:20px;font-weight:600;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.t-ava{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:white;flex-shrink:0;}
+.t-name{font-weight:900;font-size:14px;color:var(--black);}
+.t-role{font-size:12px;color:var(--gray-400);font-weight:600;}
+
+/* ── PRICING ── */
+.price-bg{background:var(--off);border-top:2px solid var(--gray-200);}
+.price-inner{max-width:1160px;margin:0 auto;padding:80px 52px;}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;margin-top:52px;}
+.pc{background:white;border-radius:24px;border:2px solid var(--gray-200);padding:32px 28px;position:relative;transition:transform 0.2s;}
+.pc:hover{transform:translateY(-4px);}
+.pc.feat{border-color:var(--nav);box-shadow:0 0 0 5px rgba(59,75,200,0.08);}
+.feat-pill{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--nav);color:white;font-size:12px;font-weight:800;padding:4px 16px;border-radius:50px;white-space:nowrap;}
+.p-plan{font-size:11px;font-weight:800;color:var(--gray-400);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
+.p-amount{font-size:52px;font-weight:900;line-height:1;margin-bottom:4px;}
+.p-amount sup{font-size:22px;vertical-align:top;margin-top:10px;display:inline-block;}
+.p-amount sub{font-size:15px;color:var(--gray-400);font-weight:600;}
+.p-desc{font-size:13px;color:var(--gray-400);margin-bottom:24px;font-weight:600;}
+.p-feats{list-style:none;margin-bottom:28px;display:flex;flex-direction:column;gap:10px;}
+.p-feats li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--gray-800);font-weight:700;}
+.p-feats li.muted{color:var(--gray-400);}
+.ck{color:var(--green);font-size:15px;flex-shrink:0;margin-top:1px;}
+.dsh{color:var(--gray-200);font-size:15px;flex-shrink:0;margin-top:1px;}
+.p-btn{width:100%;padding:14px;border-radius:12px;font-size:15px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;border:none;transition:all 0.2s;}
+.p-btn.navy{background:var(--nav);color:white;box-shadow:0 4px 0 #1E2A8A;}
+.p-btn.navy:hover{transform:translateY(-2px);box-shadow:0 6px 0 #1E2A8A;}
+.p-btn.outline{background:white;color:var(--gray-800);border:2px solid var(--gray-200);}
+.p-btn.outline:hover{border-color:var(--nav);color:var(--nav);}
+
+/* ── CTA ── */
+.cta-bg{background:var(--nav);padding:80px 52px;text-align:center;position:relative;overflow:hidden;}
+.cta-bg::before{content:'🦘';position:absolute;font-size:260px;opacity:0.05;right:-20px;bottom:-60px;line-height:1;}
+.cta-bg::after{content:'🦘';position:absolute;font-size:180px;opacity:0.04;left:-10px;top:-40px;line-height:1;transform:scaleX(-1);}
+.cta-inner{max-width:600px;margin:0 auto;position:relative;}
+.cta-inner h2{font-size:50px;font-weight:900;color:white;margin-bottom:14px;line-height:1.05;letter-spacing:-0.5px;}
+.cta-inner h2 span{color:var(--gold);}
+.cta-inner p{font-size:18px;color:rgba(255,255,255,0.6);margin-bottom:36px;line-height:1.6;font-weight:600;}
+.cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-gold{padding:18px 40px;font-size:18px;border-radius:12px;border:none;background:var(--gold);color:var(--black);font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;box-shadow:0 6px 0 var(--gold-dark);transition:all 0.15s;text-decoration:none;display:inline-block;}
+.btn-cta-gold:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--gold-dark);}
+.btn-cta-ghost{padding:18px 40px;font-size:18px;border-radius:12px;border:2px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.85);font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-cta-ghost:hover{border-color:rgba(255,255,255,0.5);color:white;}
+
+/* ── FOOTER ── */
+footer{background:var(--black);padding:52px;}
+.foot-inner{max-width:1160px;margin:0 auto;}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:40px;flex-wrap:wrap;gap:32px;}
+.foot-brand{max-width:280px;}
+.foot-logo{font-size:22px;font-weight:900;color:white;margin-bottom:10px;}
+.foot-logo span{color:var(--gold);}
+.foot-tagline{font-size:14px;color:rgba(255,255,255,0.4);line-height:1.6;font-weight:600;}
+.foot-cols{display:flex;gap:52px;flex-wrap:wrap;}
+.foot-col-title{font-size:11px;font-weight:800;color:rgba(255,255,255,0.3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+.foot-col-links{display:flex;flex-direction:column;gap:8px;}
+.foot-col-links a{color:rgba(255,255,255,0.5);font-size:14px;text-decoration:none;transition:color 0.2s;font-weight:600;}
+.foot-col-links a:hover{color:white;}
+.foot-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.foot-copy{font-size:13px;color:rgba(255,255,255,0.25);font-weight:600;}
+.foot-badges{display:flex;gap:8px;}
+.foot-badge{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:4px 10px;font-size:11px;color:rgba(255,255,255,0.4);font-weight:700;}
+
+@media(max-width:768px){
+  nav{padding:0 20px;}.nav-center{display:none;}
+  .hero{padding:48px 24px 40px;}.hero h1{font-size:40px;}
+  .trust-row{gap:0;}.trust-item{padding:14px 16px;border-left:none!important;border-top:1px solid rgba(255,255,255,0.08);width:100%;}
+  .section{padding:60px 24px;}
+  .arena-games{grid-template-columns:repeat(2,1fr);}
+  .worlds-grid,.testi-grid,.price-grid{grid-template-columns:1fr;}
+  .standards-inner,.teacher-inner{padding:60px 24px;grid-template-columns:1fr;}
+  .testi-inner,.price-inner{padding:60px 24px;}
+  .cta-bg{padding:60px 24px;}
+  footer{padding:40px 24px;}
+  .foot-top{flex-direction:column;}.foot-bottom{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-mark">🦘</div>
+    <div class="logo-text">Gama<span>roo</span></div>
+  </a>
+  <div class="nav-center">
+    <div class="nav-link dd">
+      Games
+      <div class="dropdown">
+        <div class="dd-head">The Sports Arena</div>
+        <a href="#" class="dd-item">
+          <div class="dd-icon" style="background:#FFF8E7;">🏀</div>
+          <div><div class="dd-name">MathHoops</div><div class="dd-desc">Basketball × multiplication facts</div></div>
+          <span class="dd-tag tag-live">Live</span>
+        </a>
+        <a href="#" class="dd-item">
+          <div class="dd-icon" style="background:#ECFDF5;">⚽</div>
+          <div><div class="dd-name">Factor FC</div><div class="dd-desc">Soccer × division facts</div></div>
+          <span class="dd-tag tag-soon">Soon</span>
+        </a>
+        <a href="#" class="dd-item">
+          <div class="dd-icon" style="background:#F5F3FF;">🏈</div>
+          <div><div class="dd-name">Gridiron Math</div><div class="dd-desc">Football × mixed operations</div></div>
+          <span class="dd-tag tag-soon">Soon</span>
+        </a>
+        <a href="#" class="dd-item">
+          <div class="dd-icon" style="background:#FEF2F2;">⚾</div>
+          <div><div class="dd-name">Diamond Digits</div><div class="dd-desc">Baseball × addition & subtraction</div></div>
+          <span class="dd-tag tag-soon">Soon</span>
+        </a>
+        <div class="dd-divider"></div>
+        <div class="dd-head">Coming Soon</div>
+        <a href="#" class="dd-item">
+          <div class="dd-icon" style="background:#EFF6FF;">📚</div>
+          <div><div class="dd-name">Word World</div><div class="dd-desc">Reading & spelling adventures</div></div>
+          <span class="dd-tag tag-soon">Soon</span>
+        </a>
+        <a href="#" class="dd-item">
+          <div class="dd-icon" style="background:#ECFDF5;">🔬</div>
+          <div><div class="dd-name">Science Quest</div><div class="dd-desc">Explore ecosystems & experiments</div></div>
+          <span class="dd-tag tag-soon">Soon</span>
+        </a>
+        <a href="#" class="dd-item">
+          <div class="dd-icon" style="background:#F5F3FF;">🌍</div>
+          <div><div class="dd-name">History Heroes</div><div class="dd-desc">Travel through time & civilizations</div></div>
+          <span class="dd-tag tag-soon">Soon</span>
+        </a>
+      </div>
+    </div>
+    <a href="#standards" class="nav-link">Standards</a>
+    <a href="#teachers" class="nav-link">For Teachers</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="#" class="nav-link">For Schools</a>
+  </div>
+  <div class="nav-right">
+    <a href="#" class="btn-ghost-nav">Log In</a>
+    <a href="#" class="btn-cta-nav">Try Free 🦘</a>
+  </div>
+</nav>
+
+<!-- GOLD DIVIDER -->
+<div class="gold-divider"></div>
+
+<!-- HERO -->
+<section class="hero" style="animation:fadeUp 0.6s ease-out both;">
+  <div class="hero-eyebrow">
+    <div class="hero-badge">✨ Where learning feels like magic</div>
+  </div>
+  <h1>Where kids <span class="gold">learn</span><br/>through <span class="soft">play.</span></h1>
+  <p class="hero-sub">Gamaroo is the standards-aligned K–5 platform where every subject becomes a game kids actually want to play. Built for teachers. Loved by students.</p>
+  <div class="hero-actions">
+    <a href="#" class="btn-hero-gold">Start For Free 🦘</a>
+    <a href="#" class="btn-hero-ghost">Watch Demo</a>
+  </div>
+  <div class="trust-row">
+    <div class="trust-item">
+      <div class="trust-icon">👩‍💼</div>
+      <div>
+        <div class="trust-label">Mom-founded</div>
+        <div class="trust-sub">educator-built</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🚫</div>
+      <div>
+        <div class="trust-label">Always free</div>
+        <div class="trust-sub">for every student</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🔒</div>
+      <div>
+        <div class="trust-label">COPPA compliant</div>
+        <div class="trust-sub">kid safe</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">📋</div>
+      <div>
+        <div class="trust-label">Common Core</div>
+        <div class="trust-sub">aligned</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOLD DIVIDER -->
+<div class="gold-divider"></div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span>🏀</span>Math Games</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>📚</span>Reading Adventures</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🔬</span>Science Quests</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🌍</span>History Heroes</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>✏️</span>Spelling Battles</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🏆</span>Season Mode</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>📊</span>Teacher Dashboard</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🎯</span>Standards Aligned</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🏀</span>Math Games</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>📚</span>Reading Adventures</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🔬</span>Science Quests</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🌍</span>History Heroes</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>✏️</span>Spelling Battles</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🏆</span>Season Mode</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>📊</span>Teacher Dashboard</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🎯</span>Standards Aligned</div><div class="marquee-item"><div class="mdot"></div></div>
+  </div>
+</div>
+
+<!-- GAMES -->
+<div id="games" style="background:white;border-bottom:2px solid var(--gray-200);">
+  <div class="section">
+    <div class="sec-eyebrow gold">🎮 The Game World</div>
+    <h2 class="sec-title">One platform.<br/>Every subject. All the fun.</h2>
+    <p class="sec-sub">Kids pick what they feel like playing. Every game teaches real curriculum aligned to Common Core, wrapped in adventures they actually want to go on.</p>
+
+    <div class="arena-wrap">
+      <div class="arena-top">
+        <div class="arena-left">
+          <div class="arena-icon">🏟️</div>
+          <div>
+            <div class="arena-name">The Sports Arena</div>
+            <div class="arena-desc">Math facts through the sports kids love: basketball, soccer, football and more</div>
+          </div>
+        </div>
+        <span class="arena-badge">✓ Live Now</span>
+      </div>
+      <div class="arena-games">
+        <div class="arena-game">
+          <span class="ag-emoji">🏀</span>
+          <div class="ag-name">MathHoops</div>
+          <div class="ag-desc">Answer multiplication facts to score buckets. Beat the CPU or challenge a classmate in full season mode.</div>
+          <span class="ag-tag agt-live">✓ Live Now</span>
+        </div>
+        <div class="arena-game">
+          <span class="ag-emoji">⚽</span>
+          <div class="ag-name">Factor FC</div>
+          <div class="ag-desc">Score goals with division facts. Play through a full soccer season and climb the league table.</div>
+          <span class="ag-tag agt-soon">Coming Soon</span>
+        </div>
+        <div class="arena-game">
+          <span class="ag-emoji">🏈</span>
+          <div class="ag-name">Gridiron Math</div>
+          <div class="ag-desc">Call plays using math skills. Harder facts unlock bigger gains down the field.</div>
+          <span class="ag-tag agt-soon">Coming Soon</span>
+        </div>
+        <div class="arena-game">
+          <span class="ag-emoji">⚾</span>
+          <div class="ag-name">Diamond Digits</div>
+          <div class="ag-desc">Step up to the plate and hit home runs with fast, accurate answers.</div>
+          <span class="ag-tag agt-soon">Coming Soon</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="worlds-grid">
+      <div class="world-card words">
+        <span class="wc-emoji">📚</span>
+        <div class="wc-name">Word World</div>
+        <div class="wc-desc">Spelling battles, vocabulary adventures and reading comprehension quests for K–5.</div>
+        <div class="wc-standard">Covers: CCSS.ELA-LITERACY.RF, L, RI</div>
+        <span class="wc-tag">Coming Soon</span>
+      </div>
+      <div class="world-card science">
+        <span class="wc-emoji">🔬</span>
+        <div class="wc-name">Science Quest</div>
+        <div class="wc-desc">Explore ecosystems, conduct experiments and discover the natural world through gameplay.</div>
+        <div class="wc-standard">Covers: NGSS K-5 Life, Earth & Physical</div>
+        <span class="wc-tag">Coming Soon</span>
+      </div>
+      <div class="world-card history">
+        <span class="wc-emoji">🌍</span>
+        <div class="wc-name">History Heroes</div>
+        <div class="wc-desc">Travel through time, build civilizations and learn world history through strategy games.</div>
+        <div class="wc-standard">Covers: CCSS.ELA-LITERACY.RH, Social Studies</div>
+        <span class="wc-tag">Coming Soon</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STANDARDS -->
+<div id="standards" class="standards-bg">
+  <div class="standards-inner">
+    <div>
+      <div class="sec-eyebrow gold">📋 Standards Aligned</div>
+      <h2 class="sec-title">Built for the<br/>standards you teach.</h2>
+      <p style="font-size:17px;color:var(--gray-600);line-height:1.7;margin-bottom:28px;font-weight:600;">Every game on Gamaroo maps directly to Common Core State Standards so every minute of play counts toward real learning goals teachers and districts care about.</p>
+      <div class="state-pills">
+        <div class="state-pill">CCSS National</div>
+        <div class="state-pill">NJSLS</div>
+        <div class="state-pill">NYSLS</div>
+        <div class="state-pill">California</div>
+        <div class="state-pill">Florida BEST</div>
+        <div class="state-pill">Texas TEKS</div>
+        <div class="state-pill">+ 35 States</div>
+      </div>
+    </div>
+    <div class="std-list">
+      <div class="std-row">
+        <span class="std-code">CCSS.3.OA.C.7</span>
+        <span class="std-name">Fluently multiply and divide within 100</span>
+        <span class="std-grade">Grade 3</span>
+      </div>
+      <div class="std-row">
+        <span class="std-code">CCSS.3.OA.A.1</span>
+        <span class="std-name">Interpret products of whole numbers</span>
+        <span class="std-grade">Grade 3</span>
+      </div>
+      <div class="std-row">
+        <span class="std-code">CCSS.2.OA.B.2</span>
+        <span class="std-name">Fluently add and subtract within 20</span>
+        <span class="std-grade">Grade 2</span>
+      </div>
+      <div class="std-row">
+        <span class="std-code">CCSS.4.NBT.B.5</span>
+        <span class="std-name">Multiply multi-digit whole numbers</span>
+        <span class="std-grade">Grade 4</span>
+      </div>
+      <div class="std-row">
+        <span class="std-code">CCSS.4.NBT.B.6</span>
+        <span class="std-name">Find whole number quotients and remainders</span>
+        <span class="std-grade">Grade 4</span>
+      </div>
+      <div class="std-row">
+        <span class="std-code">CCSS.ELA-LITERACY.RF.2.3</span>
+        <span class="std-name">Know and apply grade level phonics rules</span>
+        <span class="std-grade">Grade 2</span>
+      </div>
+      <div class="std-row">
+        <span class="std-code">CCSS.ELA-LITERACY.L.3.4</span>
+        <span class="std-name">Determine meaning of unknown vocabulary words</span>
+        <span class="std-grade">Grade 3</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEACHER -->
+<div id="teachers" class="teacher-bg">
+  <div class="teacher-inner">
+    <div>
+      <div class="t-eyebrow">👩‍🏫 For Teachers</div>
+      <h2 class="t-title">Built for your<br/><span>classroom.</span><br/>Not against it.</h2>
+      <p class="t-desc">Real data. Real tools. Zero extra work. Gamaroo gives teachers everything they need to track progress and prove results without adding to their already full plate.</p>
+      <div class="t-feats">
+        <div class="t-feat"><div class="t-check">✓</div>Real-time class progress by standard</div>
+        <div class="t-feat"><div class="t-check">✓</div>Assign games by skill or standard code</div>
+        <div class="t-feat"><div class="t-check">✓</div>Google Classroom and Clever integration</div>
+        <div class="t-feat"><div class="t-check">✓</div>Automated weekly parent progress emails</div>
+        <div class="t-feat"><div class="t-check">✓</div>Common Core proficiency reports for admin</div>
+        <div class="t-feat"><div class="t-check">✓</div>District-level reporting for superintendents</div>
+      </div>
+    </div>
+    <div class="dash-mock">
+      <div class="dash-nav-bar">
+        <div class="dash-title">Class Dashboard for Ms. Sanders</div>
+        <div class="dash-live">● Live</div>
+      </div>
+      <div class="dash-body">
+        <div class="dash-cards">
+          <div class="dc"><div class="dc-label">Students Active</div><div class="dc-val gold">24</div></div>
+          <div class="dc"><div class="dc-label">Avg Score Today</div><div class="dc-val green">86%</div></div>
+        </div>
+        <div class="prog-list">
+          <div class="prog-item">
+            <div class="prog-top"><div class="prog-name">3.OA.C.7 Multiply within 100</div><div class="prog-pct" style="color:#34D399;">78%</div></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:78%;background:#34D399;"></div></div>
+          </div>
+          <div class="prog-item">
+            <div class="prog-top"><div class="prog-name">3.OA.C.7 Divide within 100</div><div class="prog-pct" style="color:#FCD34D;">61%</div></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:61%;background:#FCD34D;"></div></div>
+          </div>
+          <div class="prog-item">
+            <div class="prog-top"><div class="prog-name">3.NF.A.1 Understand fractions</div><div class="prog-pct" style="color:var(--gold);">44%</div></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:44%;background:var(--gold);"></div></div>
+          </div>
+          <div class="prog-item">
+            <div class="prog-top"><div class="prog-name">4.NBT.B.5 Multi-digit multiply</div><div class="prog-pct" style="color:#F87171;">32%</div></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:32%;background:#F87171;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testi-bg">
+  <div class="testi-inner">
+    <div style="text-align:center;">
+      <div class="sec-eyebrow purple" style="margin:0 auto 14px;">💬 Real Teachers. Real Results.</div>
+      <h2 class="sec-title">They tried it Monday.<br/>Kids asked for it Tuesday.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"My kids were begging to practice multiplication. I've never seen anything like it in 12 years of teaching. The standard reports made my principal's jaw drop."</p>
+        <div class="testi-author">
+          <div class="t-ava" style="background:var(--nav);">MS</div>
+          <div><div class="t-name">Ms. Sanders</div><div class="t-role">3rd Grade · Newark, NJ</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"The dashboard shows exactly which standard each student needs help with. It's replaced our timed tests and kids don't even realize they're being assessed."</p>
+        <div class="testi-author">
+          <div class="t-ava" style="background:var(--green);">MR</div>
+          <div><div class="t-name">Mr. Rodriguez</div><div class="t-role">4th Grade · Brooklyn, NY</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"We licensed it district-wide after one pilot. The Common Core alignment reports gave our superintendent exactly what she needed to approve the budget."</p>
+        <div class="testi-author">
+          <div class="t-ava" style="background:var(--purple);">DT</div>
+          <div><div class="t-name">Dr. Thompson</div><div class="t-role">Curriculum Director · Essex County, NJ</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div id="pricing" class="price-bg">
+  <div class="price-inner">
+    <div style="text-align:center;">
+      <div class="sec-eyebrow green" style="margin:0 auto 14px;">💳 Simple Pricing</div>
+      <h2 class="sec-title">Always free for students.<br/>Powerful tools for teachers.</h2>
+      <p class="sec-sub" style="margin:12px auto 0;text-align:center;">No ads. No paywalls for kids. Ever.</p>
+    </div>
+    <div class="price-grid">
+      <div class="pc">
+        <div class="p-plan">Student</div>
+        <div class="p-amount">$0</div>
+        <div class="p-desc">Free forever. No credit card needed.</div>
+        <ul class="p-feats">
+          <li><span class="ck">✓</span>MathHoops (Basketball)</li>
+          <li><span class="ck">✓</span>vs. CPU opponent</li>
+          <li><span class="ck">✓</span>Streak and scoring system</li>
+          <li class="muted"><span class="dsh">✕</span>All sports games</li>
+          <li class="muted"><span class="dsh">✕</span>All subject worlds</li>
+          <li class="muted"><span class="dsh">✕</span>Progress tracking</li>
+        </ul>
+        <button class="p-btn outline">Play Now</button>
+      </div>
+      <div class="pc feat">
+        <div class="feat-pill">⭐ Most Popular</div>
+        <div class="p-plan">Teacher</div>
+        <div class="p-amount"><sup>$</sup>8<sub>/mo</sub></div>
+        <div class="p-desc">30-day free trial. No credit card needed.</div>
+        <ul class="p-feats">
+          <li><span class="ck">✓</span>All games unlocked</li>
+          <li><span class="ck">✓</span>Standards-aligned dashboard</li>
+          <li><span class="ck">✓</span>Student progress by standard</li>
+          <li><span class="ck">✓</span>Google Classroom sync</li>
+          <li><span class="ck">✓</span>Automated parent reports</li>
+          <li><span class="ck">✓</span>Class leaderboard</li>
+        </ul>
+        <button class="p-btn navy">Start Free Trial</button>
+      </div>
+      <div class="pc">
+        <div class="p-plan">School / District</div>
+        <div class="p-amount"><sup>$</sup>500<sub>/yr</sub></div>
+        <div class="p-desc">Unlimited teachers and students</div>
+        <ul class="p-feats">
+          <li><span class="ck">✓</span>Everything in Teacher</li>
+          <li><span class="ck">✓</span>Admin dashboard</li>
+          <li><span class="ck">✓</span>District-wide standard reports</li>
+          <li><span class="ck">✓</span>Dedicated onboarding call</li>
+          <li><span class="ck">✓</span>School-wide leaderboards</li>
+          <li><span class="ck">✓</span>District pricing available</li>
+        </ul>
+        <button class="p-btn outline">Contact Us</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-bg">
+  <div class="cta-inner">
+    <h2>Ready to make learning <span>irresistible?</span></h2>
+    <p>Join K–5 teachers making the classroom the most exciting place to be. Free to start. No credit card. No setup headaches.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn-cta-gold">Get Started Free 🦘</a>
+      <a href="#" class="btn-cta-ghost">Schedule a Demo</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="foot-logo">Gama<span>roo</span> 🦘</div>
+        <div class="foot-tagline">Mom-founded, educator-built. The K–5 platform where every subject becomes an adventure kids actually want to go on.</div>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <div class="foot-col-title">Platform</div>
+          <div class="foot-col-links">
+            <a href="#">Sports Arena</a>
+            <a href="#">Word World</a>
+            <a href="#">Science Quest</a>
+            <a href="#">Standards Map</a>
+          </div>
+        </div>
+        <div>
+          <div class="foot-col-title">For Schools</div>
+          <div class="foot-col-links">
+            <a href="#">Teachers</a>
+            <a href="#">Administrators</a>
+            <a href="#">Districts</a>
+            <a href="#">Request Demo</a>
+          </div>
+        </div>
+        <div>
+          <div class="foot-col-title">Company</div>
+          <div class="foot-col-links">
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="foot-copy">© 2025 Gamaroo. Mom-founded, educator-built. Built for K–5 classrooms across America.</div>
+      <div class="foot-badges">
+        <div class="foot-badge">CCSS Aligned</div>
+        <div class="foot-badge">COPPA Compliant</div>
+        <div class="foot-badge">Ad Free</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
