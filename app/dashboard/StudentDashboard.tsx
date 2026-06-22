@@ -35,7 +35,7 @@ const PROGRESS = [
 
 export default function StudentDashboard() {
   const router = useRouter()
-  const { user, profile, loading } = useAuth()
+  const { user, profile, loading } = useAuth() as any
   const [carouselIdx, setCarouselIdx] = useState(0)
   const [subjectFilter, setSubjectFilter] = useState('All')
   const [hovered, setHovered]         = useState<string|null>(null)
