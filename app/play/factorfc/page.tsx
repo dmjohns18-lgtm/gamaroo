@@ -322,4 +322,3 @@ export default function FactorFC() {
     </div>
   );
 }
-ENDOFFILE
