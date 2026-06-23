@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuth } from '../../context/AuthContext'
-import { supabase } from '../../lib/supabase'
+import { useAuth } from '../../../context/AuthContext'
+import { supabase } from '../../../lib/supabase'
 
 const GAMES = [
   { id: 'mathhoops',    name: 'MathHoops',       emoji: '🏀', subject: 'Math', grades: [3,4,5], skill: 'Multiplication',   color: '#C2410C', bg: '#FFF3E0', mastery: 72 },
