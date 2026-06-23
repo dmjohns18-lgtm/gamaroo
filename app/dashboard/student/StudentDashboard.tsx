@@ -13,6 +13,7 @@ const GAMES = [
   { id: 'multiplymania',name: 'Multiply Mania',   emoji: '✖️', subject: 'Math', grades: [3,4],   skill: 'Multiplication',   color: '#AD1457', bg: '#FCE4EC', mastery: 33 },
   { id: 'roosgarden',   name: "Roo's Garden",     emoji: '🌸', subject: 'ELA',  grades: [0,1],   skill: 'Beginning Sounds', color: '#558B2F', bg: '#F1F8E9', mastery: 0  },
   { id: 'truefalse',    name: 'True or False',    emoji: '❓', subject: 'Math', grades: [3,4,5], skill: 'Review',           color: '#1565C0', bg: '#E3F2FD', mastery: 88 },
+  { id: 'chess',        name: 'Chess',           emoji: '♟️', subject: 'Strategy', grades: [2,3,4,5], skill: 'Strategic Thinking', color: '#5D4037', bg: '#EFEBE9', mastery: 0  },
   { id: 'quickfire',    name: 'Quick Fire',       emoji: '🔥', subject: 'Math', grades: [3,4,5], skill: 'Speed Drill',      color: '#BF360C', bg: '#FBE9E7', mastery: 55 },
 ]
 
