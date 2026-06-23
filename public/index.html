@@ -1,0 +1,954 @@
+
+<!DOCTYPE html><html lang="en" class="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/_next/static/chunks/00iaprk5rjvb3.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/_next/static/chunks/0ht900cau6_ur.js"/><script src="/_next/static/chunks/02i7dfk78~t~2.js" async=""></script><script src="/_next/static/chunks/07lhk_q6pmm3r.js" async=""></script><script src="/_next/static/chunks/0ugoffowqy_se.js" async=""></script><script src="/_next/static/chunks/turbopack-0nn.7-yg0aey7.js" async=""></script><script src="/_next/static/chunks/136a42lphlfed.js" async=""></script><script src="/_next/static/chunks/01y_20je3~a2m.js" async=""></script><script src="/_next/static/chunks/0dbhjjzl8qfwv.js" async=""></script><meta name="next-size-adjust" content=""/><title>Gamaroo</title><meta name="description" content="Math games for K-5 students"/><link rel="icon" href="/favicon.ico?favicon.0x3dzn~oxb6tn.ico" sizes="256x256" type="image/x-icon"/><script src="/_next/static/chunks/03~yq9q893hmn.js" noModule=""></script></head><body class="min-h-full flex flex-col"><div hidden=""><!--$--><!--/$--></div><div><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gamaroo: Where Kids Learn Through Play</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --nav:#3B4BC8;
+  --hero:#2A3BAF;
+  --gold:#F5A623;
+  --gold-dark:#C47D0E;
+  --gold-light:#FFF8E7;
+  --gold-border:#FDE68A;
+  --white:#FFFFFF;
+  --off:#F8FAFF;
+  --blue-light:#EFF6FF;
+  --blue-border:#BFDBFE;
+  --blue-soft:#BAC8FF;
+  --green:#10B981;
+  --green-light:#ECFDF5;
+  --green-border:#A7F3D0;
+  --purple:#7C3AED;
+  --purple-light:#F5F3FF;
+  --purple-border:#DDD6FE;
+  --gray-100:#F1F5F9;
+  --gray-200:#E2E8F0;
+  --gray-400:#94A3B8;
+  --gray-600:#475569;
+  --gray-800:#1E293B;
+  --black:#0F172A;
+}
+body{font-family:'Nunito',sans-serif;background:var(--off);color:var(--black);overflow-x:hidden;line-height:1.6;}
+
+/* ── NAV ── */
+nav{background:var(--nav);height:68px;padding:0 52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-mark{width:38px;height:38px;background:var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 3px 0 var(--gold-dark);flex-shrink:0;}
+.logo-text{font-weight:900;font-size:22px;color:white;}
+.logo-text span{color:var(--gold);}
+.nav-center{display:flex;gap:4px;align-items:center;}
+.nav-link{color:rgba(255,255,255,0.75);text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:8px;transition:all 0.2s;position:relative;white-space:nowrap;}
+.nav-link:hover{color:white;background:rgba(255,255,255,0.1);}
+.nav-link.dd{display:flex;align-items:center;gap:4px;}
+.nav-link.dd::after{content:'▾';font-size:10px;opacity:0.6;}
+.dropdown{position:absolute;top:calc(100% + 10px);left:0;background:white;border-radius:16px;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,0.15);min-width:300px;display:none;z-index:300;border:1px solid var(--gray-200);}
+.nav-link:hover .dropdown{display:block;}
+.dd-head{font-size:10px;font-weight:800;color:var(--gray-400);letter-spacing:1.5px;text-transform:uppercase;padding:8px 12px 4px;}
+.dd-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;transition:background 0.15s;text-decoration:none;}
+.dd-item:hover{background:var(--gold-light);}
+.dd-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.dd-name{font-weight:800;font-size:14px;color:var(--black);}
+.dd-desc{font-size:12px;color:var(--gray-400);margin-top:1px;}
+.dd-tag{margin-left:auto;font-size:10px;font-weight:800;padding:3px 8px;border-radius:50px;flex-shrink:0;}
+.tag-live{background:var(--green-light);color:var(--green);}
+.tag-soon{background:var(--gray-100);color:var(--gray-400);}
+.dd-divider{height:1px;background:var(--gray-200);margin:4px 0;}
+.nav-right{display:flex;gap:10px;align-items:center;}
+.btn-ghost-nav{padding:8px 18px;border:1.5px solid rgba(255,255,255,0.25);border-radius:50px;background:transparent;color:white;font-size:13px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;text-decoration:none;transition:all 0.2s;}
+.btn-ghost-nav:hover{border-color:rgba(255,255,255,0.6);}
+.btn-cta-nav{padding:9px 20px;border:none;border-radius:50px;background:var(--gold);color:var(--black);font-size:13px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;text-decoration:none;box-shadow:0 3px 0 var(--gold-dark);transition:all 0.15s;display:inline-block;}
+.btn-cta-nav:hover{transform:translateY(-1px);box-shadow:0 4px 0 var(--gold-dark);}
+.btn-cta-nav:active{transform:translateY(1px);box-shadow:0 1px 0 var(--gold-dark);}
+
+/* ── GOLD DIVIDER ── */
+.gold-divider{height:3px;background:linear-gradient(90deg,var(--gold-dark),var(--gold),#FCD34D,var(--gold),var(--gold-dark));}
+
+/* ── HERO ── */
+.hero{background:var(--hero);padding:72px 52px 64px;}
+.hero-eyebrow{display:flex;justify-content:center;margin-bottom:20px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,0.15);color:#FCD34D;border-radius:50px;padding:7px 18px;font-size:13px;font-weight:800;border:1px solid rgba(245,166,35,0.25);}
+.hero h1{font-size:68px;font-weight:900;color:white;line-height:1.0;text-align:center;margin-bottom:18px;letter-spacing:-1px;}
+.hero h1 .gold{color:var(--gold);}
+.hero h1 .soft{color:var(--blue-soft);}
+.hero-sub{font-size:18px;color:rgba(255,255,255,0.6);line-height:1.7;max-width:520px;margin:0 auto 36px;text-align:center;font-weight:600;}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:52px;}
+.btn-hero-gold{padding:17px 40px;font-size:18px;border-radius:12px;border:none;background:var(--gold);color:var(--black);font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;box-shadow:0 6px 0 var(--gold-dark);transition:all 0.15s;text-decoration:none;display:inline-block;}
+.btn-hero-gold:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--gold-dark);}
+.btn-hero-gold:active{transform:translateY(3px);box-shadow:0 2px 0 var(--gold-dark);}
+.btn-hero-ghost{padding:17px 40px;font-size:18px;border-radius:12px;border:2px solid rgba(255,255,255,0.25);background:transparent;color:rgba(255,255,255,0.85);font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-hero-ghost:hover{border-color:rgba(255,255,255,0.6);color:white;}
+
+/* ── TRUST ROW ── */
+.trust-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1);}
+.trust-item{display:flex;align-items:center;gap:10px;padding:0 32px;}
+.trust-item+.trust-item{border-left:1px solid rgba(255,255,255,0.12);}
+.trust-icon{font-size:22px;}
+.trust-label{font-size:15px;font-weight:900;color:white;}
+.trust-sub{font-size:12px;color:rgba(255,255,255,0.5);font-weight:600;}
+
+/* ── MARQUEE ── */
+.marquee-wrap{background:var(--nav);padding:13px 0;overflow:hidden;}
+.marquee-track{display:flex;gap:36px;animation:marquee 24s linear infinite;width:max-content;}
+.marquee-item{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.7);font-size:13px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;white-space:nowrap;}
+.marquee-item span{font-size:16px;}
+.mdot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);flex-shrink:0;}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SECTIONS ── */
+.section{padding:80px 52px;max-width:1160px;margin:0 auto;}
+.sec-eyebrow{display:inline-flex;align-items:center;gap:6px;border-radius:50px;padding:6px 14px;font-size:12px;font-weight:800;margin-bottom:14px;letter-spacing:0.5px;text-transform:uppercase;}
+.sec-eyebrow.gold{background:var(--gold-light);color:var(--gold-dark);}
+.sec-eyebrow.blue{background:var(--blue-light);color:var(--nav);}
+.sec-eyebrow.green{background:var(--green-light);color:#065F46;}
+.sec-eyebrow.purple{background:var(--purple-light);color:var(--purple);}
+.sec-title{font-size:44px;font-weight:900;line-height:1.1;margin-bottom:14px;letter-spacing:-0.5px;}
+.sec-sub{font-size:17px;color:var(--gray-600);max-width:540px;line-height:1.7;margin-bottom:52px;font-weight:600;}
+
+/* ── ARENA ── */
+.arena-wrap{background:var(--hero);border-radius:28px;overflow:hidden;margin-bottom:20px;border:1px solid rgba(255,255,255,0.06);}
+.arena-top{padding:28px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.07);}
+.arena-left{display:flex;align-items:center;gap:16px;}
+.arena-icon{width:52px;height:52px;background:rgba(255,255,255,0.08);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;}
+.arena-name{font-size:24px;font-weight:900;color:white;}
+.arena-desc{font-size:14px;color:rgba(255,255,255,0.5);margin-top:3px;font-weight:600;}
+.arena-badge{background:var(--gold);color:var(--black);border-radius:50px;padding:7px 18px;font-size:12px;font-weight:900;box-shadow:0 3px 0 var(--gold-dark);}
+.arena-games{display:grid;grid-template-columns:repeat(4,1fr);}
+.arena-game{padding:24px 20px;border-right:1px solid rgba(255,255,255,0.06);transition:background 0.2s;cursor:pointer;}
+.arena-game:last-child{border-right:none;}
+.arena-game:hover{background:rgba(255,255,255,0.04);}
+.ag-emoji{font-size:32px;margin-bottom:12px;display:block;}
+.ag-name{font-size:17px;font-weight:900;color:white;margin-bottom:6px;}
+.ag-desc{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.5;margin-bottom:12px;font-weight:600;}
+.ag-tag{display:inline-block;padding:4px 10px;border-radius:50px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;}
+.agt-live{background:rgba(16,185,129,0.2);color:#34D399;}
+.agt-soon{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.3);}
+
+/* ── WORLDS ── */
+.worlds-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.world-card{background:white;border-radius:20px;padding:28px;border:2px solid var(--gray-200);transition:all 0.25s;cursor:pointer;position:relative;overflow:hidden;}
+.world-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.world-card.words::before{background:linear-gradient(90deg,var(--nav),var(--blue-soft));}
+.world-card.science::before{background:linear-gradient(90deg,var(--green),#34D399);}
+.world-card.history::before{background:linear-gradient(90deg,var(--purple),#A78BFA);}
+.world-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.08);border-color:transparent;}
+.wc-emoji{font-size:40px;margin-bottom:14px;display:block;}
+.wc-name{font-size:22px;font-weight:900;margin-bottom:8px;}
+.wc-desc{font-size:14px;color:var(--gray-600);line-height:1.5;margin-bottom:14px;font-weight:600;}
+.wc-standard{font-size:12px;color:var(--gray-400);font-weight:700;margin-bottom:14px;}
+.wc-tag{display:inline-block;padding:5px 12px;border-radius:50px;font-size:11px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;background:var(--gray-100);color:var(--gray-400);}
+
+/* ── STANDARDS ── */
+.standards-bg{background:var(--gold-light);border-top:2px solid var(--gold-border);border-bottom:2px solid var(--gold-border);}
+.standards-inner{max-width:1160px;margin:0 auto;padding:80px 52px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.std-list{display:flex;flex-direction:column;gap:10px;}
+.std-row{background:white;border-radius:14px;padding:14px 18px;border:1.5px solid var(--gold-border);display:flex;align-items:center;gap:14px;}
+.std-code{background:var(--gold-light);color:var(--gold-dark);font-size:11px;font-weight:800;padding:4px 10px;border-radius:6px;font-family:monospace;white-space:nowrap;flex-shrink:0;border:1px solid var(--gold-border);}
+.std-name{font-size:14px;color:var(--gray-800);font-weight:700;flex:1;}
+.std-grade{font-size:11px;color:var(--gray-400);font-weight:700;white-space:nowrap;}
+.state-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
+.state-pill{background:white;border:1.5px solid var(--gold-border);border-radius:50px;padding:5px 14px;font-size:12px;font-weight:800;color:var(--gold-dark);}
+
+/* ── TEACHER ── */
+.teacher-bg{background:var(--hero);}
+.teacher-inner{max-width:1160px;margin:0 auto;padding:80px 52px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.t-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(245,166,35,0.15);color:#FCD34D;border-radius:50px;padding:6px 14px;font-size:12px;font-weight:800;margin-bottom:16px;letter-spacing:0.5px;text-transform:uppercase;border:1px solid rgba(245,166,35,0.2);}
+.t-title{font-size:44px;font-weight:900;color:white;line-height:1.05;margin-bottom:16px;letter-spacing:-0.5px;}
+.t-title span{color:var(--gold);}
+.t-desc{font-size:16px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:32px;font-weight:600;}
+.t-feats{display:flex;flex-direction:column;gap:12px;}
+.t-feat{display:flex;align-items:flex-start;gap:14px;color:rgba(255,255,255,0.85);font-size:15px;font-weight:700;}
+.t-check{width:26px;height:26px;border-radius:7px;background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.3);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px;}
+.dash-mock{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.08);border-radius:20px;overflow:hidden;}
+.dash-nav-bar{background:rgba(255,255,255,0.04);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);}
+.dash-title{color:white;font-size:15px;font-weight:900;}
+.dash-live{background:rgba(16,185,129,0.2);color:#34D399;border-radius:50px;padding:4px 12px;font-size:11px;font-weight:800;}
+.dash-body{padding:20px;}
+.dash-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+.dc{background:rgba(255,255,255,0.05);border-radius:12px;padding:12px 14px;}
+.dc-label{font-size:10px;color:rgba(255,255,255,0.4);font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.dc-val{font-size:26px;font-weight:900;color:white;line-height:1;}
+.dc-val.gold{color:var(--gold);}
+.dc-val.green{color:#34D399;}
+.prog-list{display:flex;flex-direction:column;gap:8px;}
+.prog-item{background:rgba(255,255,255,0.04);border-radius:10px;padding:10px 14px;}
+.prog-top{display:flex;justify-content:space-between;margin-bottom:5px;}
+.prog-name{font-size:12px;color:rgba(255,255,255,0.65);font-weight:700;}
+.prog-pct{font-size:12px;font-weight:900;}
+.prog-bar{height:5px;background:rgba(255,255,255,0.08);border-radius:50px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:50px;}
+
+/* ── TESTIMONIALS ── */
+.testi-bg{background:white;border-top:2px solid var(--gray-200);}
+.testi-inner{max-width:1160px;margin:0 auto;padding:80px 52px;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px;}
+.testi-card{background:var(--off);border-radius:20px;padding:28px;border:2px solid var(--gray-200);position:relative;}
+.testi-card::before{content:'"';position:absolute;top:16px;right:20px;font-size:72px;color:var(--gold-border);line-height:1;font-weight:900;}
+.stars{color:var(--gold);font-size:17px;margin-bottom:14px;letter-spacing:2px;}
+.testi-text{font-size:15px;color:var(--gray-800);line-height:1.65;margin-bottom:20px;font-weight:600;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.t-ava{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:white;flex-shrink:0;}
+.t-name{font-weight:900;font-size:14px;color:var(--black);}
+.t-role{font-size:12px;color:var(--gray-400);font-weight:600;}
+
+/* ── PRICING ── */
+.price-bg{background:var(--off);border-top:2px solid var(--gray-200);}
+.price-inner{max-width:1160px;margin:0 auto;padding:80px 52px;}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;margin-top:52px;}
+.pc{background:white;border-radius:24px;border:2px solid var(--gray-200);padding:32px 28px;position:relative;transition:transform 0.2s;}
+.pc:hover{transform:translateY(-4px);}
+.pc.feat{border-color:var(--nav);box-shadow:0 0 0 5px rgba(59,75,200,0.08);}
+.feat-pill{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--nav);color:white;font-size:12px;font-weight:800;padding:4px 16px;border-radius:50px;white-space:nowrap;}
+.p-plan{font-size:11px;font-weight:800;color:var(--gray-400);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
+.p-amount{font-size:52px;font-weight:900;line-height:1;margin-bottom:4px;}
+.p-amount sup{font-size:22px;vertical-align:top;margin-top:10px;display:inline-block;}
+.p-amount sub{font-size:15px;color:var(--gray-400);font-weight:600;}
+.p-desc{font-size:13px;color:var(--gray-400);margin-bottom:24px;font-weight:600;}
+.p-feats{list-style:none;margin-bottom:28px;display:flex;flex-direction:column;gap:10px;}
+.p-feats li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--gray-800);font-weight:700;}
+.p-feats li.muted{color:var(--gray-400);}
+.ck{color:var(--green);font-size:15px;flex-shrink:0;margin-top:1px;}
+.dsh{color:var(--gray-200);font-size:15px;flex-shrink:0;margin-top:1px;}
+.p-btn{width:100%;padding:14px;border-radius:12px;font-size:15px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;border:none;transition:all 0.2s;}
+.p-btn.navy{background:var(--nav);color:white;box-shadow:0 4px 0 #1E2A8A;}
+.p-btn.navy:hover{transform:translateY(-2px);box-shadow:0 6px 0 #1E2A8A;}
+.p-btn.outline{background:white;color:var(--gray-800);border:2px solid var(--gray-200);}
+.p-btn.outline:hover{border-color:var(--nav);color:var(--nav);}
+
+/* ── CTA ── */
+.cta-bg{background:var(--nav);padding:80px 52px;text-align:center;position:relative;overflow:hidden;}
+.cta-bg::before{content:'🦘';position:absolute;font-size:260px;opacity:0.05;right:-20px;bottom:-60px;line-height:1;}
+.cta-bg::after{content:'🦘';position:absolute;font-size:180px;opacity:0.04;left:-10px;top:-40px;line-height:1;transform:scaleX(-1);}
+.cta-inner{max-width:600px;margin:0 auto;position:relative;}
+.cta-inner h2{font-size:50px;font-weight:900;color:white;margin-bottom:14px;line-height:1.05;letter-spacing:-0.5px;}
+.cta-inner h2 span{color:var(--gold);}
+.cta-inner p{font-size:18px;color:rgba(255,255,255,0.6);margin-bottom:36px;line-height:1.6;font-weight:600;}
+.cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-cta-gold{padding:18px 40px;font-size:18px;border-radius:12px;border:none;background:var(--gold);color:var(--black);font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;box-shadow:0 6px 0 var(--gold-dark);transition:all 0.15s;text-decoration:none;display:inline-block;}
+.btn-cta-gold:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--gold-dark);}
+.btn-cta-ghost{padding:18px 40px;font-size:18px;border-radius:12px;border:2px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.85);font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;transition:all 0.2s;text-decoration:none;display:inline-block;}
+.btn-cta-ghost:hover{border-color:rgba(255,255,255,0.5);color:white;}
+
+/* ── FOOTER ── */
+footer{background:var(--black);padding:52px;}
+.foot-inner{max-width:1160px;margin:0 auto;}
+.foot-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:40px;flex-wrap:wrap;gap:32px;}
+.foot-brand{max-width:280px;}
+.foot-logo{font-size:22px;font-weight:900;color:white;margin-bottom:10px;}
+.foot-logo span{color:var(--gold);}
+.foot-tagline{font-size:14px;color:rgba(255,255,255,0.4);line-height:1.6;font-weight:600;}
+.foot-cols{display:flex;gap:52px;flex-wrap:wrap;}
+.foot-col-title{font-size:11px;font-weight:800;color:rgba(255,255,255,0.3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+.foot-col-links{display:flex;flex-direction:column;gap:8px;}
+.foot-col-links a{color:rgba(255,255,255,0.5);font-size:14px;text-decoration:none;transition:color 0.2s;font-weight:600;}
+.foot-col-links a:hover{color:white;}
+.foot-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.foot-copy{font-size:13px;color:rgba(255,255,255,0.25);font-weight:600;}
+.foot-badges{display:flex;gap:8px;}
+.foot-badge{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:4px 10px;font-size:11px;color:rgba(255,255,255,0.4);font-weight:700;}
+
+@media(max-width:768px){
+  nav{padding:0 20px;}.nav-center{display:none;}
+  .hero{padding:48px 24px 40px;}.hero h1{font-size:40px;}
+  .trust-row{gap:0;}.trust-item{padding:14px 16px;border-left:none!important;border-top:1px solid rgba(255,255,255,0.08);width:100%;}
+  .section{padding:60px 24px;}
+  .arena-games{grid-template-columns:repeat(2,1fr);}
+  .worlds-grid,.testi-grid,.price-grid{grid-template-columns:1fr;}
+  .standards-inner,.teacher-inner{padding:60px 24px;grid-template-columns:1fr;}
+  .testi-inner,.price-inner{padding:60px 24px;}
+  .cta-bg{padding:60px 24px;}
+  footer{padding:40px 24px;}
+  .foot-top{flex-direction:column;}.foot-bottom{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-mark">🦘</div>
+    <div class="logo-text">Gama<span>roo</span></div>
+  </a>
+  <div class="nav-center">
+    <div class="nav-link dd">
+      Games
+      <div class="dropdown">
+        <div class="dd-head">The Sports Arena</div>
+        <a href="/play/mathhoops" class="dd-item">
+          <div class="dd-icon" style="background:#FFF8E7;">🏀</div>
+          <div><div class="dd-name">MathHoops</div><div class="dd-desc">Basketball × multiplication facts</div></div>
+          <span class="dd-tag tag-live">Live</span>
+        </a>
+        <a href="/play/galaxymath" class="dd-item">
+          <div class="dd-icon" style="background:#0d0d22;">🚀</div>
+          <div><div class="dd-name">Galaxy Math</div><div class="dd-desc">Multiplayer space survival × math facts</div></div>
+        </a>
+        <a href="/play/factorfc" class="dd-item">
+          <div class="dd-icon" style="background:#ECFDF5;">⚽</div>
+          <div><div class="dd-name">Factor FC</div><div class="dd-desc">Soccer × division facts</div></div>
+          <span class="dd-tag tag-soon">Soon</span>
+        </a>
+        <a href="/play/divisionduel" class="dd-item">
+          <div class="dd-icon" style="background:#FFF1F2;">⚔️</div>
+          <div><div class="dd-name">Division Duel</div><div class="dd-desc">True or false division challenges</div></div>
+          <span class="dd-tag tag-live">Live</span>
+        </a>
+        <a href="/play/propertypatrol" class="dd-item">
+          <div class="dd-icon" style="background:#F0FDF4;">🚔</div>
+          <div><div class="dd-name">Property Patrol</div><div class="dd-desc">True or false multiplication properties</div></div>
+          <span class="dd-tag tag-live">Live</span>
+        </a>
+        <a href="#" class="dd-item">
+          <div class="dd-icon" style="background:#F5F3FF;">🏈</div>
+          <div><div class="dd-name">Gridiron Math</div><div class="dd-desc">Football × mixed operations</div></div>
+          <span class="dd-tag tag-soon">Soon</span>
+        </a>
+        <a href="#" class="dd-item">
+          <div class="dd-icon" style="background:#FEF2F2;">⚾</div>
+          <div><div class="dd-name">Diamond Digits</div><div class="dd-desc">Baseball × addition & subtraction</div></div>
+          <span class="dd-tag tag-soon">Soon</span>
+        </a>
+        <div class="dd-divider"></div>
+        <div class="dd-head">Coming Soon</div>
+        <a href="#" class="dd-item">
+          <div class="dd-icon" style="background:#EFF6FF;">📚</div>
+          <div><div class="dd-name">Word World</div><div class="dd-desc">Reading & spelling adventures</div></div>
+          <span class="dd-tag tag-soon">Soon</span>
+        </a>
+        <a href="#" class="dd-item">
+          <div class="dd-icon" style="background:#ECFDF5;">🔬</div>
+          <div><div class="dd-name">Science Quest</div><div class="dd-desc">Explore ecosystems & experiments</div></div>
+          <span class="dd-tag tag-soon">Soon</span>
+        </a>
+        <a href="#" class="dd-item">
+          <div class="dd-icon" style="background:#F5F3FF;">🌍</div>
+          <div><div class="dd-name">History Heroes</div><div class="dd-desc">Travel through time & civilizations</div></div>
+          <span class="dd-tag tag-soon">Soon</span>
+        </a>
+      </div>
+    </div>
+    <a href="#standards" class="nav-link">Standards</a>
+    <a href="#teachers" class="nav-link">For Teachers</a>
+    <a href="#pricing" class="nav-link">Pricing</a>
+    <a href="#" class="nav-link">For Schools</a>
+  </div>
+  <div class="nav-right">
+    <a href="/login" class="btn-ghost-nav">Log In</a>
+    <a href="/login" class="btn-cta-nav">Try Free 🦘</a>
+  </div>
+</nav>
+
+<!-- GOLD DIVIDER -->
+<div class="gold-divider"></div>
+
+<!-- HERO -->
+<section class="hero" style="animation:fadeUp 0.6s ease-out both;">
+  <h1>Where kids <span class="gold">learn</span><br/>through <span class="soft">play.</span></h1>
+  <p class="hero-sub">Gamaroo is the standards-aligned K–5 platform where every subject becomes a game kids actually want to play. Built for teachers. Loved by students.</p>
+  <div class="hero-actions">
+    <a href="#" class="btn-hero-gold">Start For Free 🦘</a>
+    <a href="#" class="btn-hero-ghost">Watch Demo</a>
+  </div>
+  <div class="trust-row">
+    <div class="trust-item">
+      <div class="trust-icon">👩‍💼</div>
+      <div>
+        <div class="trust-label">Mom-founded</div>
+        <div class="trust-sub">educator-built</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🎯</div>
+      <div>
+        <div class="trust-label">7-day free trial</div>
+        <div class="trust-sub">no credit card needed</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">🔒</div>
+      <div>
+        <div class="trust-label">COPPA compliant</div>
+        <div class="trust-sub">kid safe</div>
+      </div>
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">📋</div>
+      <div>
+        <div class="trust-label">Common Core</div>
+        <div class="trust-sub">aligned</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOLD DIVIDER -->
+<div class="gold-divider"></div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span>🏀</span>Math Games</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>📚</span>Reading Adventures</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🔬</span>Science Quests</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🌍</span>History Heroes</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>✏️</span>Spelling Battles</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🏆</span>Season Mode</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>📊</span>Teacher Dashboard</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🎯</span>Standards Aligned</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🏀</span>Math Games</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>📚</span>Reading Adventures</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🔬</span>Science Quests</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🌍</span>History Heroes</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>✏️</span>Spelling Battles</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🏆</span>Season Mode</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>📊</span>Teacher Dashboard</div><div class="marquee-item"><div class="mdot"></div></div>
+    <div class="marquee-item"><span>🎯</span>Standards Aligned</div><div class="marquee-item"><div class="mdot"></div></div>
+  </div>
+</div>
+
+<!-- GAMES -->
+<div id="games" style="background:white;border-bottom:2px solid var(--gray-200);">
+<style>
+.games-layout{display:flex;min-height:600px;}
+.grade-sidebar{width:200px;flex-shrink:0;border-right:2px solid var(--gray-200);padding:24px 0;}
+.grade-btn{display:flex;align-items:center;gap:10px;width:100%;padding:12px 20px;border:none;background:none;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;color:var(--gray-600);cursor:pointer;text-align:left;transition:all 0.15s;border-right:3px solid transparent;}
+.grade-btn:hover{background:var(--gold-light);color:var(--black);}
+.grade-btn.active{background:var(--gold-light);color:var(--black);border-right:3px solid var(--gold);}
+.grade-emoji{font-size:18px;width:24px;text-align:center;flex-shrink:0;}
+.grade-panel{display:none;flex:1;padding:28px 32px;overflow-y:auto;}
+.grade-panel.active{display:block;}
+.subject-tabs{display:flex;gap:4px;margin-bottom:24px;border-bottom:2px solid var(--gray-200);}
+.subject-tab{padding:10px 20px;border:none;background:none;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;color:var(--gray-400);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.15s;border-radius:8px 8px 0 0;}
+.subject-tab:hover{color:var(--black);background:var(--gray-100);}
+.subject-tab.active{color:var(--nav);border-bottom-color:var(--nav);}
+.subject-tab.soon-tab{opacity:0.5;cursor:default;}
+.subject-panel{display:none;}
+.subject-panel.active{display:block;}
+.domain-section{margin-bottom:32px;}
+.domain-title{font-size:11px;font-weight:900;color:var(--gray-400);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--gray-200);}
+.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.game-card{background:var(--off);border:2px solid var(--gray-200);border-radius:16px;padding:16px;transition:all 0.2s;}
+.game-card.live{cursor:pointer;}
+.game-card.live:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.08);}
+.game-card.soon{opacity:0.55;}
+.gc-emoji{font-size:28px;margin-bottom:8px;display:block;}
+.gc-name{font-size:15px;font-weight:900;color:var(--black);margin-bottom:4px;}
+.gc-std{font-size:11px;font-weight:700;color:var(--gray-400);margin-bottom:6px;font-family:monospace;}
+.gc-desc{font-size:12px;color:var(--gray-600);line-height:1.4;margin-bottom:10px;font-weight:600;}
+.gc-footer{display:flex;align-items:center;justify-content:space-between;}
+.gc-format{font-size:10px;font-weight:800;padding:3px 8px;border-radius:50px;text-transform:uppercase;letter-spacing:0.5px;}
+.fmt-tf{background:#EFF6FF;color:var(--nav);}
+.fmt-qf{background:#ECFDF5;color:#065F46;}
+.fmt-dd{background:#F5F3FF;color:var(--purple);}
+.fmt-sp{background:#FFF8E7;color:var(--gold-dark);}
+.gc-tag{font-size:10px;font-weight:800;padding:3px 8px;border-radius:50px;}
+.gc-live{background:rgba(16,185,129,0.15);color:var(--green);}
+.gc-soon{background:var(--gray-100);color:var(--gray-400);}
+.coming-soon-banner{background:var(--gray-100);border:2px dashed var(--gray-200);border-radius:16px;padding:32px;text-align:center;color:var(--gray-400);font-size:15px;font-weight:700;}
+</style>
+<div class="section">
+  <div class="sec-eyebrow gold">🎮 The Game World</div>
+  <h2 class="sec-title">Every grade. Every standard.<br/>One platform.</h2>
+  <p class="sec-sub">Browse games by grade level. Every game maps directly to Common Core. Live games are ready to play. More arriving all year.</p>
+  <div class="games-layout">
+
+    <!-- SIDEBAR -->
+    <div class="grade-sidebar">
+      <button class="grade-btn" onclick="switchGrade('sports',event)"><span class="grade-emoji">🏟️</span>Sports Arena</button>
+      <button class="grade-btn" onclick="switchGrade('arcade',event)"><span class="grade-emoji">🕹️</span>Arcade</button>
+      <button class="grade-btn active" onclick="switchGrade('g3',event)"><span class="grade-emoji">3️⃣</span>Grade 3</button>
+      <button class="grade-btn" onclick="switchGrade('g4',event)"><span class="grade-emoji">4️⃣</span>Grade 4</button>
+      <button class="grade-btn" onclick="switchGrade('g5',event)"><span class="grade-emoji">5️⃣</span>Grade 5</button>
+      <button class="grade-btn" onclick="switchGrade('g2',event)"><span class="grade-emoji">2️⃣</span>Grade 2</button>
+      <button class="grade-btn" onclick="switchGrade('g1',event)"><span class="grade-emoji">1️⃣</span>Grade 1</button>
+      <button class="grade-btn" onclick="switchGrade('gk',event)"><span class="grade-emoji">🔤</span>Kindergarten</button>
+    </div>
+
+    <!-- SPORTS PANEL -->
+    <div class="grade-panel" id="panel-sports">
+      <div class="domain-section">
+        <div class="domain-title">Sports Arena — All Grades</div>
+        <div class="games-grid">
+          
+          <div class="game-card live" onclick="window.location.href='/play/mathhoops'"><span class="gc-emoji">🏀</span><div class="gc-name">MathHoops</div><div class="gc-std">3.OA.C.7</div><div class="gc-desc">Score buckets with multiplication facts.</div><div class="gc-footer"><span class="gc-format fmt-sp">Sports</span><span class="gc-tag gc-live">✓ Live</span></div></div>
+          <div class="game-card live" onclick="window.location.href='/play/factorfc'"><span class="gc-emoji">⚽</span><div class="gc-name">Factor FC</div><div class="gc-std">3.OA.C.7</div><div class="gc-desc">Score goals with division facts.</div><div class="gc-footer"><span class="gc-format fmt-sp">Sports</span><span class="gc-tag gc-live">✓ Live</span></div></div>
+          <div class="game-card soon"><span class="gc-emoji">🏈</span><div class="gc-name">Gridiron Math</div><div class="gc-std">Mixed</div><div class="gc-desc">Call plays using math skills.</div><div class="gc-footer"><span class="gc-format fmt-sp">Sports</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+          <div class="game-card soon"><span class="gc-emoji">⚾</span><div class="gc-name">Diamond Digits</div><div class="gc-std">2.OA.B.2</div><div class="gc-desc">Hit home runs with addition and subtraction.</div><div class="gc-footer"><span class="gc-format fmt-sp">Sports</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GRADE 3 PANEL -->
+    <div class="grade-panel" id="panel-arcade">
+      <div class="domain-section">
+        <div class="domain-title">Arcade — Multiplayer Games</div>
+        <div class="games-grid">
+          <div class="game-card live" onclick="window.location.href='/play/galaxymath'" style="border-color:#818cf8;"><span class="gc-emoji">🚀</span><div class="gc-name">Galaxy Math</div><div class="gc-std">Grades 3-5</div><div class="gc-desc">Multiplayer space survival. Answer math questions to fuel your ship and shoot aliens!</div><div class="gc-footer"><span class="gc-format" style="background:#1e1b4b;color:#a78bfa;">Multiplayer</span><span class="gc-tag gc-live">✓ Live</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="grade-panel active" id="panel-g3">
+      <div class="subject-tabs">
+        <button class="subject-tab active" onclick="switchSubject('g3','math',event)">📐 Math</button>
+        <button class="subject-tab" onclick="switchSubject('g3','ela',event)">📚 ELA</button>
+        <button class="subject-tab soon-tab">🔬 Science <span style="font-size:10px;">(Soon)</span></button>
+        <button class="subject-tab soon-tab">🌍 Social Studies <span style="font-size:10px;">(Soon)</span></button>
+      </div>
+
+      <!-- G3 MATH -->
+      <div class="subject-panel active" id="panel-g3-math">
+        <div class="domain-section">
+          <div class="domain-title">Operations &amp; Algebraic Thinking</div>
+          <div class="games-grid">
+            <div class="game-card soon"><span class="gc-emoji">✖️</span><div class="gc-name">Multiply Mania</div><div class="gc-std">3.OA.1</div><div class="gc-desc">Is this multiplication statement true or false?</div><div class="gc-footer"><span class="gc-format fmt-tf">True/False</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card live" onclick="window.location.href='/play/divisionduel'"><span class="gc-emoji">⚔️</span><div class="gc-name">Division Duel</div><div class="gc-std">3.OA.2</div><div class="gc-desc">True or false division challenges with hints.</div><div class="gc-footer"><span class="gc-format fmt-tf">True/False</span><span class="gc-tag gc-live">✓ Live</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🔢</span><div class="gc-name">Missing Number Rush</div><div class="gc-std">3.OA.3</div><div class="gc-desc">Find the missing number in multiplication and division.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">📝</span><div class="gc-name">Word Problem Blitz</div><div class="gc-std">3.OA.4</div><div class="gc-desc">Solve multiplication and division word problems fast.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card live" onclick="window.location.href='/play/propertypatrol'"><span class="gc-emoji">🚔</span><div class="gc-name">Property Patrol</div><div class="gc-std">3.OA.5</div><div class="gc-desc">True or false multiplication property challenges.</div><div class="gc-footer"><span class="gc-format fmt-tf">True/False</span><span class="gc-tag gc-live">✓ Live</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">👨‍👩‍👧</span><div class="gc-name">Fact Family Finder</div><div class="gc-std">3.OA.6</div><div class="gc-desc">Use multiplication to crack division problems.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">⚡</span><div class="gc-name">Flash Factor</div><div class="gc-std">3.OA.7</div><div class="gc-desc">Fluency drill — multiply and divide within 100.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🥊</span><div class="gc-name">Two-Step Takedown</div><div class="gc-std">3.OA.8</div><div class="gc-desc">Solve two-step word problems.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🔁</span><div class="gc-name">Pattern Pulse</div><div class="gc-std">3.OA.9</div><div class="gc-desc">Drag numbers into the right arithmetic pattern.</div><div class="gc-footer"><span class="gc-format fmt-dd">Drag &amp; Drop</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+          </div>
+        </div>
+        <div class="domain-section">
+          <div class="domain-title">Number &amp; Operations in Base Ten</div>
+          <div class="games-grid">
+            <div class="game-card soon"><span class="gc-emoji">🎯</span><div class="gc-name">Rounding Rumble</div><div class="gc-std">3.NBT.1</div><div class="gc-desc">Round to the nearest 10 or 100.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">➕</span><div class="gc-name">Add &amp; Attack</div><div class="gc-std">3.NBT.2</div><div class="gc-desc">Add and subtract within 1,000.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🚀</span><div class="gc-name">Tens Turbo</div><div class="gc-std">3.NBT.3</div><div class="gc-desc">Multiply one-digit numbers by multiples of 10.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+          </div>
+        </div>
+        <div class="domain-section">
+          <div class="domain-title">Number &amp; Operations — Fractions</div>
+          <div class="games-grid">
+            <div class="game-card soon"><span class="gc-emoji">🧱</span><div class="gc-name">Fraction Builder</div><div class="gc-std">3.NF.1</div><div class="gc-desc">Drag the right fraction to match the shape.</div><div class="gc-footer"><span class="gc-format fmt-dd">Drag &amp; Drop</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">📏</span><div class="gc-name">Number Line Drop</div><div class="gc-std">3.NF.2</div><div class="gc-desc">Drop fractions in the right spot on the number line.</div><div class="gc-footer"><span class="gc-format fmt-dd">Drag &amp; Drop</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">⚖️</span><div class="gc-name">Fraction Faceoff</div><div class="gc-std">3.NF.3</div><div class="gc-desc">Are these fractions equivalent? True or false?</div><div class="gc-footer"><span class="gc-format fmt-tf">True/False</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+          </div>
+        </div>
+        <div class="domain-section">
+          <div class="domain-title">Measurement &amp; Data</div>
+          <div class="games-grid">
+            <div class="game-card soon"><span class="gc-emoji">🕐</span><div class="gc-name">Clock Crunch</div><div class="gc-std">3.MD.1</div><div class="gc-desc">Tell time and solve elapsed time problems.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">⚖️</span><div class="gc-name">Measure Up</div><div class="gc-std">3.MD.2</div><div class="gc-desc">Solve volume and mass word problems.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">📊</span><div class="gc-name">Graph Grab</div><div class="gc-std">3.MD.3</div><div class="gc-desc">Drag data to build the right bar graph.</div><div class="gc-footer"><span class="gc-format fmt-dd">Drag &amp; Drop</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">📈</span><div class="gc-name">Line Plot Lab</div><div class="gc-std">3.MD.4</div><div class="gc-desc">Place measurements on a line plot.</div><div class="gc-footer"><span class="gc-format fmt-dd">Drag &amp; Drop</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">📐</span><div class="gc-name">Area Alert</div><div class="gc-std">3.MD.5</div><div class="gc-desc">Is this area statement true or false?</div><div class="gc-footer"><span class="gc-format fmt-tf">True/False</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🟦</span><div class="gc-name">Square Counter</div><div class="gc-std">3.MD.6</div><div class="gc-desc">Count unit squares to find the area.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🔲</span><div class="gc-name">Area Equation</div><div class="gc-std">3.MD.7</div><div class="gc-desc">Connect area to multiplication and addition.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">📦</span><div class="gc-name">Perimeter Pursuit</div><div class="gc-std">3.MD.8</div><div class="gc-desc">Find the perimeter of polygons fast.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+          </div>
+        </div>
+        <div class="domain-section">
+          <div class="domain-title">Geometry</div>
+          <div class="games-grid">
+            <div class="game-card soon"><span class="gc-emoji">🔷</span><div class="gc-name">Shape Sorter</div><div class="gc-std">3.G.1</div><div class="gc-desc">Drag shapes into the right category.</div><div class="gc-footer"><span class="gc-format fmt-dd">Drag &amp; Drop</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🍕</span><div class="gc-name">Fair Share</div><div class="gc-std">3.G.2</div><div class="gc-desc">Is this shape divided into equal parts?</div><div class="gc-footer"><span class="gc-format fmt-tf">True/False</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- G3 ELA -->
+      <div class="subject-panel" id="panel-g3-ela">
+        <div class="domain-section">
+          <div class="domain-title">Featured Game</div>
+          <div class="games-grid">
+            <a href="/play/wordescape" class="game-card" style="text-decoration:none;color:inherit;border-color:#aa55ff;"><span class="gc-emoji">🚪</span><div class="gc-name">Word Escape</div><div class="gc-std">3.L.4, 3.RF.3, 3.L.1</div><div class="gc-desc">Escape 5 rooms by answering ELA questions. Space Station theme with Roo as your guide!</div><div class="gc-footer"><span class="gc-format fmt-qf">Escape Room</span><span class="gc-tag gc-live">✓ Live Now</span></div></a>
+          </div>
+        </div>
+        <div class="domain-section">
+          <div class="domain-title">Reading — Literature</div>
+          <div class="games-grid">
+            <div class="game-card soon"><span class="gc-emoji">📖</span><div class="gc-name">Story Sort</div><div class="gc-std">3.RL.1</div><div class="gc-desc">Drag evidence to match the question from the story.</div><div class="gc-footer"><span class="gc-format fmt-dd">Drag &amp; Drop</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">💡</span><div class="gc-name">Theme Finder</div><div class="gc-std">3.RL.2</div><div class="gc-desc">Identify the theme or central message of the story.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🎭</span><div class="gc-name">Character Check</div><div class="gc-std">3.RL.3</div><div class="gc-desc">Is this statement about the character true or false?</div><div class="gc-footer"><span class="gc-format fmt-tf">True/False</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🔮</span><div class="gc-name">Word Wizard</div><div class="gc-std">3.RL.4</div><div class="gc-desc">Determine the meaning of words and phrases in context.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">📚</span><div class="gc-name">Chapter Chase</div><div class="gc-std">3.RL.5</div><div class="gc-desc">Identify chapters, scenes and stanzas in a story.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">👁️</span><div class="gc-name">Point of View Patrol</div><div class="gc-std">3.RL.6</div><div class="gc-desc">Distinguish your point of view from the narrator's.</div><div class="gc-footer"><span class="gc-format fmt-tf">True/False</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">⚔️</span><div class="gc-name">Story Showdown</div><div class="gc-std">3.RL.9</div><div class="gc-desc">Drag to compare and contrast themes across stories.</div><div class="gc-footer"><span class="gc-format fmt-dd">Drag &amp; Drop</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+          </div>
+        </div>
+        <div class="domain-section">
+          <div class="domain-title">Reading — Informational Text</div>
+          <div class="games-grid">
+            <div class="game-card soon"><span class="gc-emoji">🔍</span><div class="gc-name">Main Idea Match</div><div class="gc-std">3.RI.1</div><div class="gc-desc">Drag supporting details to match the main idea.</div><div class="gc-footer"><span class="gc-format fmt-dd">Drag &amp; Drop</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🕵️</span><div class="gc-name">Detail Detective</div><div class="gc-std">3.RI.2</div><div class="gc-desc">Find the main idea and key details in a passage.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🔗</span><div class="gc-name">Connection Quest</div><div class="gc-std">3.RI.3</div><div class="gc-desc">Describe relationships between events and concepts.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🧩</span><div class="gc-name">Context Clue Crunch</div><div class="gc-std">3.RI.4</div><div class="gc-desc">Use context clues to determine word meanings.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🗺️</span><div class="gc-name">Text Feature Tour</div><div class="gc-std">3.RI.5</div><div class="gc-desc">Is this text feature being used correctly?</div><div class="gc-footer"><span class="gc-format fmt-tf">True/False</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🧭</span><div class="gc-name">Viewpoint Verdict</div><div class="gc-std">3.RI.6</div><div class="gc-desc">Distinguish your point of view from the author's.</div><div class="gc-footer"><span class="gc-format fmt-tf">True/False</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🏗️</span><div class="gc-name">Reason Roundup</div><div class="gc-std">3.RI.8</div><div class="gc-desc">Drag reasons to support the author's main point.</div><div class="gc-footer"><span class="gc-format fmt-dd">Drag &amp; Drop</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+          </div>
+        </div>
+        <div class="domain-section">
+          <div class="domain-title">Reading — Foundational Skills</div>
+          <div class="games-grid">
+            <div class="game-card soon"><span class="gc-emoji">🔤</span><div class="gc-name">Phonics Blitz</div><div class="gc-std">3.RF.3</div><div class="gc-desc">Decode multisyllabic words using phonics rules.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">⚡</span><div class="gc-name">Fluency Flash</div><div class="gc-std">3.RF.4</div><div class="gc-desc">Read with accuracy, rate and expression.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+          </div>
+        </div>
+        <div class="domain-section">
+          <div class="domain-title">Language</div>
+          <div class="games-grid">
+            <div class="game-card soon"><span class="gc-emoji">✏️</span><div class="gc-name">Grammar Grab</div><div class="gc-std">3.L.1</div><div class="gc-desc">Is this sentence grammatically correct? True or false?</div><div class="gc-footer"><span class="gc-format fmt-tf">True/False</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">❓</span><div class="gc-name">Punctuation Patrol</div><div class="gc-std">3.L.2</div><div class="gc-desc">Is this sentence punctuated and capitalized correctly?</div><div class="gc-footer"><span class="gc-format fmt-tf">True/False</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🗣️</span><div class="gc-name">Word Choice Wars</div><div class="gc-std">3.L.3</div><div class="gc-desc">Pick the word that fits best in context.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🔑</span><div class="gc-name">Vocabulary Vault</div><div class="gc-std">3.L.4</div><div class="gc-desc">Pick the correct meaning of the word.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">🌈</span><div class="gc-name">Figurative Language Face-Off</div><div class="gc-std">3.L.5</div><div class="gc-desc">Identify similes, metaphors and idioms.</div><div class="gc-footer"><span class="gc-format fmt-tf">True/False</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">📦</span><div class="gc-name">Word Collector</div><div class="gc-std">3.L.6</div><div class="gc-desc">Acquire and use grade-appropriate vocabulary words.</div><div class="gc-footer"><span class="gc-format fmt-qf">Quick Fire</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+          </div>
+        </div>
+        <div class="domain-section">
+          <div class="domain-title">Writing</div>
+          <div class="games-grid">
+            <div class="game-card soon"><span class="gc-emoji">💬</span><div class="gc-name">Opinion Builder</div><div class="gc-std">3.W.1</div><div class="gc-desc">Drag reasons and evidence to support an opinion.</div><div class="gc-footer"><span class="gc-format fmt-dd">Drag &amp; Drop</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">📋</span><div class="gc-name">Info Organizer</div><div class="gc-std">3.W.2</div><div class="gc-desc">Drag facts into the right sections of an informative piece.</div><div class="gc-footer"><span class="gc-format fmt-dd">Drag &amp; Drop</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+            <div class="game-card soon"><span class="gc-emoji">📝</span><div class="gc-name">Narrative Drop</div><div class="gc-std">3.W.3</div><div class="gc-desc">Drag story events into the correct narrative order.</div><div class="gc-footer"><span class="gc-format fmt-dd">Drag &amp; Drop</span><span class="gc-tag gc-soon">Coming Soon</span></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GRADE 4 PANEL -->
+    <div class="grade-panel" id="panel-g4">
+      <div class="subject-tabs">
+        <button class="subject-tab active" onclick="switchSubject('g4','math',event)">📐 Math</button>
+        <button class="subject-tab soon-tab">📚 ELA <span style="font-size:10px;">(Soon)</span></button>
+        <button class="subject-tab soon-tab">🔬 Science <span style="font-size:10px;">(Soon)</span></button>
+        <button class="subject-tab soon-tab">🌍 Social Studies <span style="font-size:10px;">(Soon)</span></button>
+      </div>
+      <div class="subject-panel active" id="panel-g4-math">
+        <div class="coming-soon-banner">🚧 Grade 4 games are in development — dropping later this year!</div>
+      </div>
+    </div>
+
+    <!-- GRADE 5 PANEL -->
+    <div class="grade-panel" id="panel-g5">
+      <div class="subject-tabs">
+        <button class="subject-tab active" onclick="switchSubject('g5','math',event)">📐 Math</button>
+        <button class="subject-tab soon-tab">📚 ELA <span style="font-size:10px;">(Soon)</span></button>
+        <button class="subject-tab soon-tab">🔬 Science <span style="font-size:10px;">(Soon)</span></button>
+        <button class="subject-tab soon-tab">🌍 Social Studies <span style="font-size:10px;">(Soon)</span></button>
+      </div>
+      <div class="subject-panel active" id="panel-g5-math">
+        <div class="coming-soon-banner">🚧 Grade 5 games are in development — dropping later this year!</div>
+      </div>
+    </div>
+
+    <!-- GRADE 2 PANEL -->
+    <div class="grade-panel" id="panel-g2">
+      <div class="subject-tabs">
+        <button class="subject-tab active" onclick="switchSubject('g2','math',event)">📐 Math</button>
+        <button class="subject-tab soon-tab">📚 ELA <span style="font-size:10px;">(Soon)</span></button>
+        <button class="subject-tab soon-tab">🔬 Science <span style="font-size:10px;">(Soon)</span></button>
+        <button class="subject-tab soon-tab">🌍 Social Studies <span style="font-size:10px;">(Soon)</span></button>
+      </div>
+      <div class="subject-panel active" id="panel-g2-math">
+        <div class="coming-soon-banner">🚧 Grade 2 games are in development — dropping later this year!</div>
+      </div>
+    </div>
+
+    <!-- GRADE 1 PANEL -->
+    <div class="grade-panel" id="panel-g1">
+      <div class="subject-tabs">
+        <button class="subject-tab active" onclick="switchSubject('g1','math',event)">📐 Math</button>
+        <button class="subject-tab soon-tab">📚 ELA <span style="font-size:10px;">(Soon)</span></button>
+        <button class="subject-tab soon-tab">🔬 Science <span style="font-size:10px;">(Soon)</span></button>
+        <button class="subject-tab soon-tab">🌍 Social Studies <span style="font-size:10px;">(Soon)</span></button>
+      </div>
+      <div class="subject-panel active" id="panel-g1-math">
+        <div class="coming-soon-banner">🚧 Grade 1 games are in development — dropping later this year!</div>
+      </div>
+    </div>
+
+    <!-- KINDERGARTEN PANEL -->
+    <div class="grade-panel" id="panel-gk">
+      <div class="subject-tabs">
+        <button class="subject-tab active" onclick="switchSubject('gk','math',event)">📐 Math</button>
+        <button class="subject-tab soon-tab">📚 ELA <span style="font-size:10px;">(Soon)</span></button>
+        <button class="subject-tab soon-tab">🔬 Science <span style="font-size:10px;">(Soon)</span></button>
+        <button class="subject-tab soon-tab">🌍 Social Studies <span style="font-size:10px;">(Soon)</span></button>
+      </div>
+      <div class="subject-panel active" id="panel-gk-math">
+        <div class="coming-soon-banner">🚧 Kindergarten games are in development — dropping later this year!</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+function switchGrade(grade, e) {
+  document.querySelectorAll('.grade-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.grade-panel').forEach(p => p.classList.remove('active'));
+  e.currentTarget.classList.add('active');
+  document.getElementById('panel-' + grade).classList.add('active');
+}
+function switchSubject(grade, subject, e) {
+  const gradePanel = document.getElementById('panel-' + grade);
+  gradePanel.querySelectorAll('.subject-tab').forEach(t => t.classList.remove('active'));
+  gradePanel.querySelectorAll('.subject-panel').forEach(p => p.classList.remove('active'));
+  e.currentTarget.classList.add('active');
+  document.getElementById('panel-' + grade + '-' + subject).classList.add('active');
+}
+</script>
+
+<!-- STANDARDS -->
+<div id="standards" class="standards-bg">
+  <div class="standards-inner">
+    <div>
+      <div class="sec-eyebrow gold">📋 Standards Aligned</div>
+      <h2 class="sec-title">Built for the<br/>standards you teach.</h2>
+      <p style="font-size:17px;color:var(--gray-600);line-height:1.7;margin-bottom:28px;font-weight:600;">Every game on Gamaroo maps directly to Common Core State Standards so every minute of play counts toward real learning goals teachers and districts care about.</p>
+      <div class="state-pills">
+        <div class="state-pill">CCSS National</div>
+        <div class="state-pill">NJSLS</div>
+        <div class="state-pill">NYSLS</div>
+        <div class="state-pill">California</div>
+        <div class="state-pill">Florida BEST</div>
+        <div class="state-pill">Texas TEKS</div>
+        <div class="state-pill">+ 35 States</div>
+      </div>
+    </div>
+    <div class="std-list">
+      <div class="std-row">
+        <span class="std-code">CCSS.3.OA.C.7</span>
+        <span class="std-name">Fluently multiply and divide within 100</span>
+        <span class="std-grade">Grade 3</span>
+      </div>
+      <div class="std-row">
+        <span class="std-code">CCSS.3.OA.A.1</span>
+        <span class="std-name">Interpret products of whole numbers</span>
+        <span class="std-grade">Grade 3</span>
+      </div>
+      <div class="std-row">
+        <span class="std-code">CCSS.2.OA.B.2</span>
+        <span class="std-name">Fluently add and subtract within 20</span>
+        <span class="std-grade">Grade 2</span>
+      </div>
+      <div class="std-row">
+        <span class="std-code">CCSS.4.NBT.B.5</span>
+        <span class="std-name">Multiply multi-digit whole numbers</span>
+        <span class="std-grade">Grade 4</span>
+      </div>
+      <div class="std-row">
+        <span class="std-code">CCSS.4.NBT.B.6</span>
+        <span class="std-name">Find whole number quotients and remainders</span>
+        <span class="std-grade">Grade 4</span>
+      </div>
+      <div class="std-row">
+        <span class="std-code">CCSS.ELA-LITERACY.RF.2.3</span>
+        <span class="std-name">Know and apply grade level phonics rules</span>
+        <span class="std-grade">Grade 2</span>
+      </div>
+      <div class="std-row">
+        <span class="std-code">CCSS.ELA-LITERACY.L.3.4</span>
+        <span class="std-name">Determine meaning of unknown vocabulary words</span>
+        <span class="std-grade">Grade 3</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TEACHER -->
+<div id="teachers" class="teacher-bg">
+  <div class="teacher-inner">
+    <div>
+      <div class="t-eyebrow">👩‍🏫 For Teachers</div>
+      <h2 class="t-title">Built for your<br/><span>classroom.</span><br/>Not against it.</h2>
+      <p class="t-desc">Real data. Real tools. Zero extra work. Gamaroo gives teachers everything they need to track progress and prove results without adding to their already full plate.</p>
+      <div class="t-feats">
+        <div class="t-feat"><div class="t-check">✓</div>Real-time class progress by standard</div>
+        <div class="t-feat"><div class="t-check">✓</div>Assign games by skill or standard code</div>
+        <div class="t-feat"><div class="t-check">✓</div>Google Classroom and Clever integration</div>
+        <div class="t-feat"><div class="t-check">✓</div>Automated weekly parent progress emails</div>
+        <div class="t-feat"><div class="t-check">✓</div>Common Core proficiency reports for admin</div>
+        <div class="t-feat"><div class="t-check">✓</div>District-level reporting for superintendents</div>
+      </div>
+    </div>
+    <div class="dash-mock">
+      <div class="dash-nav-bar">
+        <div class="dash-title">Class Dashboard for Ms. Sanders</div>
+        <div class="dash-live">● Live</div>
+      </div>
+      <div class="dash-body">
+        <div class="dash-cards">
+          <div class="dc"><div class="dc-label">Students Active</div><div class="dc-val gold">24</div></div>
+          <div class="dc"><div class="dc-label">Avg Score Today</div><div class="dc-val green">86%</div></div>
+        </div>
+        <div class="prog-list">
+          <div class="prog-item">
+            <div class="prog-top"><div class="prog-name">3.OA.C.7 Multiply within 100</div><div class="prog-pct" style="color:#34D399;">78%</div></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:78%;background:#34D399;"></div></div>
+          </div>
+          <div class="prog-item">
+            <div class="prog-top"><div class="prog-name">3.OA.C.7 Divide within 100</div><div class="prog-pct" style="color:#FCD34D;">61%</div></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:61%;background:#FCD34D;"></div></div>
+          </div>
+          <div class="prog-item">
+            <div class="prog-top"><div class="prog-name">3.NF.A.1 Understand fractions</div><div class="prog-pct" style="color:var(--gold);">44%</div></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:44%;background:var(--gold);"></div></div>
+          </div>
+          <div class="prog-item">
+            <div class="prog-top"><div class="prog-name">4.NBT.B.5 Multi-digit multiply</div><div class="prog-pct" style="color:#F87171;">32%</div></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:32%;background:#F87171;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testi-bg">
+  <div class="testi-inner">
+    <div style="text-align:center;">
+      <div class="sec-eyebrow purple" style="margin:0 auto 14px;">💬 Real Parents. Real Results.</div>
+      <h2 class="sec-title">Reviews coming soon.</h2>
+      <p style="font-size:17px;color:var(--gray-600);margin-top:16px;">We just launched. Be one of the first families to try Gamaroo and share your experience.</p>
+      <a href="#pricing" style="display:inline-block;margin-top:28px;background:var(--nav);color:white;padding:14px 32px;border-radius:10px;font-weight:700;font-size:16px;text-decoration:none;">Start Your Free Trial</a>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div id="pricing" class="price-bg">
+  <div class="price-inner">
+    <div style="text-align:center;">
+      <div class="sec-eyebrow green" style="margin:0 auto 14px;">💳 Simple Pricing</div>
+      <h2 class="sec-title">Powerful tools for teachers.</h2>
+      <p class="sec-sub" style="margin:12px auto 0;text-align:center;">No ads. No paywalls for kids. Ever.</p>
+    </div>
+    <div class="price-grid">
+      <div class="pc feat">
+        <div class="feat-pill">⭐ Most Popular</div>
+        <div class="p-plan">Parent</div>
+        <div class="p-amount"><sup>$</sup>4.99<sub>/mo</sub></div>
+        <div class="p-desc">7-day free trial. No credit card needed.</div>
+        <ul class="p-feats">
+          <li><span class="ck">✓</span>All games unlocked</li>
+          <li><span class="ck">✓</span>Up to 3 child profiles</li>
+          <li><span class="ck">✓</span>Progress reports per child</li>
+          <li><span class="ck">✓</span>Standards-aligned tracking</li>
+          <li><span class="ck">✓</span>Weekly progress emails</li>
+          <li><span class="ck">✓</span>Cancel anytime</li>
+        </ul>
+        <button class="p-btn navy">Start Free Trial</button>
+      </div>
+      <div class="pc">
+        <div class="p-plan">Teacher</div>
+        <div class="p-amount"><sup>$</sup>9.99<sub>/mo</sub></div>
+        <div class="p-desc">7-day free trial. No credit card needed.</div>
+        <ul class="p-feats">
+          <li><span class="ck">✓</span>All games unlocked</li>
+          <li><span class="ck">✓</span>Up to 30 students</li>
+          <li><span class="ck">✓</span>Class dashboard by standard</li>
+          <li><span class="ck">✓</span>Google Classroom sync</li>
+          <li><span class="ck">✓</span>Automated parent reports</li>
+          <li><span class="ck">✓</span>Class leaderboard</li>
+        </ul>
+        <button class="p-btn outline">Start Free Trial</button>
+      </div>
+      <div class="pc">
+        <div class="p-plan">School / District</div>
+        <div class="p-amount" style="font-size:32px">Custom Pricing</div>
+        <div class="p-desc">Unlimited teachers and students</div>
+        <ul class="p-feats">
+          <li><span class="ck">✓</span>Everything in Teacher</li>
+          <li><span class="ck">✓</span>Admin dashboard</li>
+          <li><span class="ck">✓</span>District-wide standard reports</li>
+          <li><span class="ck">✓</span>Dedicated onboarding call</li>
+          <li><span class="ck">✓</span>School-wide leaderboards</li>
+          <li><span class="ck">✓</span>District pricing available</li>
+        </ul>
+        <button class="p-btn outline">Contact Us</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-bg">
+  <div class="cta-inner">
+    <h2>Ready to make learning <span>irresistible?</span></h2>
+    <p>Join K–5 teachers making the classroom the most exciting place to be. Free to start. No credit card. No setup headaches.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn-cta-gold">Get Started Free 🦘</a>
+      <a href="#" class="btn-cta-ghost">Schedule a Demo</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="foot-logo">Gama<span>roo</span> 🦘</div>
+        <div class="foot-tagline">Mom-founded, educator-built. The K–5 platform where every subject becomes an adventure kids actually want to go on.</div>
+      </div>
+      <div class="foot-cols">
+        <div>
+          <div class="foot-col-title">Platform</div>
+          <div class="foot-col-links">
+            <a href="#">Sports Arena</a>
+            <a href="#">Word World</a>
+            <a href="#">Science Quest</a>
+            <a href="#">Standards Map</a>
+          </div>
+        </div>
+        <div>
+          <div class="foot-col-title">For Schools</div>
+          <div class="foot-col-links">
+            <a href="#">Teachers</a>
+            <a href="#">Administrators</a>
+            <a href="#">Districts</a>
+            <a href="#">Request Demo</a>
+          </div>
+        </div>
+        <div>
+          <div class="foot-col-title">Company</div>
+          <div class="foot-col-links">
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="foot-copy">© 2025 Gamaroo. Mom-founded, educator-built. Built for K–5 classrooms across America.</div>
+      <div class="foot-badges">
+        <div class="foot-badge">CCSS Aligned</div>
+        <div class="foot-badge">COPPA Compliant</div>
+        <div class="foot-badge">Ad Free</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll(".arena-game").forEach((card, i) => {
+  if (i === 0) card.addEventListener("click", () => window.location.href = "/play/mathhoops");
+  if (i === 1) card.addEventListener("click", () => window.location.href = "/play/factorfc");
+  if (i < 2) card.style.cursor = "pointer";
+});
+</script><script>
+const navLink = document.querySelector(".nav-link.dd");
+const dropdown = document.querySelector(".dropdown");
+let hideTimer;
+navLink.addEventListener("mouseenter", () => { clearTimeout(hideTimer); dropdown.style.display = "block"; });
+navLink.addEventListener("mouseleave", () => { hideTimer = setTimeout(() => { dropdown.style.display = "none"; }, 600); });
+dropdown.addEventListener("mouseenter", () => { clearTimeout(hideTimer); dropdown.style.display = "block"; });
+dropdown.addEventListener("mouseleave", () => { hideTimer = setTimeout(() => { dropdown.style.display = "none"; }, 600); });
+</script></body>
+</html>
+</div><!--$--><!--/$--><script src="/_next/static/chunks/0ht900cau6_ur.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[17372,[\"/_next/static/chunks/136a42lphlfed.js\",\"/_next/static/chunks/01y_20je3~a2m.js\",\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"AuthProvider\"]\n3:I[39756,[\"/_next/static/chunks/136a42lphlfed.js\",\"/_next/static/chunks/01y_20je3~a2m.js\",\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"default\"]\n4:I[37457,[\"/_next/static/chunks/136a42lphlfed.js\",\"/_next/static/chunks/01y_20je3~a2m.js\",\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"default\"]\n8:I[68027,[\"/_next/static/chunks/136a42lphlfed.js\",\"/_next/static/chunks/01y_20je3~a2m.js\",\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/00iaprk5rjvb3.css\",\"style\"]\n:HL[\"/_next/static/media/797e433ab948586e-s.p.09zddjkbdep5a.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n5:T11af5,"])</script><script>self.__next_f.push([1,"\u003c!DOCTYPE html\u003e\n\u003chtml lang=\"en\"\u003e\n\u003chead\u003e\n\u003cmeta charset=\"UTF-8\"/\u003e\n\u003cmeta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/\u003e\n\u003ctitle\u003eGamaroo: Where Kids Learn Through Play\u003c/title\u003e\n\u003clink href=\"https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900\u0026family=DM+Sans:wght@400;500;600\u0026display=swap\" rel=\"stylesheet\"/\u003e\n\u003cstyle\u003e\n*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}\n:root{\n  --nav:#3B4BC8;\n  --hero:#2A3BAF;\n  --gold:#F5A623;\n  --gold-dark:#C47D0E;\n  --gold-light:#FFF8E7;\n  --gold-border:#FDE68A;\n  --white:#FFFFFF;\n  --off:#F8FAFF;\n  --blue-light:#EFF6FF;\n  --blue-border:#BFDBFE;\n  --blue-soft:#BAC8FF;\n  --green:#10B981;\n  --green-light:#ECFDF5;\n  --green-border:#A7F3D0;\n  --purple:#7C3AED;\n  --purple-light:#F5F3FF;\n  --purple-border:#DDD6FE;\n  --gray-100:#F1F5F9;\n  --gray-200:#E2E8F0;\n  --gray-400:#94A3B8;\n  --gray-600:#475569;\n  --gray-800:#1E293B;\n  --black:#0F172A;\n}\nbody{font-family:'Nunito',sans-serif;background:var(--off);color:var(--black);overflow-x:hidden;line-height:1.6;}\n\n/* ── NAV ── */\nnav{background:var(--nav);height:68px;padding:0 52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}\n.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}\n.logo-mark{width:38px;height:38px;background:var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 3px 0 var(--gold-dark);flex-shrink:0;}\n.logo-text{font-weight:900;font-size:22px;color:white;}\n.logo-text span{color:var(--gold);}\n.nav-center{display:flex;gap:4px;align-items:center;}\n.nav-link{color:rgba(255,255,255,0.75);text-decoration:none;font-size:14px;font-weight:700;padding:8px 14px;border-radius:8px;transition:all 0.2s;position:relative;white-space:nowrap;}\n.nav-link:hover{color:white;background:rgba(255,255,255,0.1);}\n.nav-link.dd{display:flex;align-items:center;gap:4px;}\n.nav-link.dd::after{content:'▾';font-size:10px;opacity:0.6;}\n.dropdown{position:absolute;top:calc(100% + 10px);left:0;background:white;border-radius:16px;padding:8px;box-shadow:0 20px 60px rgba(0,0,0,0.15);min-width:300px;display:none;z-index:300;border:1px solid var(--gray-200);}\n.nav-link:hover .dropdown{display:block;}\n.dd-head{font-size:10px;font-weight:800;color:var(--gray-400);letter-spacing:1.5px;text-transform:uppercase;padding:8px 12px 4px;}\n.dd-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;transition:background 0.15s;text-decoration:none;}\n.dd-item:hover{background:var(--gold-light);}\n.dd-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}\n.dd-name{font-weight:800;font-size:14px;color:var(--black);}\n.dd-desc{font-size:12px;color:var(--gray-400);margin-top:1px;}\n.dd-tag{margin-left:auto;font-size:10px;font-weight:800;padding:3px 8px;border-radius:50px;flex-shrink:0;}\n.tag-live{background:var(--green-light);color:var(--green);}\n.tag-soon{background:var(--gray-100);color:var(--gray-400);}\n.dd-divider{height:1px;background:var(--gray-200);margin:4px 0;}\n.nav-right{display:flex;gap:10px;align-items:center;}\n.btn-ghost-nav{padding:8px 18px;border:1.5px solid rgba(255,255,255,0.25);border-radius:50px;background:transparent;color:white;font-size:13px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;text-decoration:none;transition:all 0.2s;}\n.btn-ghost-nav:hover{border-color:rgba(255,255,255,0.6);}\n.btn-cta-nav{padding:9px 20px;border:none;border-radius:50px;background:var(--gold);color:var(--black);font-size:13px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;text-decoration:none;box-shadow:0 3px 0 var(--gold-dark);transition:all 0.15s;display:inline-block;}\n.btn-cta-nav:hover{transform:translateY(-1px);box-shadow:0 4px 0 var(--gold-dark);}\n.btn-cta-nav:active{transform:translateY(1px);box-shadow:0 1px 0 var(--gold-dark);}\n\n/* ── GOLD DIVIDER ── */\n.gold-divider{height:3px;background:linear-gradient(90deg,var(--gold-dark),var(--gold),#FCD34D,var(--gold),var(--gold-dark));}\n\n/* ── HERO ── */\n.hero{background:var(--hero);padding:72px 52px 64px;}\n.hero-eyebrow{display:flex;justify-content:center;margin-bottom:20px;}\n.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,0.15);color:#FCD34D;border-radius:50px;padding:7px 18px;font-size:13px;font-weight:800;border:1px solid rgba(245,166,35,0.25);}\n.hero h1{font-size:68px;font-weight:900;color:white;line-height:1.0;text-align:center;margin-bottom:18px;letter-spacing:-1px;}\n.hero h1 .gold{color:var(--gold);}\n.hero h1 .soft{color:var(--blue-soft);}\n.hero-sub{font-size:18px;color:rgba(255,255,255,0.6);line-height:1.7;max-width:520px;margin:0 auto 36px;text-align:center;font-weight:600;}\n.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:52px;}\n.btn-hero-gold{padding:17px 40px;font-size:18px;border-radius:12px;border:none;background:var(--gold);color:var(--black);font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;box-shadow:0 6px 0 var(--gold-dark);transition:all 0.15s;text-decoration:none;display:inline-block;}\n.btn-hero-gold:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--gold-dark);}\n.btn-hero-gold:active{transform:translateY(3px);box-shadow:0 2px 0 var(--gold-dark);}\n.btn-hero-ghost{padding:17px 40px;font-size:18px;border-radius:12px;border:2px solid rgba(255,255,255,0.25);background:transparent;color:rgba(255,255,255,0.85);font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;transition:all 0.2s;text-decoration:none;display:inline-block;}\n.btn-hero-ghost:hover{border-color:rgba(255,255,255,0.6);color:white;}\n\n/* ── TRUST ROW ── */\n.trust-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;padding-top:40px;border-top:1px solid rgba(255,255,255,0.1);}\n.trust-item{display:flex;align-items:center;gap:10px;padding:0 32px;}\n.trust-item+.trust-item{border-left:1px solid rgba(255,255,255,0.12);}\n.trust-icon{font-size:22px;}\n.trust-label{font-size:15px;font-weight:900;color:white;}\n.trust-sub{font-size:12px;color:rgba(255,255,255,0.5);font-weight:600;}\n\n/* ── MARQUEE ── */\n.marquee-wrap{background:var(--nav);padding:13px 0;overflow:hidden;}\n.marquee-track{display:flex;gap:36px;animation:marquee 24s linear infinite;width:max-content;}\n.marquee-item{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,0.7);font-size:13px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;white-space:nowrap;}\n.marquee-item span{font-size:16px;}\n.mdot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);flex-shrink:0;}\n@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}\n@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}\n\n/* ── SECTIONS ── */\n.section{padding:80px 52px;max-width:1160px;margin:0 auto;}\n.sec-eyebrow{display:inline-flex;align-items:center;gap:6px;border-radius:50px;padding:6px 14px;font-size:12px;font-weight:800;margin-bottom:14px;letter-spacing:0.5px;text-transform:uppercase;}\n.sec-eyebrow.gold{background:var(--gold-light);color:var(--gold-dark);}\n.sec-eyebrow.blue{background:var(--blue-light);color:var(--nav);}\n.sec-eyebrow.green{background:var(--green-light);color:#065F46;}\n.sec-eyebrow.purple{background:var(--purple-light);color:var(--purple);}\n.sec-title{font-size:44px;font-weight:900;line-height:1.1;margin-bottom:14px;letter-spacing:-0.5px;}\n.sec-sub{font-size:17px;color:var(--gray-600);max-width:540px;line-height:1.7;margin-bottom:52px;font-weight:600;}\n\n/* ── ARENA ── */\n.arena-wrap{background:var(--hero);border-radius:28px;overflow:hidden;margin-bottom:20px;border:1px solid rgba(255,255,255,0.06);}\n.arena-top{padding:28px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.07);}\n.arena-left{display:flex;align-items:center;gap:16px;}\n.arena-icon{width:52px;height:52px;background:rgba(255,255,255,0.08);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;}\n.arena-name{font-size:24px;font-weight:900;color:white;}\n.arena-desc{font-size:14px;color:rgba(255,255,255,0.5);margin-top:3px;font-weight:600;}\n.arena-badge{background:var(--gold);color:var(--black);border-radius:50px;padding:7px 18px;font-size:12px;font-weight:900;box-shadow:0 3px 0 var(--gold-dark);}\n.arena-games{display:grid;grid-template-columns:repeat(4,1fr);}\n.arena-game{padding:24px 20px;border-right:1px solid rgba(255,255,255,0.06);transition:background 0.2s;cursor:pointer;}\n.arena-game:last-child{border-right:none;}\n.arena-game:hover{background:rgba(255,255,255,0.04);}\n.ag-emoji{font-size:32px;margin-bottom:12px;display:block;}\n.ag-name{font-size:17px;font-weight:900;color:white;margin-bottom:6px;}\n.ag-desc{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.5;margin-bottom:12px;font-weight:600;}\n.ag-tag{display:inline-block;padding:4px 10px;border-radius:50px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;}\n.agt-live{background:rgba(16,185,129,0.2);color:#34D399;}\n.agt-soon{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.3);}\n\n/* ── WORLDS ── */\n.worlds-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}\n.world-card{background:white;border-radius:20px;padding:28px;border:2px solid var(--gray-200);transition:all 0.25s;cursor:pointer;position:relative;overflow:hidden;}\n.world-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}\n.world-card.words::before{background:linear-gradient(90deg,var(--nav),var(--blue-soft));}\n.world-card.science::before{background:linear-gradient(90deg,var(--green),#34D399);}\n.world-card.history::before{background:linear-gradient(90deg,var(--purple),#A78BFA);}\n.world-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.08);border-color:transparent;}\n.wc-emoji{font-size:40px;margin-bottom:14px;display:block;}\n.wc-name{font-size:22px;font-weight:900;margin-bottom:8px;}\n.wc-desc{font-size:14px;color:var(--gray-600);line-height:1.5;margin-bottom:14px;font-weight:600;}\n.wc-standard{font-size:12px;color:var(--gray-400);font-weight:700;margin-bottom:14px;}\n.wc-tag{display:inline-block;padding:5px 12px;border-radius:50px;font-size:11px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;background:var(--gray-100);color:var(--gray-400);}\n\n/* ── STANDARDS ── */\n.standards-bg{background:var(--gold-light);border-top:2px solid var(--gold-border);border-bottom:2px solid var(--gold-border);}\n.standards-inner{max-width:1160px;margin:0 auto;padding:80px 52px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}\n.std-list{display:flex;flex-direction:column;gap:10px;}\n.std-row{background:white;border-radius:14px;padding:14px 18px;border:1.5px solid var(--gold-border);display:flex;align-items:center;gap:14px;}\n.std-code{background:var(--gold-light);color:var(--gold-dark);font-size:11px;font-weight:800;padding:4px 10px;border-radius:6px;font-family:monospace;white-space:nowrap;flex-shrink:0;border:1px solid var(--gold-border);}\n.std-name{font-size:14px;color:var(--gray-800);font-weight:700;flex:1;}\n.std-grade{font-size:11px;color:var(--gray-400);font-weight:700;white-space:nowrap;}\n.state-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}\n.state-pill{background:white;border:1.5px solid var(--gold-border);border-radius:50px;padding:5px 14px;font-size:12px;font-weight:800;color:var(--gold-dark);}\n\n/* ── TEACHER ── */\n.teacher-bg{background:var(--hero);}\n.teacher-inner{max-width:1160px;margin:0 auto;padding:80px 52px;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}\n.t-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(245,166,35,0.15);color:#FCD34D;border-radius:50px;padding:6px 14px;font-size:12px;font-weight:800;margin-bottom:16px;letter-spacing:0.5px;text-transform:uppercase;border:1px solid rgba(245,166,35,0.2);}\n.t-title{font-size:44px;font-weight:900;color:white;line-height:1.05;margin-bottom:16px;letter-spacing:-0.5px;}\n.t-title span{color:var(--gold);}\n.t-desc{font-size:16px;color:rgba(255,255,255,0.55);line-height:1.7;margin-bottom:32px;font-weight:600;}\n.t-feats{display:flex;flex-direction:column;gap:12px;}\n.t-feat{display:flex;align-items:flex-start;gap:14px;color:rgba(255,255,255,0.85);font-size:15px;font-weight:700;}\n.t-check{width:26px;height:26px;border-radius:7px;background:rgba(16,185,129,0.2);border:1px solid rgba(16,185,129,0.3);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px;}\n.dash-mock{background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.08);border-radius:20px;overflow:hidden;}\n.dash-nav-bar{background:rgba(255,255,255,0.04);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.06);}\n.dash-title{color:white;font-size:15px;font-weight:900;}\n.dash-live{background:rgba(16,185,129,0.2);color:#34D399;border-radius:50px;padding:4px 12px;font-size:11px;font-weight:800;}\n.dash-body{padding:20px;}\n.dash-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}\n.dc{background:rgba(255,255,255,0.05);border-radius:12px;padding:12px 14px;}\n.dc-label{font-size:10px;color:rgba(255,255,255,0.4);font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}\n.dc-val{font-size:26px;font-weight:900;color:white;line-height:1;}\n.dc-val.gold{color:var(--gold);}\n.dc-val.green{color:#34D399;}\n.prog-list{display:flex;flex-direction:column;gap:8px;}\n.prog-item{background:rgba(255,255,255,0.04);border-radius:10px;padding:10px 14px;}\n.prog-top{display:flex;justify-content:space-between;margin-bottom:5px;}\n.prog-name{font-size:12px;color:rgba(255,255,255,0.65);font-weight:700;}\n.prog-pct{font-size:12px;font-weight:900;}\n.prog-bar{height:5px;background:rgba(255,255,255,0.08);border-radius:50px;overflow:hidden;}\n.prog-fill{height:100%;border-radius:50px;}\n\n/* ── TESTIMONIALS ── */\n.testi-bg{background:white;border-top:2px solid var(--gray-200);}\n.testi-inner{max-width:1160px;margin:0 auto;padding:80px 52px;}\n.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px;}\n.testi-card{background:var(--off);border-radius:20px;padding:28px;border:2px solid var(--gray-200);position:relative;}\n.testi-card::before{content:'\"';position:absolute;top:16px;right:20px;font-size:72px;color:var(--gold-border);line-height:1;font-weight:900;}\n.stars{color:var(--gold);font-size:17px;margin-bottom:14px;letter-spacing:2px;}\n.testi-text{font-size:15px;color:var(--gray-800);line-height:1.65;margin-bottom:20px;font-weight:600;}\n.testi-author{display:flex;align-items:center;gap:12px;}\n.t-ava{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:white;flex-shrink:0;}\n.t-name{font-weight:900;font-size:14px;color:var(--black);}\n.t-role{font-size:12px;color:var(--gray-400);font-weight:600;}\n\n/* ── PRICING ── */\n.price-bg{background:var(--off);border-top:2px solid var(--gray-200);}\n.price-inner{max-width:1160px;margin:0 auto;padding:80px 52px;}\n.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;margin-top:52px;}\n.pc{background:white;border-radius:24px;border:2px solid var(--gray-200);padding:32px 28px;position:relative;transition:transform 0.2s;}\n.pc:hover{transform:translateY(-4px);}\n.pc.feat{border-color:var(--nav);box-shadow:0 0 0 5px rgba(59,75,200,0.08);}\n.feat-pill{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--nav);color:white;font-size:12px;font-weight:800;padding:4px 16px;border-radius:50px;white-space:nowrap;}\n.p-plan{font-size:11px;font-weight:800;color:var(--gray-400);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}\n.p-amount{font-size:52px;font-weight:900;line-height:1;margin-bottom:4px;}\n.p-amount sup{font-size:22px;vertical-align:top;margin-top:10px;display:inline-block;}\n.p-amount sub{font-size:15px;color:var(--gray-400);font-weight:600;}\n.p-desc{font-size:13px;color:var(--gray-400);margin-bottom:24px;font-weight:600;}\n.p-feats{list-style:none;margin-bottom:28px;display:flex;flex-direction:column;gap:10px;}\n.p-feats li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--gray-800);font-weight:700;}\n.p-feats li.muted{color:var(--gray-400);}\n.ck{color:var(--green);font-size:15px;flex-shrink:0;margin-top:1px;}\n.dsh{color:var(--gray-200);font-size:15px;flex-shrink:0;margin-top:1px;}\n.p-btn{width:100%;padding:14px;border-radius:12px;font-size:15px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;border:none;transition:all 0.2s;}\n.p-btn.navy{background:var(--nav);color:white;box-shadow:0 4px 0 #1E2A8A;}\n.p-btn.navy:hover{transform:translateY(-2px);box-shadow:0 6px 0 #1E2A8A;}\n.p-btn.outline{background:white;color:var(--gray-800);border:2px solid var(--gray-200);}\n.p-btn.outline:hover{border-color:var(--nav);color:var(--nav);}\n\n/* ── CTA ── */\n.cta-bg{background:var(--nav);padding:80px 52px;text-align:center;position:relative;overflow:hidden;}\n.cta-bg::before{content:'🦘';position:absolute;font-size:260px;opacity:0.05;right:-20px;bottom:-60px;line-height:1;}\n.cta-bg::after{content:'🦘';position:absolute;font-size:180px;opacity:0.04;left:-10px;top:-40px;line-height:1;transform:scaleX(-1);}\n.cta-inner{max-width:600px;margin:0 auto;position:relative;}\n.cta-inner h2{font-size:50px;font-weight:900;color:white;margin-bottom:14px;line-height:1.05;letter-spacing:-0.5px;}\n.cta-inner h2 span{color:var(--gold);}\n.cta-inner p{font-size:18px;color:rgba(255,255,255,0.6);margin-bottom:36px;line-height:1.6;font-weight:600;}\n.cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}\n.btn-cta-gold{padding:18px 40px;font-size:18px;border-radius:12px;border:none;background:var(--gold);color:var(--black);font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;box-shadow:0 6px 0 var(--gold-dark);transition:all 0.15s;text-decoration:none;display:inline-block;}\n.btn-cta-gold:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--gold-dark);}\n.btn-cta-ghost{padding:18px 40px;font-size:18px;border-radius:12px;border:2px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.85);font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;transition:all 0.2s;text-decoration:none;display:inline-block;}\n.btn-cta-ghost:hover{border-color:rgba(255,255,255,0.5);color:white;}\n\n/* ── FOOTER ── */\nfooter{background:var(--black);padding:52px;}\n.foot-inner{max-width:1160px;margin:0 auto;}\n.foot-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:40px;flex-wrap:wrap;gap:32px;}\n.foot-brand{max-width:280px;}\n.foot-logo{font-size:22px;font-weight:900;color:white;margin-bottom:10px;}\n.foot-logo span{color:var(--gold);}\n.foot-tagline{font-size:14px;color:rgba(255,255,255,0.4);line-height:1.6;font-weight:600;}\n.foot-cols{display:flex;gap:52px;flex-wrap:wrap;}\n.foot-col-title{font-size:11px;font-weight:800;color:rgba(255,255,255,0.3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}\n.foot-col-links{display:flex;flex-direction:column;gap:8px;}\n.foot-col-links a{color:rgba(255,255,255,0.5);font-size:14px;text-decoration:none;transition:color 0.2s;font-weight:600;}\n.foot-col-links a:hover{color:white;}\n.foot-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}\n.foot-copy{font-size:13px;color:rgba(255,255,255,0.25);font-weight:600;}\n.foot-badges{display:flex;gap:8px;}\n.foot-badge{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:4px 10px;font-size:11px;color:rgba(255,255,255,0.4);font-weight:700;}\n\n@media(max-width:768px){\n  nav{padding:0 20px;}.nav-center{display:none;}\n  .hero{padding:48px 24px 40px;}.hero h1{font-size:40px;}\n  .trust-row{gap:0;}.trust-item{padding:14px 16px;border-left:none!important;border-top:1px solid rgba(255,255,255,0.08);width:100%;}\n  .section{padding:60px 24px;}\n  .arena-games{grid-template-columns:repeat(2,1fr);}\n  .worlds-grid,.testi-grid,.price-grid{grid-template-columns:1fr;}\n  .standards-inner,.teacher-inner{padding:60px 24px;grid-template-columns:1fr;}\n  .testi-inner,.price-inner{padding:60px 24px;}\n  .cta-bg{padding:60px 24px;}\n  footer{padding:40px 24px;}\n  .foot-top{flex-direction:column;}.foot-bottom{flex-direction:column;text-align:center;}\n}\n\u003c/style\u003e\n\u003c/head\u003e\n\u003cbody\u003e\n\n\u003c!-- NAV --\u003e\n\u003cnav\u003e\n  \u003ca href=\"#\" class=\"logo\"\u003e\n    \u003cdiv class=\"logo-mark\"\u003e🦘\u003c/div\u003e\n    \u003cdiv class=\"logo-text\"\u003eGama\u003cspan\u003eroo\u003c/span\u003e\u003c/div\u003e\n  \u003c/a\u003e\n  \u003cdiv class=\"nav-center\"\u003e\n    \u003cdiv class=\"nav-link dd\"\u003e\n      Games\n      \u003cdiv class=\"dropdown\"\u003e\n        \u003cdiv class=\"dd-head\"\u003eThe Sports Arena\u003c/div\u003e\n        \u003ca href=\"/play/mathhoops\" class=\"dd-item\"\u003e\n          \u003cdiv class=\"dd-icon\" style=\"background:#FFF8E7;\"\u003e🏀\u003c/div\u003e\n          \u003cdiv\u003e\u003cdiv class=\"dd-name\"\u003eMathHoops\u003c/div\u003e\u003cdiv class=\"dd-desc\"\u003eBasketball × multiplication facts\u003c/div\u003e\u003c/div\u003e\n          \u003cspan class=\"dd-tag tag-live\"\u003eLive\u003c/span\u003e\n        \u003c/a\u003e\n        \u003ca href=\"/play/galaxymath\" class=\"dd-item\"\u003e\n          \u003cdiv class=\"dd-icon\" style=\"background:#0d0d22;\"\u003e🚀\u003c/div\u003e\n          \u003cdiv\u003e\u003cdiv class=\"dd-name\"\u003eGalaxy Math\u003c/div\u003e\u003cdiv class=\"dd-desc\"\u003eMultiplayer space survival × math facts\u003c/div\u003e\u003c/div\u003e\n        \u003c/a\u003e\n        \u003ca href=\"/play/factorfc\" class=\"dd-item\"\u003e\n          \u003cdiv class=\"dd-icon\" style=\"background:#ECFDF5;\"\u003e⚽\u003c/div\u003e\n          \u003cdiv\u003e\u003cdiv class=\"dd-name\"\u003eFactor FC\u003c/div\u003e\u003cdiv class=\"dd-desc\"\u003eSoccer × division facts\u003c/div\u003e\u003c/div\u003e\n          \u003cspan class=\"dd-tag tag-soon\"\u003eSoon\u003c/span\u003e\n        \u003c/a\u003e\n        \u003ca href=\"/play/divisionduel\" class=\"dd-item\"\u003e\n          \u003cdiv class=\"dd-icon\" style=\"background:#FFF1F2;\"\u003e⚔️\u003c/div\u003e\n          \u003cdiv\u003e\u003cdiv class=\"dd-name\"\u003eDivision Duel\u003c/div\u003e\u003cdiv class=\"dd-desc\"\u003eTrue or false division challenges\u003c/div\u003e\u003c/div\u003e\n          \u003cspan class=\"dd-tag tag-live\"\u003eLive\u003c/span\u003e\n        \u003c/a\u003e\n        \u003ca href=\"/play/propertypatrol\" class=\"dd-item\"\u003e\n          \u003cdiv class=\"dd-icon\" style=\"background:#F0FDF4;\"\u003e🚔\u003c/div\u003e\n          \u003cdiv\u003e\u003cdiv class=\"dd-name\"\u003eProperty Patrol\u003c/div\u003e\u003cdiv class=\"dd-desc\"\u003eTrue or false multiplication properties\u003c/div\u003e\u003c/div\u003e\n          \u003cspan class=\"dd-tag tag-live\"\u003eLive\u003c/span\u003e\n        \u003c/a\u003e\n        \u003ca href=\"#\" class=\"dd-item\"\u003e\n          \u003cdiv class=\"dd-icon\" style=\"background:#F5F3FF;\"\u003e🏈\u003c/div\u003e\n          \u003cdiv\u003e\u003cdiv class=\"dd-name\"\u003eGridiron Math\u003c/div\u003e\u003cdiv class=\"dd-desc\"\u003eFootball × mixed operations\u003c/div\u003e\u003c/div\u003e\n          \u003cspan class=\"dd-tag tag-soon\"\u003eSoon\u003c/span\u003e\n        \u003c/a\u003e\n        \u003ca href=\"#\" class=\"dd-item\"\u003e\n          \u003cdiv class=\"dd-icon\" style=\"background:#FEF2F2;\"\u003e⚾\u003c/div\u003e\n          \u003cdiv\u003e\u003cdiv class=\"dd-name\"\u003eDiamond Digits\u003c/div\u003e\u003cdiv class=\"dd-desc\"\u003eBaseball × addition \u0026 subtraction\u003c/div\u003e\u003c/div\u003e\n          \u003cspan class=\"dd-tag tag-soon\"\u003eSoon\u003c/span\u003e\n        \u003c/a\u003e\n        \u003cdiv class=\"dd-divider\"\u003e\u003c/div\u003e\n        \u003cdiv class=\"dd-head\"\u003eComing Soon\u003c/div\u003e\n        \u003ca href=\"#\" class=\"dd-item\"\u003e\n          \u003cdiv class=\"dd-icon\" style=\"background:#EFF6FF;\"\u003e📚\u003c/div\u003e\n          \u003cdiv\u003e\u003cdiv class=\"dd-name\"\u003eWord World\u003c/div\u003e\u003cdiv class=\"dd-desc\"\u003eReading \u0026 spelling adventures\u003c/div\u003e\u003c/div\u003e\n          \u003cspan class=\"dd-tag tag-soon\"\u003eSoon\u003c/span\u003e\n        \u003c/a\u003e\n        \u003ca href=\"#\" class=\"dd-item\"\u003e\n          \u003cdiv class=\"dd-icon\" style=\"background:#ECFDF5;\"\u003e🔬\u003c/div\u003e\n          \u003cdiv\u003e\u003cdiv class=\"dd-name\"\u003eScience Quest\u003c/div\u003e\u003cdiv class=\"dd-desc\"\u003eExplore ecosystems \u0026 experiments\u003c/div\u003e\u003c/div\u003e\n          \u003cspan class=\"dd-tag tag-soon\"\u003eSoon\u003c/span\u003e\n        \u003c/a\u003e\n        \u003ca href=\"#\" class=\"dd-item\"\u003e\n          \u003cdiv class=\"dd-icon\" style=\"background:#F5F3FF;\"\u003e🌍\u003c/div\u003e\n          \u003cdiv\u003e\u003cdiv class=\"dd-name\"\u003eHistory Heroes\u003c/div\u003e\u003cdiv class=\"dd-desc\"\u003eTravel through time \u0026 civilizations\u003c/div\u003e\u003c/div\u003e\n          \u003cspan class=\"dd-tag tag-soon\"\u003eSoon\u003c/span\u003e\n        \u003c/a\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n    \u003ca href=\"#standards\" class=\"nav-link\"\u003eStandards\u003c/a\u003e\n    \u003ca href=\"#teachers\" class=\"nav-link\"\u003eFor Teachers\u003c/a\u003e\n    \u003ca href=\"#pricing\" class=\"nav-link\"\u003ePricing\u003c/a\u003e\n    \u003ca href=\"#\" class=\"nav-link\"\u003eFor Schools\u003c/a\u003e\n  \u003c/div\u003e\n  \u003cdiv class=\"nav-right\"\u003e\n    \u003ca href=\"/login\" class=\"btn-ghost-nav\"\u003eLog In\u003c/a\u003e\n    \u003ca href=\"/login\" class=\"btn-cta-nav\"\u003eTry Free 🦘\u003c/a\u003e\n  \u003c/div\u003e\n\u003c/nav\u003e\n\n\u003c!-- GOLD DIVIDER --\u003e\n\u003cdiv class=\"gold-divider\"\u003e\u003c/div\u003e\n\n\u003c!-- HERO --\u003e\n\u003csection class=\"hero\" style=\"animation:fadeUp 0.6s ease-out both;\"\u003e\n  \u003ch1\u003eWhere kids \u003cspan class=\"gold\"\u003elearn\u003c/span\u003e\u003cbr/\u003ethrough \u003cspan class=\"soft\"\u003eplay.\u003c/span\u003e\u003c/h1\u003e\n  \u003cp class=\"hero-sub\"\u003eGamaroo is the standards-aligned K–5 platform where every subject becomes a game kids actually want to play. Built for teachers. Loved by students.\u003c/p\u003e\n  \u003cdiv class=\"hero-actions\"\u003e\n    \u003ca href=\"#\" class=\"btn-hero-gold\"\u003eStart For Free 🦘\u003c/a\u003e\n    \u003ca href=\"#\" class=\"btn-hero-ghost\"\u003eWatch Demo\u003c/a\u003e\n  \u003c/div\u003e\n  \u003cdiv class=\"trust-row\"\u003e\n    \u003cdiv class=\"trust-item\"\u003e\n      \u003cdiv class=\"trust-icon\"\u003e👩‍💼\u003c/div\u003e\n      \u003cdiv\u003e\n        \u003cdiv class=\"trust-label\"\u003eMom-founded\u003c/div\u003e\n        \u003cdiv class=\"trust-sub\"\u003eeducator-built\u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n    \u003cdiv class=\"trust-item\"\u003e\n      \u003cdiv class=\"trust-icon\"\u003e🎯\u003c/div\u003e\n      \u003cdiv\u003e\n        \u003cdiv class=\"trust-label\"\u003e7-day free trial\u003c/div\u003e\n        \u003cdiv class=\"trust-sub\"\u003eno credit card needed\u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n    \u003cdiv class=\"trust-item\"\u003e\n      \u003cdiv class=\"trust-icon\"\u003e🔒\u003c/div\u003e\n      \u003cdiv\u003e\n        \u003cdiv class=\"trust-label\"\u003eCOPPA compliant\u003c/div\u003e\n        \u003cdiv class=\"trust-sub\"\u003ekid safe\u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n    \u003cdiv class=\"trust-item\"\u003e\n      \u003cdiv class=\"trust-icon\"\u003e📋\u003c/div\u003e\n      \u003cdiv\u003e\n        \u003cdiv class=\"trust-label\"\u003eCommon Core\u003c/div\u003e\n        \u003cdiv class=\"trust-sub\"\u003ealigned\u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n  \u003c/div\u003e\n\u003c/section\u003e\n\n\u003c!-- GOLD DIVIDER --\u003e\n\u003cdiv class=\"gold-divider\"\u003e\u003c/div\u003e\n\n\u003c!-- MARQUEE --\u003e\n\u003cdiv class=\"marquee-wrap\"\u003e\n  \u003cdiv class=\"marquee-track\"\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e🏀\u003c/span\u003eMath Games\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e📚\u003c/span\u003eReading Adventures\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e🔬\u003c/span\u003eScience Quests\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e🌍\u003c/span\u003eHistory Heroes\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e✏️\u003c/span\u003eSpelling Battles\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e🏆\u003c/span\u003eSeason Mode\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e📊\u003c/span\u003eTeacher Dashboard\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e🎯\u003c/span\u003eStandards Aligned\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e🏀\u003c/span\u003eMath Games\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e📚\u003c/span\u003eReading Adventures\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e🔬\u003c/span\u003eScience Quests\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e🌍\u003c/span\u003eHistory Heroes\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e✏️\u003c/span\u003eSpelling Battles\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e🏆\u003c/span\u003eSeason Mode\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e📊\u003c/span\u003eTeacher Dashboard\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n    \u003cdiv class=\"marquee-item\"\u003e\u003cspan\u003e🎯\u003c/span\u003eStandards Aligned\u003c/div\u003e\u003cdiv class=\"marquee-item\"\u003e\u003cdiv class=\"mdot\"\u003e\u003c/div\u003e\u003c/div\u003e\n  \u003c/div\u003e\n\u003c/div\u003e\n\n\u003c!-- GAMES --\u003e\n\u003cdiv id=\"games\" style=\"background:white;border-bottom:2px solid var(--gray-200);\"\u003e\n\u003cstyle\u003e\n.games-layout{display:flex;min-height:600px;}\n.grade-sidebar{width:200px;flex-shrink:0;border-right:2px solid var(--gray-200);padding:24px 0;}\n.grade-btn{display:flex;align-items:center;gap:10px;width:100%;padding:12px 20px;border:none;background:none;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;color:var(--gray-600);cursor:pointer;text-align:left;transition:all 0.15s;border-right:3px solid transparent;}\n.grade-btn:hover{background:var(--gold-light);color:var(--black);}\n.grade-btn.active{background:var(--gold-light);color:var(--black);border-right:3px solid var(--gold);}\n.grade-emoji{font-size:18px;width:24px;text-align:center;flex-shrink:0;}\n.grade-panel{display:none;flex:1;padding:28px 32px;overflow-y:auto;}\n.grade-panel.active{display:block;}\n.subject-tabs{display:flex;gap:4px;margin-bottom:24px;border-bottom:2px solid var(--gray-200);}\n.subject-tab{padding:10px 20px;border:none;background:none;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;color:var(--gray-400);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all 0.15s;border-radius:8px 8px 0 0;}\n.subject-tab:hover{color:var(--black);background:var(--gray-100);}\n.subject-tab.active{color:var(--nav);border-bottom-color:var(--nav);}\n.subject-tab.soon-tab{opacity:0.5;cursor:default;}\n.subject-panel{display:none;}\n.subject-panel.active{display:block;}\n.domain-section{margin-bottom:32px;}\n.domain-title{font-size:11px;font-weight:900;color:var(--gray-400);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--gray-200);}\n.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}\n.game-card{background:var(--off);border:2px solid var(--gray-200);border-radius:16px;padding:16px;transition:all 0.2s;}\n.game-card.live{cursor:pointer;}\n.game-card.live:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.08);}\n.game-card.soon{opacity:0.55;}\n.gc-emoji{font-size:28px;margin-bottom:8px;display:block;}\n.gc-name{font-size:15px;font-weight:900;color:var(--black);margin-bottom:4px;}\n.gc-std{font-size:11px;font-weight:700;color:var(--gray-400);margin-bottom:6px;font-family:monospace;}\n.gc-desc{font-size:12px;color:var(--gray-600);line-height:1.4;margin-bottom:10px;font-weight:600;}\n.gc-footer{display:flex;align-items:center;justify-content:space-between;}\n.gc-format{font-size:10px;font-weight:800;padding:3px 8px;border-radius:50px;text-transform:uppercase;letter-spacing:0.5px;}\n.fmt-tf{background:#EFF6FF;color:var(--nav);}\n.fmt-qf{background:#ECFDF5;color:#065F46;}\n.fmt-dd{background:#F5F3FF;color:var(--purple);}\n.fmt-sp{background:#FFF8E7;color:var(--gold-dark);}\n.gc-tag{font-size:10px;font-weight:800;padding:3px 8px;border-radius:50px;}\n.gc-live{background:rgba(16,185,129,0.15);color:var(--green);}\n.gc-soon{background:var(--gray-100);color:var(--gray-400);}\n.coming-soon-banner{background:var(--gray-100);border:2px dashed var(--gray-200);border-radius:16px;padding:32px;text-align:center;color:var(--gray-400);font-size:15px;font-weight:700;}\n\u003c/style\u003e\n\u003cdiv class=\"section\"\u003e\n  \u003cdiv class=\"sec-eyebrow gold\"\u003e🎮 The Game World\u003c/div\u003e\n  \u003ch2 class=\"sec-title\"\u003eEvery grade. Every standard.\u003cbr/\u003eOne platform.\u003c/h2\u003e\n  \u003cp class=\"sec-sub\"\u003eBrowse games by grade level. Every game maps directly to Common Core. Live games are ready to play. More arriving all year.\u003c/p\u003e\n  \u003cdiv class=\"games-layout\"\u003e\n\n    \u003c!-- SIDEBAR --\u003e\n    \u003cdiv class=\"grade-sidebar\"\u003e\n      \u003cbutton class=\"grade-btn\" onclick=\"switchGrade('sports',event)\"\u003e\u003cspan class=\"grade-emoji\"\u003e🏟️\u003c/span\u003eSports Arena\u003c/button\u003e\n      \u003cbutton class=\"grade-btn\" onclick=\"switchGrade('arcade',event)\"\u003e\u003cspan class=\"grade-emoji\"\u003e🕹️\u003c/span\u003eArcade\u003c/button\u003e\n      \u003cbutton class=\"grade-btn active\" onclick=\"switchGrade('g3',event)\"\u003e\u003cspan class=\"grade-emoji\"\u003e3️⃣\u003c/span\u003eGrade 3\u003c/button\u003e\n      \u003cbutton class=\"grade-btn\" onclick=\"switchGrade('g4',event)\"\u003e\u003cspan class=\"grade-emoji\"\u003e4️⃣\u003c/span\u003eGrade 4\u003c/button\u003e\n      \u003cbutton class=\"grade-btn\" onclick=\"switchGrade('g5',event)\"\u003e\u003cspan class=\"grade-emoji\"\u003e5️⃣\u003c/span\u003eGrade 5\u003c/button\u003e\n      \u003cbutton class=\"grade-btn\" onclick=\"switchGrade('g2',event)\"\u003e\u003cspan class=\"grade-emoji\"\u003e2️⃣\u003c/span\u003eGrade 2\u003c/button\u003e\n      \u003cbutton class=\"grade-btn\" onclick=\"switchGrade('g1',event)\"\u003e\u003cspan class=\"grade-emoji\"\u003e1️⃣\u003c/span\u003eGrade 1\u003c/button\u003e\n      \u003cbutton class=\"grade-btn\" onclick=\"switchGrade('gk',event)\"\u003e\u003cspan class=\"grade-emoji\"\u003e🔤\u003c/span\u003eKindergarten\u003c/button\u003e\n    \u003c/div\u003e\n\n    \u003c!-- SPORTS PANEL --\u003e\n    \u003cdiv class=\"grade-panel\" id=\"panel-sports\"\u003e\n      \u003cdiv class=\"domain-section\"\u003e\n        \u003cdiv class=\"domain-title\"\u003eSports Arena — All Grades\u003c/div\u003e\n        \u003cdiv class=\"games-grid\"\u003e\n          \n          \u003cdiv class=\"game-card live\" onclick=\"window.location.href='/play/mathhoops'\"\u003e\u003cspan class=\"gc-emoji\"\u003e🏀\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eMathHoops\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.OA.C.7\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eScore buckets with multiplication facts.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-sp\"\u003eSports\u003c/span\u003e\u003cspan class=\"gc-tag gc-live\"\u003e✓ Live\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003cdiv class=\"game-card live\" onclick=\"window.location.href='/play/factorfc'\"\u003e\u003cspan class=\"gc-emoji\"\u003e⚽\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eFactor FC\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.OA.C.7\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eScore goals with division facts.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-sp\"\u003eSports\u003c/span\u003e\u003cspan class=\"gc-tag gc-live\"\u003e✓ Live\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🏈\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eGridiron Math\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003eMixed\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eCall plays using math skills.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-sp\"\u003eSports\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e⚾\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eDiamond Digits\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e2.OA.B.2\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eHit home runs with addition and subtraction.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-sp\"\u003eSports\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n        \u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003c!-- GRADE 3 PANEL --\u003e\n    \u003cdiv class=\"grade-panel\" id=\"panel-arcade\"\u003e\n      \u003cdiv class=\"domain-section\"\u003e\n        \u003cdiv class=\"domain-title\"\u003eArcade — Multiplayer Games\u003c/div\u003e\n        \u003cdiv class=\"games-grid\"\u003e\n          \u003cdiv class=\"game-card live\" onclick=\"window.location.href='/play/galaxymath'\" style=\"border-color:#818cf8;\"\u003e\u003cspan class=\"gc-emoji\"\u003e🚀\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eGalaxy Math\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003eGrades 3-5\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eMultiplayer space survival. Answer math questions to fuel your ship and shoot aliens!\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format\" style=\"background:#1e1b4b;color:#a78bfa;\"\u003eMultiplayer\u003c/span\u003e\u003cspan class=\"gc-tag gc-live\"\u003e✓ Live\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n        \u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n    \u003cdiv class=\"grade-panel active\" id=\"panel-g3\"\u003e\n      \u003cdiv class=\"subject-tabs\"\u003e\n        \u003cbutton class=\"subject-tab active\" onclick=\"switchSubject('g3','math',event)\"\u003e📐 Math\u003c/button\u003e\n        \u003cbutton class=\"subject-tab\" onclick=\"switchSubject('g3','ela',event)\"\u003e📚 ELA\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e🔬 Science \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e🌍 Social Studies \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n      \u003c/div\u003e\n\n      \u003c!-- G3 MATH --\u003e\n      \u003cdiv class=\"subject-panel active\" id=\"panel-g3-math\"\u003e\n        \u003cdiv class=\"domain-section\"\u003e\n          \u003cdiv class=\"domain-title\"\u003eOperations \u0026amp; Algebraic Thinking\u003c/div\u003e\n          \u003cdiv class=\"games-grid\"\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e✖️\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eMultiply Mania\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.OA.1\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eIs this multiplication statement true or false?\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-tf\"\u003eTrue/False\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card live\" onclick=\"window.location.href='/play/divisionduel'\"\u003e\u003cspan class=\"gc-emoji\"\u003e⚔️\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eDivision Duel\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.OA.2\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eTrue or false division challenges with hints.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-tf\"\u003eTrue/False\u003c/span\u003e\u003cspan class=\"gc-tag gc-live\"\u003e✓ Live\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🔢\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eMissing Number Rush\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.OA.3\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eFind the missing number in multiplication and division.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e📝\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eWord Problem Blitz\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.OA.4\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eSolve multiplication and division word problems fast.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card live\" onclick=\"window.location.href='/play/propertypatrol'\"\u003e\u003cspan class=\"gc-emoji\"\u003e🚔\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eProperty Patrol\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.OA.5\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eTrue or false multiplication property challenges.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-tf\"\u003eTrue/False\u003c/span\u003e\u003cspan class=\"gc-tag gc-live\"\u003e✓ Live\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e👨‍👩‍👧\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eFact Family Finder\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.OA.6\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eUse multiplication to crack division problems.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e⚡\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eFlash Factor\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.OA.7\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eFluency drill — multiply and divide within 100.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🥊\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eTwo-Step Takedown\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.OA.8\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eSolve two-step word problems.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🔁\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003ePattern Pulse\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.OA.9\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDrag numbers into the right arithmetic pattern.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-dd\"\u003eDrag \u0026amp; Drop\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n        \u003cdiv class=\"domain-section\"\u003e\n          \u003cdiv class=\"domain-title\"\u003eNumber \u0026amp; Operations in Base Ten\u003c/div\u003e\n          \u003cdiv class=\"games-grid\"\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🎯\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eRounding Rumble\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.NBT.1\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eRound to the nearest 10 or 100.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e➕\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eAdd \u0026amp; Attack\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.NBT.2\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eAdd and subtract within 1,000.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🚀\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eTens Turbo\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.NBT.3\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eMultiply one-digit numbers by multiples of 10.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n        \u003cdiv class=\"domain-section\"\u003e\n          \u003cdiv class=\"domain-title\"\u003eNumber \u0026amp; Operations — Fractions\u003c/div\u003e\n          \u003cdiv class=\"games-grid\"\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🧱\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eFraction Builder\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.NF.1\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDrag the right fraction to match the shape.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-dd\"\u003eDrag \u0026amp; Drop\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e📏\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eNumber Line Drop\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.NF.2\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDrop fractions in the right spot on the number line.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-dd\"\u003eDrag \u0026amp; Drop\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e⚖️\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eFraction Faceoff\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.NF.3\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eAre these fractions equivalent? True or false?\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-tf\"\u003eTrue/False\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n        \u003cdiv class=\"domain-section\"\u003e\n          \u003cdiv class=\"domain-title\"\u003eMeasurement \u0026amp; Data\u003c/div\u003e\n          \u003cdiv class=\"games-grid\"\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🕐\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eClock Crunch\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.MD.1\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eTell time and solve elapsed time problems.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e⚖️\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eMeasure Up\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.MD.2\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eSolve volume and mass word problems.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e📊\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eGraph Grab\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.MD.3\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDrag data to build the right bar graph.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-dd\"\u003eDrag \u0026amp; Drop\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e📈\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eLine Plot Lab\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.MD.4\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003ePlace measurements on a line plot.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-dd\"\u003eDrag \u0026amp; Drop\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e📐\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eArea Alert\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.MD.5\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eIs this area statement true or false?\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-tf\"\u003eTrue/False\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🟦\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eSquare Counter\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.MD.6\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eCount unit squares to find the area.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🔲\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eArea Equation\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.MD.7\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eConnect area to multiplication and addition.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e📦\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003ePerimeter Pursuit\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.MD.8\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eFind the perimeter of polygons fast.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n        \u003cdiv class=\"domain-section\"\u003e\n          \u003cdiv class=\"domain-title\"\u003eGeometry\u003c/div\u003e\n          \u003cdiv class=\"games-grid\"\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🔷\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eShape Sorter\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.G.1\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDrag shapes into the right category.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-dd\"\u003eDrag \u0026amp; Drop\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🍕\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eFair Share\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.G.2\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eIs this shape divided into equal parts?\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-tf\"\u003eTrue/False\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n      \u003c/div\u003e\n\n      \u003c!-- G3 ELA --\u003e\n      \u003cdiv class=\"subject-panel\" id=\"panel-g3-ela\"\u003e\n        \u003cdiv class=\"domain-section\"\u003e\n          \u003cdiv class=\"domain-title\"\u003eFeatured Game\u003c/div\u003e\n          \u003cdiv class=\"games-grid\"\u003e\n            \u003ca href=\"/play/wordescape\" class=\"game-card\" style=\"text-decoration:none;color:inherit;border-color:#aa55ff;\"\u003e\u003cspan class=\"gc-emoji\"\u003e🚪\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eWord Escape\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.L.4, 3.RF.3, 3.L.1\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eEscape 5 rooms by answering ELA questions. Space Station theme with Roo as your guide!\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eEscape Room\u003c/span\u003e\u003cspan class=\"gc-tag gc-live\"\u003e✓ Live Now\u003c/span\u003e\u003c/div\u003e\u003c/a\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n        \u003cdiv class=\"domain-section\"\u003e\n          \u003cdiv class=\"domain-title\"\u003eReading — Literature\u003c/div\u003e\n          \u003cdiv class=\"games-grid\"\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e📖\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eStory Sort\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RL.1\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDrag evidence to match the question from the story.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-dd\"\u003eDrag \u0026amp; Drop\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e💡\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eTheme Finder\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RL.2\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eIdentify the theme or central message of the story.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🎭\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eCharacter Check\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RL.3\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eIs this statement about the character true or false?\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-tf\"\u003eTrue/False\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🔮\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eWord Wizard\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RL.4\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDetermine the meaning of words and phrases in context.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e📚\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eChapter Chase\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RL.5\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eIdentify chapters, scenes and stanzas in a story.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e👁️\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003ePoint of View Patrol\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RL.6\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDistinguish your point of view from the narrator's.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-tf\"\u003eTrue/False\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e⚔️\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eStory Showdown\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RL.9\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDrag to compare and contrast themes across stories.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-dd\"\u003eDrag \u0026amp; Drop\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n        \u003cdiv class=\"domain-section\"\u003e\n          \u003cdiv class=\"domain-title\"\u003eReading — Informational Text\u003c/div\u003e\n          \u003cdiv class=\"games-grid\"\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🔍\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eMain Idea Match\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RI.1\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDrag supporting details to match the main idea.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-dd\"\u003eDrag \u0026amp; Drop\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🕵️\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eDetail Detective\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RI.2\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eFind the main idea and key details in a passage.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🔗\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eConnection Quest\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RI.3\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDescribe relationships between events and concepts.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🧩\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eContext Clue Crunch\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RI.4\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eUse context clues to determine word meanings.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🗺️\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eText Feature Tour\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RI.5\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eIs this text feature being used correctly?\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-tf\"\u003eTrue/False\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🧭\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eViewpoint Verdict\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RI.6\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDistinguish your point of view from the author's.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-tf\"\u003eTrue/False\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🏗️\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eReason Roundup\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RI.8\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDrag reasons to support the author's main point.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-dd\"\u003eDrag \u0026amp; Drop\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n        \u003cdiv class=\"domain-section\"\u003e\n          \u003cdiv class=\"domain-title\"\u003eReading — Foundational Skills\u003c/div\u003e\n          \u003cdiv class=\"games-grid\"\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🔤\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003ePhonics Blitz\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RF.3\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDecode multisyllabic words using phonics rules.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e⚡\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eFluency Flash\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.RF.4\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eRead with accuracy, rate and expression.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n        \u003cdiv class=\"domain-section\"\u003e\n          \u003cdiv class=\"domain-title\"\u003eLanguage\u003c/div\u003e\n          \u003cdiv class=\"games-grid\"\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e✏️\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eGrammar Grab\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.L.1\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eIs this sentence grammatically correct? True or false?\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-tf\"\u003eTrue/False\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e❓\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003ePunctuation Patrol\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.L.2\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eIs this sentence punctuated and capitalized correctly?\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-tf\"\u003eTrue/False\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🗣️\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eWord Choice Wars\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.L.3\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003ePick the word that fits best in context.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🔑\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eVocabulary Vault\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.L.4\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003ePick the correct meaning of the word.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e🌈\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eFigurative Language Face-Off\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.L.5\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eIdentify similes, metaphors and idioms.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-tf\"\u003eTrue/False\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e📦\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eWord Collector\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.L.6\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eAcquire and use grade-appropriate vocabulary words.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-qf\"\u003eQuick Fire\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n        \u003cdiv class=\"domain-section\"\u003e\n          \u003cdiv class=\"domain-title\"\u003eWriting\u003c/div\u003e\n          \u003cdiv class=\"games-grid\"\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e💬\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eOpinion Builder\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.W.1\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDrag reasons and evidence to support an opinion.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-dd\"\u003eDrag \u0026amp; Drop\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e📋\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eInfo Organizer\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.W.2\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDrag facts into the right sections of an informative piece.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-dd\"\u003eDrag \u0026amp; Drop\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"game-card soon\"\u003e\u003cspan class=\"gc-emoji\"\u003e📝\u003c/span\u003e\u003cdiv class=\"gc-name\"\u003eNarrative Drop\u003c/div\u003e\u003cdiv class=\"gc-std\"\u003e3.W.3\u003c/div\u003e\u003cdiv class=\"gc-desc\"\u003eDrag story events into the correct narrative order.\u003c/div\u003e\u003cdiv class=\"gc-footer\"\u003e\u003cspan class=\"gc-format fmt-dd\"\u003eDrag \u0026amp; Drop\u003c/span\u003e\u003cspan class=\"gc-tag gc-soon\"\u003eComing Soon\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n      \u003c/div\u003e\n\n    \u003c/div\u003e\n\n    \u003c!-- GRADE 4 PANEL --\u003e\n    \u003cdiv class=\"grade-panel\" id=\"panel-g4\"\u003e\n      \u003cdiv class=\"subject-tabs\"\u003e\n        \u003cbutton class=\"subject-tab active\" onclick=\"switchSubject('g4','math',event)\"\u003e📐 Math\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e📚 ELA \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e🔬 Science \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e🌍 Social Studies \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"subject-panel active\" id=\"panel-g4-math\"\u003e\n        \u003cdiv class=\"coming-soon-banner\"\u003e🚧 Grade 4 games are in development — dropping later this year!\u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003c!-- GRADE 5 PANEL --\u003e\n    \u003cdiv class=\"grade-panel\" id=\"panel-g5\"\u003e\n      \u003cdiv class=\"subject-tabs\"\u003e\n        \u003cbutton class=\"subject-tab active\" onclick=\"switchSubject('g5','math',event)\"\u003e📐 Math\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e📚 ELA \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e🔬 Science \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e🌍 Social Studies \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"subject-panel active\" id=\"panel-g5-math\"\u003e\n        \u003cdiv class=\"coming-soon-banner\"\u003e🚧 Grade 5 games are in development — dropping later this year!\u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003c!-- GRADE 2 PANEL --\u003e\n    \u003cdiv class=\"grade-panel\" id=\"panel-g2\"\u003e\n      \u003cdiv class=\"subject-tabs\"\u003e\n        \u003cbutton class=\"subject-tab active\" onclick=\"switchSubject('g2','math',event)\"\u003e📐 Math\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e📚 ELA \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e🔬 Science \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e🌍 Social Studies \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"subject-panel active\" id=\"panel-g2-math\"\u003e\n        \u003cdiv class=\"coming-soon-banner\"\u003e🚧 Grade 2 games are in development — dropping later this year!\u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003c!-- GRADE 1 PANEL --\u003e\n    \u003cdiv class=\"grade-panel\" id=\"panel-g1\"\u003e\n      \u003cdiv class=\"subject-tabs\"\u003e\n        \u003cbutton class=\"subject-tab active\" onclick=\"switchSubject('g1','math',event)\"\u003e📐 Math\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e📚 ELA \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e🔬 Science \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e🌍 Social Studies \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"subject-panel active\" id=\"panel-g1-math\"\u003e\n        \u003cdiv class=\"coming-soon-banner\"\u003e🚧 Grade 1 games are in development — dropping later this year!\u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n\n    \u003c!-- KINDERGARTEN PANEL --\u003e\n    \u003cdiv class=\"grade-panel\" id=\"panel-gk\"\u003e\n      \u003cdiv class=\"subject-tabs\"\u003e\n        \u003cbutton class=\"subject-tab active\" onclick=\"switchSubject('gk','math',event)\"\u003e📐 Math\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e📚 ELA \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e🔬 Science \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n        \u003cbutton class=\"subject-tab soon-tab\"\u003e🌍 Social Studies \u003cspan style=\"font-size:10px;\"\u003e(Soon)\u003c/span\u003e\u003c/button\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"subject-panel active\" id=\"panel-gk-math\"\u003e\n        \u003cdiv class=\"coming-soon-banner\"\u003e🚧 Kindergarten games are in development — dropping later this year!\u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n\n  \u003c/div\u003e\n\u003c/div\u003e\n\u003cscript\u003e\nfunction switchGrade(grade, e) {\n  document.querySelectorAll('.grade-btn').forEach(b =\u003e b.classList.remove('active'));\n  document.querySelectorAll('.grade-panel').forEach(p =\u003e p.classList.remove('active'));\n  e.currentTarget.classList.add('active');\n  document.getElementById('panel-' + grade).classList.add('active');\n}\nfunction switchSubject(grade, subject, e) {\n  const gradePanel = document.getElementById('panel-' + grade);\n  gradePanel.querySelectorAll('.subject-tab').forEach(t =\u003e t.classList.remove('active'));\n  gradePanel.querySelectorAll('.subject-panel').forEach(p =\u003e p.classList.remove('active'));\n  e.currentTarget.classList.add('active');\n  document.getElementById('panel-' + grade + '-' + subject).classList.add('active');\n}\n\u003c/script\u003e\n\n\u003c!-- STANDARDS --\u003e\n\u003cdiv id=\"standards\" class=\"standards-bg\"\u003e\n  \u003cdiv class=\"standards-inner\"\u003e\n    \u003cdiv\u003e\n      \u003cdiv class=\"sec-eyebrow gold\"\u003e📋 Standards Aligned\u003c/div\u003e\n      \u003ch2 class=\"sec-title\"\u003eBuilt for the\u003cbr/\u003estandards you teach.\u003c/h2\u003e\n      \u003cp style=\"font-size:17px;color:var(--gray-600);line-height:1.7;margin-bottom:28px;font-weight:600;\"\u003eEvery game on Gamaroo maps directly to Common Core State Standards so every minute of play counts toward real learning goals teachers and districts care about.\u003c/p\u003e\n      \u003cdiv class=\"state-pills\"\u003e\n        \u003cdiv class=\"state-pill\"\u003eCCSS National\u003c/div\u003e\n        \u003cdiv class=\"state-pill\"\u003eNJSLS\u003c/div\u003e\n        \u003cdiv class=\"state-pill\"\u003eNYSLS\u003c/div\u003e\n        \u003cdiv class=\"state-pill\"\u003eCalifornia\u003c/div\u003e\n        \u003cdiv class=\"state-pill\"\u003eFlorida BEST\u003c/div\u003e\n        \u003cdiv class=\"state-pill\"\u003eTexas TEKS\u003c/div\u003e\n        \u003cdiv class=\"state-pill\"\u003e+ 35 States\u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n    \u003cdiv class=\"std-list\"\u003e\n      \u003cdiv class=\"std-row\"\u003e\n        \u003cspan class=\"std-code\"\u003eCCSS.3.OA.C.7\u003c/span\u003e\n        \u003cspan class=\"std-name\"\u003eFluently multiply and divide within 100\u003c/span\u003e\n        \u003cspan class=\"std-grade\"\u003eGrade 3\u003c/span\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"std-row\"\u003e\n        \u003cspan class=\"std-code\"\u003eCCSS.3.OA.A.1\u003c/span\u003e\n        \u003cspan class=\"std-name\"\u003eInterpret products of whole numbers\u003c/span\u003e\n        \u003cspan class=\"std-grade\"\u003eGrade 3\u003c/span\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"std-row\"\u003e\n        \u003cspan class=\"std-code\"\u003eCCSS.2.OA.B.2\u003c/span\u003e\n        \u003cspan class=\"std-name\"\u003eFluently add and subtract within 20\u003c/span\u003e\n        \u003cspan class=\"std-grade\"\u003eGrade 2\u003c/span\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"std-row\"\u003e\n        \u003cspan class=\"std-code\"\u003eCCSS.4.NBT.B.5\u003c/span\u003e\n        \u003cspan class=\"std-name\"\u003eMultiply multi-digit whole numbers\u003c/span\u003e\n        \u003cspan class=\"std-grade\"\u003eGrade 4\u003c/span\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"std-row\"\u003e\n        \u003cspan class=\"std-code\"\u003eCCSS.4.NBT.B.6\u003c/span\u003e\n        \u003cspan class=\"std-name\"\u003eFind whole number quotients and remainders\u003c/span\u003e\n        \u003cspan class=\"std-grade\"\u003eGrade 4\u003c/span\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"std-row\"\u003e\n        \u003cspan class=\"std-code\"\u003eCCSS.ELA-LITERACY.RF.2.3\u003c/span\u003e\n        \u003cspan class=\"std-name\"\u003eKnow and apply grade level phonics rules\u003c/span\u003e\n        \u003cspan class=\"std-grade\"\u003eGrade 2\u003c/span\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"std-row\"\u003e\n        \u003cspan class=\"std-code\"\u003eCCSS.ELA-LITERACY.L.3.4\u003c/span\u003e\n        \u003cspan class=\"std-name\"\u003eDetermine meaning of unknown vocabulary words\u003c/span\u003e\n        \u003cspan class=\"std-grade\"\u003eGrade 3\u003c/span\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n  \u003c/div\u003e\n\u003c/div\u003e\n\n\u003c!-- TEACHER --\u003e\n\u003cdiv id=\"teachers\" class=\"teacher-bg\"\u003e\n  \u003cdiv class=\"teacher-inner\"\u003e\n    \u003cdiv\u003e\n      \u003cdiv class=\"t-eyebrow\"\u003e👩‍🏫 For Teachers\u003c/div\u003e\n      \u003ch2 class=\"t-title\"\u003eBuilt for your\u003cbr/\u003e\u003cspan\u003eclassroom.\u003c/span\u003e\u003cbr/\u003eNot against it.\u003c/h2\u003e\n      \u003cp class=\"t-desc\"\u003eReal data. Real tools. Zero extra work. Gamaroo gives teachers everything they need to track progress and prove results without adding to their already full plate.\u003c/p\u003e\n      \u003cdiv class=\"t-feats\"\u003e\n        \u003cdiv class=\"t-feat\"\u003e\u003cdiv class=\"t-check\"\u003e✓\u003c/div\u003eReal-time class progress by standard\u003c/div\u003e\n        \u003cdiv class=\"t-feat\"\u003e\u003cdiv class=\"t-check\"\u003e✓\u003c/div\u003eAssign games by skill or standard code\u003c/div\u003e\n        \u003cdiv class=\"t-feat\"\u003e\u003cdiv class=\"t-check\"\u003e✓\u003c/div\u003eGoogle Classroom and Clever integration\u003c/div\u003e\n        \u003cdiv class=\"t-feat\"\u003e\u003cdiv class=\"t-check\"\u003e✓\u003c/div\u003eAutomated weekly parent progress emails\u003c/div\u003e\n        \u003cdiv class=\"t-feat\"\u003e\u003cdiv class=\"t-check\"\u003e✓\u003c/div\u003eCommon Core proficiency reports for admin\u003c/div\u003e\n        \u003cdiv class=\"t-feat\"\u003e\u003cdiv class=\"t-check\"\u003e✓\u003c/div\u003eDistrict-level reporting for superintendents\u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n    \u003cdiv class=\"dash-mock\"\u003e\n      \u003cdiv class=\"dash-nav-bar\"\u003e\n        \u003cdiv class=\"dash-title\"\u003eClass Dashboard for Ms. Sanders\u003c/div\u003e\n        \u003cdiv class=\"dash-live\"\u003e● Live\u003c/div\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"dash-body\"\u003e\n        \u003cdiv class=\"dash-cards\"\u003e\n          \u003cdiv class=\"dc\"\u003e\u003cdiv class=\"dc-label\"\u003eStudents Active\u003c/div\u003e\u003cdiv class=\"dc-val gold\"\u003e24\u003c/div\u003e\u003c/div\u003e\n          \u003cdiv class=\"dc\"\u003e\u003cdiv class=\"dc-label\"\u003eAvg Score Today\u003c/div\u003e\u003cdiv class=\"dc-val green\"\u003e86%\u003c/div\u003e\u003c/div\u003e\n        \u003c/div\u003e\n        \u003cdiv class=\"prog-list\"\u003e\n          \u003cdiv class=\"prog-item\"\u003e\n            \u003cdiv class=\"prog-top\"\u003e\u003cdiv class=\"prog-name\"\u003e3.OA.C.7 Multiply within 100\u003c/div\u003e\u003cdiv class=\"prog-pct\" style=\"color:#34D399;\"\u003e78%\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"prog-bar\"\u003e\u003cdiv class=\"prog-fill\" style=\"width:78%;background:#34D399;\"\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003c/div\u003e\n          \u003cdiv class=\"prog-item\"\u003e\n            \u003cdiv class=\"prog-top\"\u003e\u003cdiv class=\"prog-name\"\u003e3.OA.C.7 Divide within 100\u003c/div\u003e\u003cdiv class=\"prog-pct\" style=\"color:#FCD34D;\"\u003e61%\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"prog-bar\"\u003e\u003cdiv class=\"prog-fill\" style=\"width:61%;background:#FCD34D;\"\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003c/div\u003e\n          \u003cdiv class=\"prog-item\"\u003e\n            \u003cdiv class=\"prog-top\"\u003e\u003cdiv class=\"prog-name\"\u003e3.NF.A.1 Understand fractions\u003c/div\u003e\u003cdiv class=\"prog-pct\" style=\"color:var(--gold);\"\u003e44%\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"prog-bar\"\u003e\u003cdiv class=\"prog-fill\" style=\"width:44%;background:var(--gold);\"\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003c/div\u003e\n          \u003cdiv class=\"prog-item\"\u003e\n            \u003cdiv class=\"prog-top\"\u003e\u003cdiv class=\"prog-name\"\u003e4.NBT.B.5 Multi-digit multiply\u003c/div\u003e\u003cdiv class=\"prog-pct\" style=\"color:#F87171;\"\u003e32%\u003c/div\u003e\u003c/div\u003e\n            \u003cdiv class=\"prog-bar\"\u003e\u003cdiv class=\"prog-fill\" style=\"width:32%;background:#F87171;\"\u003e\u003c/div\u003e\u003c/div\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n  \u003c/div\u003e\n\u003c/div\u003e\n\n\u003c!-- TESTIMONIALS --\u003e\n\u003cdiv class=\"testi-bg\"\u003e\n  \u003cdiv class=\"testi-inner\"\u003e\n    \u003cdiv style=\"text-align:center;\"\u003e\n      \u003cdiv class=\"sec-eyebrow purple\" style=\"margin:0 auto 14px;\"\u003e💬 Real Parents. Real Results.\u003c/div\u003e\n      \u003ch2 class=\"sec-title\"\u003eReviews coming soon.\u003c/h2\u003e\n      \u003cp style=\"font-size:17px;color:var(--gray-600);margin-top:16px;\"\u003eWe just launched. Be one of the first families to try Gamaroo and share your experience.\u003c/p\u003e\n      \u003ca href=\"#pricing\" style=\"display:inline-block;margin-top:28px;background:var(--nav);color:white;padding:14px 32px;border-radius:10px;font-weight:700;font-size:16px;text-decoration:none;\"\u003eStart Your Free Trial\u003c/a\u003e\n    \u003c/div\u003e\n  \u003c/div\u003e\n\u003c/div\u003e\n\n\u003c!-- PRICING --\u003e\n\u003cdiv id=\"pricing\" class=\"price-bg\"\u003e\n  \u003cdiv class=\"price-inner\"\u003e\n    \u003cdiv style=\"text-align:center;\"\u003e\n      \u003cdiv class=\"sec-eyebrow green\" style=\"margin:0 auto 14px;\"\u003e💳 Simple Pricing\u003c/div\u003e\n      \u003ch2 class=\"sec-title\"\u003ePowerful tools for teachers.\u003c/h2\u003e\n      \u003cp class=\"sec-sub\" style=\"margin:12px auto 0;text-align:center;\"\u003eNo ads. No paywalls for kids. Ever.\u003c/p\u003e\n    \u003c/div\u003e\n    \u003cdiv class=\"price-grid\"\u003e\n      \u003cdiv class=\"pc feat\"\u003e\n        \u003cdiv class=\"feat-pill\"\u003e⭐ Most Popular\u003c/div\u003e\n        \u003cdiv class=\"p-plan\"\u003eParent\u003c/div\u003e\n        \u003cdiv class=\"p-amount\"\u003e\u003csup\u003e$\u003c/sup\u003e4.99\u003csub\u003e/mo\u003c/sub\u003e\u003c/div\u003e\n        \u003cdiv class=\"p-desc\"\u003e7-day free trial. No credit card needed.\u003c/div\u003e\n        \u003cul class=\"p-feats\"\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eAll games unlocked\u003c/li\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eUp to 3 child profiles\u003c/li\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eProgress reports per child\u003c/li\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eStandards-aligned tracking\u003c/li\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eWeekly progress emails\u003c/li\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eCancel anytime\u003c/li\u003e\n        \u003c/ul\u003e\n        \u003cbutton class=\"p-btn navy\"\u003eStart Free Trial\u003c/button\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"pc\"\u003e\n        \u003cdiv class=\"p-plan\"\u003eTeacher\u003c/div\u003e\n        \u003cdiv class=\"p-amount\"\u003e\u003csup\u003e$\u003c/sup\u003e9.99\u003csub\u003e/mo\u003c/sub\u003e\u003c/div\u003e\n        \u003cdiv class=\"p-desc\"\u003e7-day free trial. No credit card needed.\u003c/div\u003e\n        \u003cul class=\"p-feats\"\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eAll games unlocked\u003c/li\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eUp to 30 students\u003c/li\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eClass dashboard by standard\u003c/li\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eGoogle Classroom sync\u003c/li\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eAutomated parent reports\u003c/li\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eClass leaderboard\u003c/li\u003e\n        \u003c/ul\u003e\n        \u003cbutton class=\"p-btn outline\"\u003eStart Free Trial\u003c/button\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"pc\"\u003e\n        \u003cdiv class=\"p-plan\"\u003eSchool / District\u003c/div\u003e\n        \u003cdiv class=\"p-amount\" style=\"font-size:32px\"\u003eCustom Pricing\u003c/div\u003e\n        \u003cdiv class=\"p-desc\"\u003eUnlimited teachers and students\u003c/div\u003e\n        \u003cul class=\"p-feats\"\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eEverything in Teacher\u003c/li\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eAdmin dashboard\u003c/li\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eDistrict-wide standard reports\u003c/li\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eDedicated onboarding call\u003c/li\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eSchool-wide leaderboards\u003c/li\u003e\n          \u003cli\u003e\u003cspan class=\"ck\"\u003e✓\u003c/span\u003eDistrict pricing available\u003c/li\u003e\n        \u003c/ul\u003e\n        \u003cbutton class=\"p-btn outline\"\u003eContact Us\u003c/button\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n  \u003c/div\u003e\n\u003c/div\u003e\n\n\u003c!-- CTA --\u003e\n\u003cdiv class=\"cta-bg\"\u003e\n  \u003cdiv class=\"cta-inner\"\u003e\n    \u003ch2\u003eReady to make learning \u003cspan\u003eirresistible?\u003c/span\u003e\u003c/h2\u003e\n    \u003cp\u003eJoin K–5 teachers making the classroom the most exciting place to be. Free to start. No credit card. No setup headaches.\u003c/p\u003e\n    \u003cdiv class=\"cta-actions\"\u003e\n      \u003ca href=\"#\" class=\"btn-cta-gold\"\u003eGet Started Free 🦘\u003c/a\u003e\n      \u003ca href=\"#\" class=\"btn-cta-ghost\"\u003eSchedule a Demo\u003c/a\u003e\n    \u003c/div\u003e\n  \u003c/div\u003e\n\u003c/div\u003e\n\n\u003c!-- FOOTER --\u003e\n\u003cfooter\u003e\n  \u003cdiv class=\"foot-inner\"\u003e\n    \u003cdiv class=\"foot-top\"\u003e\n      \u003cdiv class=\"foot-brand\"\u003e\n        \u003cdiv class=\"foot-logo\"\u003eGama\u003cspan\u003eroo\u003c/span\u003e 🦘\u003c/div\u003e\n        \u003cdiv class=\"foot-tagline\"\u003eMom-founded, educator-built. The K–5 platform where every subject becomes an adventure kids actually want to go on.\u003c/div\u003e\n      \u003c/div\u003e\n      \u003cdiv class=\"foot-cols\"\u003e\n        \u003cdiv\u003e\n          \u003cdiv class=\"foot-col-title\"\u003ePlatform\u003c/div\u003e\n          \u003cdiv class=\"foot-col-links\"\u003e\n            \u003ca href=\"#\"\u003eSports Arena\u003c/a\u003e\n            \u003ca href=\"#\"\u003eWord World\u003c/a\u003e\n            \u003ca href=\"#\"\u003eScience Quest\u003c/a\u003e\n            \u003ca href=\"#\"\u003eStandards Map\u003c/a\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n        \u003cdiv\u003e\n          \u003cdiv class=\"foot-col-title\"\u003eFor Schools\u003c/div\u003e\n          \u003cdiv class=\"foot-col-links\"\u003e\n            \u003ca href=\"#\"\u003eTeachers\u003c/a\u003e\n            \u003ca href=\"#\"\u003eAdministrators\u003c/a\u003e\n            \u003ca href=\"#\"\u003eDistricts\u003c/a\u003e\n            \u003ca href=\"#\"\u003eRequest Demo\u003c/a\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n        \u003cdiv\u003e\n          \u003cdiv class=\"foot-col-title\"\u003eCompany\u003c/div\u003e\n          \u003cdiv class=\"foot-col-links\"\u003e\n            \u003ca href=\"#\"\u003eAbout\u003c/a\u003e\n            \u003ca href=\"#\"\u003eBlog\u003c/a\u003e\n            \u003ca href=\"#\"\u003ePrivacy\u003c/a\u003e\n            \u003ca href=\"#\"\u003eTerms\u003c/a\u003e\n          \u003c/div\u003e\n        \u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n    \u003cdiv class=\"foot-bottom\"\u003e\n      \u003cdiv class=\"foot-copy\"\u003e© 2025 Gamaroo. Mom-founded, educator-built. Built for K–5 classrooms across America.\u003c/div\u003e\n      \u003cdiv class=\"foot-badges\"\u003e\n        \u003cdiv class=\"foot-badge\"\u003eCCSS Aligned\u003c/div\u003e\n        \u003cdiv class=\"foot-badge\"\u003eCOPPA Compliant\u003c/div\u003e\n        \u003cdiv class=\"foot-badge\"\u003eAd Free\u003c/div\u003e\n      \u003c/div\u003e\n    \u003c/div\u003e\n  \u003c/div\u003e\n\u003c/footer\u003e\n\n\u003cscript\u003e\ndocument.querySelectorAll(\".arena-game\").forEach((card, i) =\u003e {\n  if (i === 0) card.addEventListener(\"click\", () =\u003e window.location.href = \"/play/mathhoops\");\n  if (i === 1) card.addEventListener(\"click\", () =\u003e window.location.href = \"/play/factorfc\");\n  if (i \u003c 2) card.style.cursor = \"pointer\";\n});\n\u003c/script\u003e\u003cscript\u003e\nconst navLink = document.querySelector(\".nav-link.dd\");\nconst dropdown = document.querySelector(\".dropdown\");\nlet hideTimer;\nnavLink.addEventListener(\"mouseenter\", () =\u003e { clearTimeout(hideTimer); dropdown.style.display = \"block\"; });\nnavLink.addEventListener(\"mouseleave\", () =\u003e { hideTimer = setTimeout(() =\u003e { dropdown.style.display = \"none\"; }, 600); });\ndropdown.addEventListener(\"mouseenter\", () =\u003e { clearTimeout(hideTimer); dropdown.style.display = \"block\"; });\ndropdown.addEventListener(\"mouseleave\", () =\u003e { hideTimer = setTimeout(() =\u003e { dropdown.style.display = \"none\"; }, 600); });\n\u003c/script\u003e\u003c/body\u003e\n\u003c/html\u003e\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"__PAGE__\",{}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/00iaprk5rjvb3.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/136a42lphlfed.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/01y_20je3~a2m.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/_next/static/chunks/0dbhjjzl8qfwv.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\",\"children\":[\"$\",\"body\",null,{\"className\":\"min-h-full flex flex-col\",\"children\":[\"$\",\"$L2\",null,{\"children\":[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[\"$\",\"div\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"$5\"}}],null,\"$L6\"]}],{},null,false,null]},null,false,null],\"$L7\",false]],\"m\":\"$undefined\",\"G\":[\"$8\",[\"$L9\"]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"n-2tG597QgEavVc4-uETU\"}\n"])</script><script>self.__next_f.push([1,"a:I[97367,[\"/_next/static/chunks/136a42lphlfed.js\",\"/_next/static/chunks/01y_20je3~a2m.js\",\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"OutletBoundary\"]\nb:\"$Sreact.suspense\"\nd:I[97367,[\"/_next/static/chunks/136a42lphlfed.js\",\"/_next/static/chunks/01y_20je3~a2m.js\",\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"ViewportBoundary\"]\nf:I[97367,[\"/_next/static/chunks/136a42lphlfed.js\",\"/_next/static/chunks/01y_20je3~a2m.js\",\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"MetadataBoundary\"]\n6:[\"$\",\"$La\",null,{\"children\":[\"$\",\"$b\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@c\"}]}]\n7:[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$Ld\",null,{\"children\":\"$Le\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lf\",null,{\"children\":[\"$\",\"$b\",null,{\"name\":\"Next.Metadata\",\"children\":\"$L10\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}]\n9:[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/00iaprk5rjvb3.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]\n"])</script><script>self.__next_f.push([1,"e:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"11:I[27201,[\"/_next/static/chunks/136a42lphlfed.js\",\"/_next/static/chunks/01y_20je3~a2m.js\",\"/_next/static/chunks/0dbhjjzl8qfwv.js\"],\"IconMark\"]\nc:null\n10:[[\"$\",\"title\",\"0\",{\"children\":\"Gamaroo\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"Math games for K-5 students\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/favicon.ico?favicon.0x3dzn~oxb6tn.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L11\",\"3\",{}]]\n"])</script></body></html>
