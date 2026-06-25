@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef, useState, useCallback } from 'react'
-import { createClient } from '@/lib/supabase/client'
+import { createClient } from '../../../lib/supabase/client'
 
 const ASSET = '/galaxymath/craftpix-896714-space-adventures-2d-game-kit/PNG'
 
