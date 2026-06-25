@@ -175,7 +175,7 @@ export default function GalaxyMath() {
         s.fc++
 
         // Player movement
-        const spd=5
+        const spd=8
         if(s.keys.has('ArrowUp')||s.keys.has('w')) s.pvy=-spd
         else if(s.keys.has('ArrowDown')||s.keys.has('s')) s.pvy=spd
         else s.pvy*=0.8
@@ -231,7 +231,7 @@ export default function GalaxyMath() {
           if(b.x>W+20||b.x<-20) return false
 
           if(b.fromPlayer){
-            const hit=s.enemies.findIndex(e=>Math.abs(b.x-e.x)<35&&Math.abs(b.y-e.y)<35)
+            const hit=s.enemies.findIndex(e=>Math.abs(b.x-e.x)<50&&Math.abs(b.y-e.y)<50)
             if(hit!==-1){
               s.enemies[hit].hp--
               if(s.enemies[hit].hp<=0){
