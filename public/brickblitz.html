@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Brick Blitz — Gamaroo</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.60.0/phaser.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: #1a1a2e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  font-family: 'Nunito', sans-serif;
+  overflow-x: hidden;
+}
+#ui-header {
+  width: 800px;
+  background: #16213e;
+  border-bottom: 3px solid #0f3460;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.hdr-title { font-family: 'Fredoka One', cursive; font-size: 22px; color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.4); }
+.grade-tabs { display: flex; gap: 6px; }
+.gtab { background: #0f3460; border: 2px solid #1a4a8a; color: #7aa0cc; font-family: 'Fredoka One', cursive; font-size: 12px; padding: 4px 12px; border-radius: 20px; cursor: pointer; transition: all 0.2s; }
+.gtab.active, .gtab:hover { background: #e94560; border-color: #e94560; color: white; }
+.stats-row { display: flex; gap: 14px; align-items: center; }
+.stat-item { font-family: 'Fredoka One', cursive; font-size: 14px; color: #7aa0cc; }
+.stat-item b { color: #ffd700; }
+.std-pill { font-size: 11px; font-weight: 800; color: #ffd700; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); padding: 3px 10px; border-radius: 20px; }
+#game-container { width: 800px; position: relative; }
+#game-container canvas { display: block; image-rendering: pixelated; }
+#tray-wrap { width: 800px; background: #16213e; border-top: 3px solid #0f3460; padding: 10px 16px 14px; }
+.tray-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; flex-wrap: wrap; gap: 8px; }
+.tray-label { font-family: 'Fredoka One', cursive; font-size: 13px; color: #7aa0cc; }
+#color-row { display: flex; gap: 6px; align-items: center; }
+.clr-label { font-family: 'Fredoka One', cursive; font-size: 12px; color: #7aa0cc; }
+.color-dot { width: 22px; height: 22px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: transform 0.1s, border-color 0.1s; }
+.color-dot:hover { transform: scale(1.2); }
+.color-dot.selected { border-color: white; transform: scale(1.15); }
+#tray { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
+.tray-brick { cursor: pointer; border: 2px solid transparent; border-radius: 8px; padding: 6px 8px; transition: all 0.15s; background: rgba(255,255,255,0.04); display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 60px; }
+.tray-brick:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+.tray-brick.selected { border-color: #ffd700; background: rgba(255,215,0,0.12); }
+.tray-brick img { height: 36px; width: auto; image-rendering: pixelated; pointer-events: none; }
+.tray-brick span { font-size: 11px; font-family: 'Fredoka One', cursive; color: #7aa0cc; }
+.erase-btn { background: #4d1b1b; border: 2px solid #8b2222; color: #ff9999; font-family: 'Fredoka One', cursive; font-size: 13px; padding: 8px 14px; border-radius: 8px; cursor: pointer; transition: all 0.15s; align-self: center; }
+.erase-btn:hover { background: #6b2222; }
+.erase-btn.active { background: #8b2222; border-color: #ff4444; color: white; }
+.face-btn { background: linear-gradient(135deg, #e94560, #c23152); color: white; font-family: 'Fredoka One', cursive; font-size: 14px; padding: 10px 20px; border: none; border-radius: 10px; cursor: pointer; box-shadow: 0 3px 0 #8b1e33; transition: all 0.15s; align-self: center; margin-left: auto; }
+.face-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 0 #8b1e33; }
+.face-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.82); z-index: 100; align-items: center; justify-content: center; }
+.overlay.show { display: flex; }
+.challenge-box { background: #16213e; border: 3px solid #ffd700; border-radius: 20px; padding: 28px 32px; text-align: center; max-width: 380px; width: 90%; box-shadow: 0 0 40px rgba(255,215,0,0.2); }
+.ch-icon { font-size: 44px; margin-bottom: 6px; }
+.ch-title { font-family: 'Fredoka One', cursive; font-size: 13px; color: #ffd700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+.ch-q { font-family: 'Fredoka One', cursive; font-size: 20px; color: white; margin-bottom: 20px; line-height: 1.45; }
+.ch-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ch-btn { background: #0f3460; border: 2px solid #1a4a8a; color: white; font-family: 'Fredoka One', cursive; font-size: 26px; padding: 14px; border-radius: 12px; cursor: pointer; transition: all 0.15s; }
+.ch-btn:hover { background: #1a4a8a; border-color: #ffd700; color: #ffd700; transform: scale(1.04); }
+.ch-btn.correct { background: #1b4d1b; border-color: #4caf50; animation: popA 0.3s ease; }
+.ch-btn.wrong { background: #4d1b1b; border-color: #f44336; animation: wigA 0.35s ease; }
+@keyframes popA { 0%{transform:scale(1)} 50%{transform:scale(1.18)} 100%{transform:scale(1)} }
+@keyframes wigA { 0%,100%{transform:translateX(0)} 33%{transform:translateX(-7px)} 66%{transform:translateX(7px)} }
+.result-box { text-align: center; padding: 32px 28px; max-width: 360px; width: 90%; }
+.res-emoji { font-size: 80px; animation: bounceIn 0.5s ease; display: block; margin-bottom: 12px; }
+@keyframes bounceIn { 0%{transform:scale(0)} 70%{transform:scale(1.2)} 100%{transform:scale(1)} }
+.res-title { font-family: 'Fredoka One', cursive; font-size: 34px; color: #ffd700; margin-bottom: 10px; }
+.res-sub { font-size: 15px; color: #aaa; line-height: 1.5; margin-bottom: 20px; max-width: 280px; margin-left: auto; margin-right: auto; }
+.play-btn { background: #e94560; color: white; font-family: 'Fredoka One', cursive; font-size: 20px; padding: 14px 36px; border: none; border-radius: 14px; cursor: pointer; box-shadow: 0 4px 0 #8b1e33; transition: all 0.15s; }
+.play-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #8b1e33; }
+</style>
+</head>
+<body>
+<div id="ui-header">
+  <div class="hdr-title">🧱 Brick Blitz</div>
+  <div class="stats-row">
+    <div class="stat-item">⭐ <b id="stars">0</b></div>
+    <div class="stat-item">🏆 <b id="wins">0</b></div>
+    <span class="std-pill" id="std-tag">4.MD.A.3</span>
+  </div>
+  <div class="grade-tabs">
+    <button class="gtab active" onclick="setGrade(3)">Gr 3</button>
+    <button class="gtab" onclick="setGrade(4)">Gr 4</button>
+    <button class="gtab" onclick="setGrade(5)">Gr 5</button>
+  </div>
+</div>
+<div id="game-container"></div>
+<div id="tray-wrap">
+  <div class="tray-top">
+    <div class="tray-label">🧱 Select a brick — click to place, click again to remove</div>
+    <div id="color-row">
+      <span class="clr-label">Color:</span>
+      <div class="color-dot selected" data-color="Red" style="background:#e74c3c"></div>
+      <div class="color-dot" data-color="Blue" style="background:#3498db"></div>
+      <div class="color-dot" data-color="Green" style="background:#2ecc71"></div>
+      <div class="color-dot" data-color="Yellow" style="background:#f1c40f"></div>
+      <div class="color-dot" data-color="Black" style="background:#444"></div>
+      <div class="color-dot" data-color="White" style="background:#ecf0f1;border:2px solid #bbb"></div>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
+    <div id="tray">
+      <div class="tray-brick selected" data-type="brick_medium_1"><img src="/bricks/Default/Red/brick_medium_1.png" alt="medium"><span>Medium</span></div>
+      <div class="tray-brick" data-type="brick_medium_2"><img src="/bricks/Default/Red/brick_medium_2.png" alt="wide"><span>Wide</span></div>
+      <div class="tray-brick" data-type="brick_high_1"><img src="/bricks/Default/Red/brick_high_1.png" alt="tall"><span>Tall</span></div>
+      <div class="tray-brick" data-type="brick_low_1"><img src="/bricks/Default/Red/brick_low_1.png" alt="flat"><span>Flat</span></div>
+      <div class="tray-brick" data-type="brick_medium_slope_left_2"><img src="/bricks/Default/Red/brick_medium_slope_left_2.png" alt="slope l"><span>Slope L</span></div>
+      <div class="tray-brick" data-type="brick_medium_slope_right_2"><img src="/bricks/Default/Red/brick_medium_slope_right_2.png" alt="slope r"><span>Slope R</span></div>
+    </div>
+    <button class="erase-btn" id="erase-btn" onclick="toggleErase()">🗑 Erase</button>
+    <button class="face-btn" id="face-btn" onclick="triggerChallenge()" disabled>⚔️ Face the Troll!</button>
+  </div>
+</div>
+<div class="overlay" id="challenge-overlay">
+  <div class="challenge-box">
+    <div class="ch-icon" id="ch-icon">🧮</div>
+    <div class="ch-title" id="ch-title">Math Challenge!</div>
+    <div class="ch-q" id="ch-q"></div>
+    <div class="ch-choices" id="ch-choices"></div>
+  </div>
+</div>
+<div class="overlay" id="result-overlay">
+  <div class="result-box">
+    <span class="res-emoji" id="res-emoji">🎉</span>
+    <div class="res-title" id="res-title">Defense Held!</div>
+    <div class="res-sub" id="res-sub"></div>
+    <button class="play-btn" onclick="restartRound()">Play Again ➜</button>
+  </div>
+</div>
+<script>
+const GW=800,GH=420,CELL=36,COLS=16,ROWS=8,GRID_X=20,GRID_Y=GH-ROWS*CELL-48;
+let grade=4,stars=0,wins=0,phase='build',selectedType='brick_medium_1',selectedColor='Red',eraseMode=false,placedBricks=[],phaserScene=null,trollSprite=null,warningText=null,countdownEvent=null,buildSecs=30,challengeQueue=[];
+const STANDARDS={3:'3.MD.C.6',4:'4.MD.A.3',5:'5.NF.B.4b'};
+class BBScene extends Phaser.Scene {
+  constructor(){super('BB');}
+  preload(){
+    this.load.spritesheet('bg','/pixelplatformer/bg.png',{frameWidth:18,frameHeight:18});
+    ['Red','Blue','Green','Yellow','Black','White'].forEach(c=>
+      ['brick_medium_1','brick_medium_2','brick_high_1','brick_low_1','brick_medium_slope_left_2','brick_medium_slope_right_2'].forEach(t=>
+        this.load.image(`${c}_${t}`,`/bricks/Default/${c}/${t}.png`)));
+  }
+  create(){
+    phaserScene=this;
+    this.buildGroup=this.add.group();
+    this.drawBackground();
+    const gfx=this.add.graphics();
+    gfx.fillStyle(0x8B5E3C,1);gfx.fillRect(0,GH-48,GW,48);
+    gfx.fillStyle(0x5a9e2f,1);gfx.fillRect(0,GH-48,GW,10);
+    gfx.fillStyle(0x4a8a25,0.5);
+    for(let x=0;x<GW;x+=24)gfx.fillRect(x,GH-48,12,5);
+    this.gridGfx=this.add.graphics();this.hoverGfx=this.add.graphics();this.drawGrid();
+    trollSprite=this.add.text(-90,GH-105,'🧌',{fontSize:'72px'}).setDepth(8).setScale(-1,1);
+    this.timerTrack=this.add.graphics();this.timerFill=this.add.graphics();
+    this.timerTrack.fillStyle(0x000000,0.4);this.timerTrack.fillRoundedRect(12,10,GW-24,12,6);
+    warningText=this.add.text(GW/2,30,'',{fontFamily:'Fredoka One',fontSize:'16px',color:'#ff6b6b',stroke:'#000',strokeThickness:3,align:'center'}).setOrigin(0.5,0).setDepth(10).setAlpha(0);
+    this.brickCountText=this.add.text(GW-14,GH-54,'🧱 0',{fontFamily:'Fredoka One',fontSize:'14px',color:'#ffd700',stroke:'#000',strokeThickness:2}).setOrigin(1,1).setDepth(10);
+    this.input.on('pointermove',ptr=>{
+      if(phase!=='build')return;
+      const col=Math.floor((ptr.x-GRID_X)/CELL),row=Math.floor((ptr.y-GRID_Y)/CELL);
+      this.drawHover(col,row);
+    });
+    this.input.on('pointerdown',ptr=>{
+      if(phase!=='build')return;
+      const col=Math.floor((ptr.x-GRID_X)/CELL),row=Math.floor((ptr.y-GRID_Y)/CELL);
+      if(col<0||col>=COLS||row<0||row>=ROWS)return;
+      const existing=placedBricks.find(b=>b.row===row&&b.col===col);
+      if(existing||eraseMode){if(existing){existing.sprite.destroy();placedBricks=placedBricks.filter(b=>b!==existing);this.updateBrickCount();}return;}
+      this.placeBrick(col,row);
+    });
+    this.startRound();
+  }
+  drawBackground(){
+    const sky=this.add.graphics();
+    sky.fillGradientStyle(0x87CEEB,0x87CEEB,0xb0dff0,0xb0dff0,1);sky.fillRect(0,0,GW,GH-48);
+    const tileW=18,tilesPerRow=Math.ceil(GW/tileW)+1;
+    for(let row=0;row<8;row++)for(let col=0;col<tilesPerRow;col++){
+      const frame=(col+row)%6,x=col*tileW,y=row*tileW;
+      if(y<GH-120)this.add.image(x,y,'bg',frame).setOrigin(0,0).setDisplaySize(tileW,tileW).setAlpha(0.25);
+    }
+    for(let col=0;col<tilesPerRow;col++)
+      this.add.image(col*tileW,GH-180,'bg',6+(col%6)).setOrigin(0,0).setDisplaySize(tileW*2,tileW*3).setAlpha(0.45);
+    const cg=this.add.graphics();cg.fillStyle(0xffffff,0.85);
+    [{x:80,y:50,w:90,h:28},{x:260,y:30,w:70,h:22},{x:460,y:60,w:110,h:30},{x:650,y:40,w:80,h:24}].forEach(c=>{
+      cg.fillRoundedRect(c.x,c.y,c.w,c.h,12);cg.fillCircle(c.x+20,c.y+2,18);cg.fillCircle(c.x+c.w-20,c.y+4,14);
+    });
+    const sun=this.add.graphics();sun.fillStyle(0xfff176,1);sun.fillCircle(GW-80,55,32);
+    sun.fillStyle(0xffee58,0.4);sun.fillCircle(GW-80,55,44);
+  }
+  drawGrid(){
+    this.gridGfx.clear();this.gridGfx.lineStyle(1,0xffffff,0.12);
+    for(let r=0;r<=ROWS;r++){this.gridGfx.beginPath();this.gridGfx.moveTo(GRID_X,GRID_Y+r*CELL);this.gridGfx.lineTo(GRID_X+COLS*CELL,GRID_Y+r*CELL);this.gridGfx.strokePath();}
+    for(let c=0;c<=COLS;c++){this.gridGfx.beginPath();this.gridGfx.moveTo(GRID_X+c*CELL,GRID_Y);this.gridGfx.lineTo(GRID_X+c*CELL,GRID_Y+ROWS*CELL);this.gridGfx.strokePath();}
+    this.gridGfx.lineStyle(2,0xffd700,0.25);this.gridGfx.strokeRect(GRID_X,GRID_Y,COLS*CELL,ROWS*CELL);this.gridGfx.setDepth(3);
+  }
+  drawHover(col,row){
+    this.hoverGfx.clear();this.hoverGfx.setDepth(4);
+    if(col<0||col>=COLS||row<0||row>=ROWS)return;
+    const existing=placedBricks.find(b=>b.row===row&&b.col===col);
+    this.hoverGfx.fillStyle((existing||eraseMode)?0xff4444:0xffd700,0.25);
+    this.hoverGfx.fillRect(GRID_X+col*CELL+1,GRID_Y+row*CELL+1,CELL-2,CELL-2);
+  }
+  placeBrick(col,row){
+    const key=`${selectedColor}_${selectedType}`,x=GRID_X+col*CELL,y=GRID_Y+row*CELL;
+    const sprite=this.add.image(x,y,key).setOrigin(0,0).setDisplaySize(CELL,CELL).setDepth(5).setAlpha(0).setScale(0.6);
+    this.tweens.add({targets:sprite,alpha:1,scaleX:1,scaleY:1,duration:160,ease:'Back.Out'});
+    placedBricks.push({row,col,type:selectedType,color:selectedColor,sprite});
+    this.updateBrickCount();document.getElementById('face-btn').disabled=false;
+  }
+  updateBrickCount(){const n=placedBricks.length;this.brickCountText.setText(`🧱 ${n} brick${n!==1?'s':''}`);document.getElementById('face-btn').disabled=n===0;}
+  getBounds(){
+    if(!placedBricks.length)return null;
+    let minR=ROWS,maxR=0,minC=COLS,maxC=0;
+    placedBricks.forEach(b=>{minR=Math.min(minR,b.row);maxR=Math.max(maxR,b.row);minC=Math.min(minC,b.col);maxC=Math.max(maxC,b.col);});
+    return{w:maxC-minC+1,h:maxR-minR+1};
+  }
+  startRound(){
+    phase='build';buildSecs=Math.max(15,32-wins*2);let remaining=buildSecs;
+    warningText.setText(`🧌 Troll arrives in ${remaining}s — build your defense!`);
+    this.tweens.add({targets:warningText,alpha:1,duration:300});
+    trollSprite.setX(-100);this.timerFill.clear();
+    countdownEvent=this.time.addEvent({delay:1000,repeat:remaining-1,callback:()=>{
+      remaining--;
+      const pct=remaining/buildSecs,barW=GW-24;
+      this.timerFill.clear();
+      this.timerFill.fillStyle(pct>0.5?0x4caf50:pct>0.25?0xff9800:0xf44336,1);
+      this.timerFill.fillRoundedRect(12,10,barW*pct,12,6);this.timerFill.setDepth(11);
+      if(remaining>8)warningText.setText(`🧌 Troll arrives in ${remaining}s — build your defense!`);
+      else if(remaining>0){warningText.setText(`🚨 ${remaining}...`);warningText.setColor('#ff3333');this.cameras.main.shake(60,0.002);}
+      else this.marchTroll();
+    }});
+  }
+  marchTroll(){
+    phase='marching';if(countdownEvent)countdownEvent.remove();warningText.setAlpha(0);
+    this.tweens.add({targets:trollSprite,x:GRID_X-90,duration:1800,ease:'Linear',
+      onUpdate:()=>{trollSprite.y=GH-105+Math.sin(trollSprite.x*0.08)*6;},
+      onComplete:()=>{if(placedBricks.length===0)this.endRound(false);else this.showChallenge();}
+    });
+  }
+  showChallenge(){
+    phase='challenge';const area=placedBricks.length,bounds=this.getBounds(),perim=bounds?2*(bounds.w+bounds.h):0;
+    challengeQueue=[];
+    if(grade===3)challengeQueue.push({icon:'📐',title:'Math Challenge!',q:`Your wall covers <b>${area}</b> grid squares.<br>What is the <b>area</b>?`,answer:area,min:1,max:ROWS*COLS});
+    else if(grade===4){
+      challengeQueue.push({icon:'📐',title:'Math Challenge!',q:`Your building covers <b>${area}</b> squares.<br>What is the <b>area</b>?`,answer:area,min:1,max:ROWS*COLS});
+      challengeQueue.push({icon:'📏',title:'One More!',q:`Your building is <b>${bounds?.w||0}</b> wide and <b>${bounds?.h||0}</b> tall.<br>What is the <b>perimeter</b>?`,answer:perim,min:4,max:56});
+    } else challengeQueue.push({icon:'🔢',title:'Math Challenge!',q:`Your building has <b>${area}</b> full bricks.<br>If <b>half</b> are destroyed, how many remain?`,answer:Math.floor(area/2),min:0,max:ROWS*COLS});
+    this.askQuestion(0);
+  }
+  askQuestion(idx){
+    if(idx>=challengeQueue.length){document.getElementById('challenge-overlay').classList.remove('show');this.endRound(true);return;}
+    const q=challengeQueue[idx];
+    document.getElementById('ch-icon').textContent=q.icon;
+    document.getElementById('ch-title').textContent=q.title;
+    document.getElementById('ch-q').innerHTML=q.q;
+    const choices=genOptions(q.answer,q.min,q.max,4),el=document.getElementById('ch-choices');
+    el.innerHTML='';
+    choices.forEach(val=>{
+      const btn=document.createElement('button');btn.className='ch-btn';btn.textContent=val;
+      btn.onclick=()=>{
+        [...el.children].forEach(b=>b.onclick=null);
+        if(val===q.answer){btn.classList.add('correct');setTimeout(()=>phaserScene.askQuestion(idx+1),700);}
+        else{btn.classList.add('wrong');[...el.children].forEach(b=>{if(parseInt(b.textContent)===q.answer)b.classList.add('correct');});setTimeout(()=>{document.getElementById('challenge-overlay').classList.remove('show');phaserScene.endRound(false);},900);}
+      };
+      el.appendChild(btn);
+    });
+    document.getElementById('challenge-overlay').classList.add('show');
+  }
+  endRound(won){
+    phase='result';document.getElementById('challenge-overlay').classList.remove('show');
+    if(won){
+      wins++;stars++;document.getElementById('wins').textContent=wins;document.getElementById('stars').textContent=stars;
+      this.tweens.add({targets:trollSprite,x:-120,duration:900,ease:'Power2'});
+      placedBricks.forEach((b,i)=>this.time.delayedCall(i*20,()=>this.tweens.add({targets:b.sprite,y:b.sprite.y-10,yoyo:true,duration:200,ease:'Sine.InOut'})));
+      const area=placedBricks.length,bounds=this.getBounds(),perim=bounds?2*(bounds.w+bounds.h):0;
+      document.getElementById('res-emoji').textContent='🎉';document.getElementById('res-title').textContent='Troll Defeated!';
+      document.getElementById('res-sub').textContent=grade>=4?`Your wall had an area of ${area} sq units and a perimeter of ${perim} units. The troll ran away!`:`Your wall had an area of ${area} square units. The troll ran away!`;
+    } else {
+      this.tweens.add({targets:trollSprite,x:GW+100,duration:700,ease:'Power3',onComplete:()=>{
+        placedBricks.forEach(b=>this.tweens.add({targets:b.sprite,x:b.sprite.x+Phaser.Math.Between(-60,60),y:b.sprite.y+Phaser.Math.Between(40,100),angle:Phaser.Math.Between(-60,60),alpha:0,duration:500,ease:'Power2'}));
+      }});
+      this.cameras.main.shake(350,0.018);
+      document.getElementById('res-emoji').textContent=placedBricks.length===0?'😬':'💥';
+      document.getElementById('res-title').textContent=placedBricks.length===0?'No Defense!':'Wall Smashed!';
+      document.getElementById('res-sub').textContent=placedBricks.length===0?'You need to build something first!':'The troll broke through! Answer correctly next time.';
+    }
+    setTimeout(()=>document.getElementById('result-overlay').classList.add('show'),900);
+  }
+}
+function restartRound(){
+  document.getElementById('result-overlay').classList.remove('show');
+  placedBricks.forEach(b=>b.sprite?.destroy());placedBricks=[];phase='build';eraseMode=false;
+  document.getElementById('erase-btn').classList.remove('active');document.getElementById('face-btn').disabled=true;
+  warningText.setColor('#ff6b6b');phaserScene.updateBrickCount();phaserScene.hoverGfx.clear();phaserScene.timerFill.clear();phaserScene.startRound();
+}
+document.querySelectorAll('.tray-brick').forEach(el=>el.onclick=()=>{
+  eraseMode=false;document.getElementById('erase-btn').classList.remove('active');
+  document.querySelectorAll('.tray-brick').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');selectedType=el.dataset.type;
+});
+document.querySelectorAll('.color-dot').forEach(dot=>dot.onclick=()=>{
+  document.querySelectorAll('.color-dot').forEach(d=>d.classList.remove('selected'));
+  dot.classList.add('selected');selectedColor=dot.dataset.color;
+  document.querySelectorAll('.tray-brick img').forEach(img=>{
+    const type=img.closest('.tray-brick').dataset.type;
+    img.src=`/bricks/Default/${selectedColor}/${type}.png`;
+  });
+});
+function toggleErase(){eraseMode=!eraseMode;document.getElementById('erase-btn').classList.toggle('active',eraseMode);if(eraseMode)document.querySelectorAll('.tray-brick').forEach(b=>b.classList.remove('selected'));}
+function triggerChallenge(){if(phase!=='build')return;if(countdownEvent)countdownEvent.remove();phaserScene.marchTroll();}
+function setGrade(g){grade=g;document.querySelectorAll('.gtab').forEach((t,i)=>t.classList.toggle('active',i===g-3));document.getElementById('std-tag').textContent=STANDARDS[g];restartRound();}
+function genOptions(correct,min,max,count){
+  const set=new Set([correct]);let t=0;
+  while(set.size<count&&t++<300){const v=correct+Math.floor(Math.random()*14)-6;if(v>=min&&v>0&&v!==correct)set.add(v);}
+  while(set.size<count)set.add(correct+set.size*4);
+  return shuffle([...set]);
+}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+new Phaser.Game({type:Phaser.AUTO,width:GW,height:GH,parent:'game-container',backgroundColor:'#87CEEB',scene:BBScene,scale:{mode:Phaser.Scale.FIT,autoCenter:Phaser.Scale.CENTER_HORIZONTALLY}});
+</script>
+</body>
+</html>
