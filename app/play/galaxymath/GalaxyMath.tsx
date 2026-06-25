@@ -283,7 +283,6 @@ export default function GalaxyMath(){
       if(bg3?.complete&&bg3.naturalWidth>0){ctx.globalAlpha=0.4;ctx.drawImage(bg3,0,0,W,H);ctx.globalAlpha=1}
       if(bg2?.complete&&bg2.naturalWidth>0){ctx.globalAlpha=0.5;ctx.drawImage(bg2,0,0,W,H);ctx.globalAlpha=1}
 
-      const s=gs.current
 
       // Explosions
       s.explosions.forEach(e=>{
