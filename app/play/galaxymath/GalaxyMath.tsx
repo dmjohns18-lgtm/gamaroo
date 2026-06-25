@@ -183,7 +183,7 @@ export default function GalaxyMath() {
         else if(s.keys.has('ArrowRight')||s.keys.has('d')) s.pvx=spd
         else s.pvx*=0.8
 
-        s.px=Math.max(20,Math.min(W*0.5,s.px+s.pvx))
+        s.px=Math.max(60,Math.min(W-60,s.px+s.pvx))
         s.py=Math.max(40,Math.min(H-80,s.py+s.pvy))
         s.pFrame=(s.pFrame+1)%14
 
