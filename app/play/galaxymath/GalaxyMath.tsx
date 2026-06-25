@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef, useState, useCallback } from 'react'
-import { createClient } from '../../../lib/supabase/client'
+import { createBrowserClient } from '@supabase/ssr'
 
 const ASSET = '/galaxymath/craftpix-896714-space-adventures-2d-game-kit/PNG'
 
@@ -40,7 +40,10 @@ function generateChoices(answer: number) {
 }
 
 export default function GalaxyMath() {
-  const supabase = createClient()
+  const supabase = createBrowserClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
   const [screen, setScreen] = useState<'lobby' | 'game' | 'result'>('lobby')
   const [mode, setMode] = useState<'solo' | 'host' | 'join'>('solo')
   const [roomCode, setRoomCode] = useState('')
