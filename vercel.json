@@ -1,11 +1,2 @@
-{
-  "rewrites": [
-    { "source": "/", 
-"destination": "/index.html" }
-  ]
-}git rm app/route.ts && git 
-add vercel.json && git commit 
--m "serve index.html directly 
-via vercel rewrite" && git 
-push
 
+{"rewrites":[{"source":"/","destination":"/index.html"}]}
